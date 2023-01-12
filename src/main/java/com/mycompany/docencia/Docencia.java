@@ -3,15 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
  */
 
-package com.mycompany.pryfinalc3;
+package com.mycompany.docencia;
 
 /**
  *
- * @author Lenovo-80T6
+ * @author cardo
  */
-public class PryFinalC3 {
+public class Docencia {
 
     public static void main(String[] args) {
-        System.out.println("hola gera!");
+        System.out.println("Hello World!");
     }
 }
