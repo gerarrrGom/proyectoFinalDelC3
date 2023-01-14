@@ -4,7 +4,9 @@
  */
 package ResumenActividades;
 
+import java.awt.Component;
 import java.util.LinkedList;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -14,6 +16,7 @@ import java.util.LinkedList;
 public class GestionActividadess extends javax.swing.JDialog {
     private ListaDeActividades a;
     private boolean situacion;
+    private DefaultListModel l= new DefaultListModel(); 
     /**
      * Creates new form GestionActividadess
      */
@@ -24,7 +27,7 @@ public class GestionActividadess extends javax.swing.JDialog {
         situacionBase();
         situacion=false;
         llenarActividades();
-        this.txtActividades.setEditable(false);
+        this.listActividades.setModel(l);
     }
 
     /**
@@ -37,19 +40,18 @@ public class GestionActividadess extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtActividades = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listActividades = new javax.swing.JList<>();
+        btnSalir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lblActividad = new javax.swing.JLabel();
         txtActividad = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtIndice = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -57,66 +59,16 @@ public class GestionActividadess extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Actividades"));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtActividades.setColumns(20);
-        txtActividades.setRows(5);
-        jScrollPane1.setViewportView(txtActividades);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 250, 230));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 23, 270, 290));
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblActividad.setText("Actividad");
-        jPanel2.add(lblActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, -1));
-        jPanel2.add(txtActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 190, -1));
-
-        jLabel2.setText("Indice:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, 20));
-        jPanel2.add(txtIndice, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 150, 30));
-
-        btnBuscar.setText("Buscar");
-        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+        listActividades.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBuscarMouseClicked(evt);
+                listActividadesMouseClicked(evt);
             }
         });
-        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 70, 30));
+        jScrollPane2.setViewportView(listActividades);
 
-        btnAgregar.setText("+");
-        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseClicked(evt);
-            }
-        });
-        jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 60, 40));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 530, 260));
 
-        btnAceptar.setText("Aceptar");
-        btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAceptarMouseClicked(evt);
-            }
-        });
-        jPanel2.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 80, -1));
-
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCancelarMouseClicked(evt);
-            }
-        });
-        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 80, -1));
-
-        btnEliminar.setText("-");
-        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminarMouseClicked(evt);
-            }
-        });
-        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 60, 40));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 34, 234, 280));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 550, 290));
 
         btnSalir.setText("Salir");
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,31 +76,65 @@ public class GestionActividadess extends javax.swing.JDialog {
                 btnSalirMouseClicked(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 80, 30));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, 80, 30));
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblActividad.setText("Actividad");
+        jPanel2.add(lblActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 60, -1));
+        jPanel2.add(txtActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 350, -1));
+
+        jLabel2.setText("Indice:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 50, 30));
+        jPanel2.add(txtIndice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 110, -1));
+
+        btnAgregar.setText("+");
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 80, -1));
+
+        btnAceptar.setText("Aceptar");
+        btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAceptarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 80, -1));
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseClicked(evt);
+            }
+        });
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 80, -1));
+
+        btnEliminar.setText("-");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 80, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 550, 100));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
-        double indice=Double.parseDouble(this.txtIndice.getText());
-        for(Actividad a1:a.getListaDeActividades()){
-            if(a1.getIndice()==indice){
-                this.lblActividad.setVisible(true);
-                this.txtActividad.setVisible(true);
-                this.txtActividad.setText(a1.getActividad());
-
-                this.btnEliminar.setVisible(true);
-                break;
-            }
-        }
-        
-    }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
         this.txtIndice.setText("");
         this.txtActividad.setText("");
         this.btnAgregar.setVisible(false);
-        this.btnBuscar.setVisible(false);
         this.txtActividad.setVisible(true);
         this.lblActividad.setVisible(true);
         this.btnCancelar.setVisible(true);
@@ -180,7 +166,6 @@ public class GestionActividadess extends javax.swing.JDialog {
         this.txtIndice.setEditable(false);
         this.txtActividad.setEditable(false);
         this.btnAgregar.setVisible(false);
-        this.btnBuscar.setVisible(false);
         this.txtActividad.setVisible(true);
         this.lblActividad.setVisible(true);
         situacion=true;
@@ -191,6 +176,24 @@ public class GestionActividadess extends javax.swing.JDialog {
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
         this.dispose();
     }//GEN-LAST:event_btnSalirMouseClicked
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        situacionBase();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void listActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listActividadesMouseClicked
+        
+        int indice=this.listActividades.getAnchorSelectionIndex();
+        l.get(indice);
+        
+        Actividad a1 = a.getListaDeActividades().get(indice);
+        this.lblActividad.setVisible(true);
+        this.txtActividad.setVisible(true);
+        this.txtIndice.setText(a1.getIndice()+"");
+        this.txtActividad.setText(a1.getActividad());
+        this.btnEliminar.setVisible(true);
+            
+    }//GEN-LAST:event_listActividadesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -237,17 +240,16 @@ public class GestionActividadess extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblActividad;
+    private javax.swing.JList<String> listActividades;
     private javax.swing.JTextField txtActividad;
-    private javax.swing.JTextArea txtActividades;
     private javax.swing.JTextField txtIndice;
     // End of variables declaration//GEN-END:variables
      private void situacionBase(){
@@ -255,16 +257,18 @@ public class GestionActividadess extends javax.swing.JDialog {
         this.btnCancelar.setVisible(false);
         this.btnEliminar.setVisible(false);
         this.txtActividad.setVisible(false);
+        this.txtActividad.setEditable(true);
         this.lblActividad.setVisible(false);
         this.txtIndice.setEditable(true);
-        this.btnBuscar.setVisible(true);
         this.txtIndice.setText("");
         this.btnAgregar.setVisible(true);
     }
      private void llenarActividades(){
-         this.txtActividades.setText("");
+         l.setSize(0);
+         int posicion=0;
          for(Actividad a1 : a.getListaDeActividades()){
-             this.txtActividades.setText(this.txtActividades.getText()+a1.getIndice()+":"+a1.getActividad()+"\n");
+            l.add(posicion,a1.getIndice()+".-"+a1.getActividad());
+            posicion++;
          }
      }
      public ListaDeActividades regresarActividades(){
