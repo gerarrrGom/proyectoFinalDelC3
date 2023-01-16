@@ -11,6 +11,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
+import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -44,13 +45,20 @@ public class pdf extends javax.swing.JFrame {
         btnAbrirPdf = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtApellido = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtCarrera = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtSemestre = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtMatricula = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Alumnos UNPA");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Nombre");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 30));
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 290, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 70, 30));
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 290, 30));
 
         btnCrear.setText("Crear pdf");
         btnCrear.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -58,7 +66,7 @@ public class pdf extends javax.swing.JFrame {
                 btnCrearMouseClicked(evt);
             }
         });
-        getContentPane().add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, -1, -1));
+        getContentPane().add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
 
         btnAbrirPdf.setText("Abrir Pdf");
         btnAbrirPdf.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -66,11 +74,29 @@ public class pdf extends javax.swing.JFrame {
                 btnAbrirPdfMouseClicked(evt);
             }
         });
-        getContentPane().add(btnAbrirPdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 90, -1));
+        getContentPane().add(btnAbrirPdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 90, -1));
 
         jLabel2.setText("Apellido");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 60, 20));
-        getContentPane().add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 290, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 60, 20));
+        getContentPane().add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 290, 30));
+
+        jLabel3.setText("Carrera");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        getContentPane().add(txtCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 290, 30));
+
+        jLabel4.setText("Semestre");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        getContentPane().add(txtSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 290, 30));
+
+        jLabel5.setText("Matricula");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+
+        txtMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMatriculaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 290, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -89,21 +115,29 @@ public class pdf extends javax.swing.JFrame {
     private void btnAbrirPdfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbrirPdfMouseClicked
         abrirPdf(this.txtNombre.getText());
     }//GEN-LAST:event_btnAbrirPdfMouseClicked
+
+    private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMatriculaActionPerformed
     public void generarPdf(String nombre) throws FileNotFoundException, DocumentException{
         if(!(this.txtNombre.getText().isEmpty()|| this.txtApellido.getText().isEmpty())){
             FileOutputStream archivo= new FileOutputStream("C:\\Users\\52281\\Documents\\PDFS" + nombre + ".pdf");
-            Document documento = new Document() {};
+            Document documento = new Document();
             PdfWriter.getInstance(documento,archivo);
             documento.open();
             
-            Paragraph texto=new Paragraph("DATOS");
+            Paragraph texto=new Paragraph("DATOS DEL ALUMNO");
             texto.setAlignment(1);
             documento.add(texto);
+            Font fuente=new Font("TimesRoman", Font.BOLD|Font.ITALIC, 15);
             
             documento.add(new Paragraph("Nombre: "+ this.txtNombre.getText()));
             documento.add(new Paragraph("Apellido: "+ this.txtApellido.getText()));
+            documento.add(new Paragraph("Carrera: "+ this.txtCarrera.getText()));
+            documento.add(new Paragraph("Semestre: "+ this.txtSemestre.getText()));
+            documento.add(new Paragraph ("Matricula: "+ this.txtMatricula.getText()));
             documento.close();
-            JOptionPane.showMessageDialog(this, "El pdf a sido creado correctamente");
+            JOptionPane.showMessageDialog(this, "El pdf ha sido creado correctamente");
             
         }else{
             JOptionPane.showMessageDialog(this, "Debe llenar los campos");
@@ -161,7 +195,13 @@ public class pdf extends javax.swing.JFrame {
     private javax.swing.JButton btnCrear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCarrera;
+    private javax.swing.JTextField txtMatricula;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtSemestre;
     // End of variables declaration//GEN-END:variables
 }
