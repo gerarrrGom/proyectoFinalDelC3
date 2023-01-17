@@ -4,14 +4,16 @@
  */
 package com.mycompany.pryfinalc3;
 
+import com.itextpdf.text.BaseColor;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
-import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -103,9 +105,11 @@ public class pdf extends javax.swing.JFrame {
 
     private void btnCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseClicked
         try {
-            generarPdf(this.txtNombre.getText());
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                generarPdf(this.txtNombre.getText());
+            } catch (IOException ex) {
+                Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (DocumentException ex) {
             Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -119,23 +123,28 @@ public class pdf extends javax.swing.JFrame {
     private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMatriculaActionPerformed
-    public void generarPdf(String nombre) throws FileNotFoundException, DocumentException{
+    public void generarPdf(String nombre) throws FileNotFoundException, DocumentException, IOException{
         if(!(this.txtNombre.getText().isEmpty()|| this.txtApellido.getText().isEmpty())){
             FileOutputStream archivo= new FileOutputStream("C:\\Users\\52281\\Documents\\PDFS" + nombre + ".pdf");
             Document documento = new Document();
             PdfWriter.getInstance(documento,archivo);
-            documento.open();
             
+            documento.open();
+            BaseFont bf=BaseFont.createFont(BaseFont.MACROMAN,BaseFont.CP1250,BaseFont.EMBEDDED);
+            //No pude hacer que funcionaran base font y font.
+            
+            Font f=new Font(bf,12,2,BaseColor.BLUE);
+            //Font fuente=new Font("TimesRoman", Font.BOLD|Font.ITALIC, 15);
             Paragraph texto=new Paragraph("DATOS DEL ALUMNO");
             texto.setAlignment(1);
             documento.add(texto);
-            Font fuente=new Font("TimesRoman", Font.BOLD|Font.ITALIC, 15);
-            
-            documento.add(new Paragraph("Nombre: "+ this.txtNombre.getText()));
-            documento.add(new Paragraph("Apellido: "+ this.txtApellido.getText()));
-            documento.add(new Paragraph("Carrera: "+ this.txtCarrera.getText()));
-            documento.add(new Paragraph("Semestre: "+ this.txtSemestre.getText()));
-            documento.add(new Paragraph ("Matricula: "+ this.txtMatricula.getText()));
+            //Paragraph name=new Paragraph("Nombre: "+ this.txtNombre.getText());
+            //name.setFont(f);
+            documento.add(new Paragraph("Nombre: "+ this.txtNombre.getText(),f));
+            documento.add(new Paragraph("Apellido: "+ this.txtApellido.getText(),f));
+            documento.add(new Paragraph("Carrera: "+ this.txtCarrera.getText(),f));
+            documento.add(new Paragraph("Semestre: "+ this.txtSemestre.getText(),f));
+            documento.add(new Paragraph ("Matricula: "+ this.txtMatricula.getText(),f));
             documento.close();
             JOptionPane.showMessageDialog(this, "El pdf ha sido creado correctamente");
             
