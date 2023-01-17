@@ -131,9 +131,8 @@ public class pdf extends javax.swing.JFrame {
             
             documento.open();
             BaseFont bf=BaseFont.createFont(BaseFont.MACROMAN,BaseFont.CP1250,BaseFont.EMBEDDED);
-            //No pude hacer que funcionaran base font y font.
-            
             Font f=new Font(bf,12,2,BaseColor.BLUE);
+            //f.setStyle(1);
             //Font fuente=new Font("TimesRoman", Font.BOLD|Font.ITALIC, 15);
             Paragraph texto=new Paragraph("DATOS DEL ALUMNO");
             texto.setAlignment(1);
