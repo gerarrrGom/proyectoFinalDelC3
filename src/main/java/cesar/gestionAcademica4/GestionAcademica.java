@@ -46,7 +46,8 @@ public class GestionAcademica extends javax.swing.JDialog {
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        jCalendar2 = new com.toedter.calendar.JCalendar();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GESTIÓN ACADÉMICA");
@@ -106,11 +107,11 @@ public class GestionAcademica extends javax.swing.JDialog {
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel5.setText("Inicio:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel6.setText("Fin:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
         btnAgregar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnAgregar.setText("Agregar");
@@ -142,9 +143,10 @@ public class GestionAcademica extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 80, 25));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 150, 30));
+        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 150, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 360, 150));
-        getContentPane().add(jCalendar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 360, 190));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -231,7 +233,8 @@ public class GestionAcademica extends javax.swing.JDialog {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnSalir;
-    private com.toedter.calendar.JCalendar jCalendar2;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
