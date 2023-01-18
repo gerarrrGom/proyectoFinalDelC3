@@ -4,6 +4,8 @@
  */
 package cesar.gestionAcademica4;
 
+import java.util.Calendar;
+
 /**
  *
  * @author cesar
@@ -203,8 +205,16 @@ public class GestionAcademica extends javax.swing.JDialog {
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
         String actividad=this.txtActividad.getText();
         String comision=this.txtComision.getText();
+        String dia = Integer.toString(jdateInicio.getCalendar().get(Calendar.DAY_OF_MONTH));
+        String mes = Integer.toString(jdateInicio.getCalendar().get(Calendar.MONTH) + 1);
+        String year = Integer.toString(jdateInicio.getCalendar().get(Calendar.YEAR));
+        String fecha = (dia + "/" +mes + "/" + year);
+        String dia1 = Integer.toString(jdateFin.getCalendar().get(Calendar.DAY_OF_MONTH));
+        String mes1 = Integer.toString(jdateFin.getCalendar().get(Calendar.MONTH) + 1);
+        String year1 = Integer.toString(jdateFin.getCalendar().get(Calendar.YEAR));
+        String fecha2 = (dia1 + "/" + mes1+ "/" + year1);
         
-        String periodo=this.jdateInicio.getDateFormatString()+"-"+this.jdateFin.getDateFormatString();
+        String periodo="Inicio:"+fecha+"    "+"Fin:"+fecha2; 
         t.agregarActividad(new Gestion(actividad,comision,periodo));
     }//GEN-LAST:event_btnAgregarMouseClicked
 
