@@ -9,7 +9,7 @@ package cesar.gestionAcademica4;
  * @author cesar
  */
 public class GestionAcademica extends javax.swing.JDialog {
-
+    private TablaGestion t;
     /**
      * Creates new form GestionAcademica
      */
@@ -19,6 +19,8 @@ public class GestionAcademica extends javax.swing.JDialog {
         //this.txtBuscar.requestFocus();
         this.btnEditar.setVisible(false);
        this.btnEliminar.setVisible(false);
+       t=new TablaGestion();
+       this.jTable1.setModel(t);
     }
 
     /**
@@ -30,15 +32,13 @@ public class GestionAcademica extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textArea = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
-        txtBuscar = new javax.swing.JTextField();
+        txtComision = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtBuscar1 = new javax.swing.JTextField();
-        txtBuscar2 = new javax.swing.JTextField();
+        txtBuscar = new javax.swing.JTextField();
+        txtActividad = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -46,29 +46,24 @@ public class GestionAcademica extends javax.swing.JDialog {
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jdateInicio = new com.toedter.calendar.JDateChooser();
+        jdateFin = new com.toedter.calendar.JDateChooser();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GESTIÓN ACADÉMICA");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        textArea.setColumns(20);
-        textArea.setRows(5);
-        textArea.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Actividades"));
-        jScrollPane1.setViewportView(textArea);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 650, 370));
-
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtComision.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBuscarKeyReleased(evt);
+                txtComisionKeyReleased(evt);
             }
         });
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 110, 20));
+        jPanel1.add(txtComision, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 130, 30));
 
         btnBuscar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnBuscar.setText("Buscar");
@@ -81,40 +76,45 @@ public class GestionAcademica extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel1.setText("Actividad:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel2.setText("Comisión o puesto:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
 
-        txtBuscar1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBuscar1KeyReleased(evt);
+                txtBuscarKeyReleased(evt);
             }
         });
-        jPanel1.add(txtBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 130, 20));
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 130, 30));
 
-        txtBuscar2.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtActividad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBuscar2KeyReleased(evt);
+                txtActividadKeyReleased(evt);
             }
         });
-        jPanel1.add(txtBuscar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 160, 20));
+        jPanel1.add(txtActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 160, 30));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel4.setText("Periodo:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel5.setText("Inicio:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel6.setText("Fin:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         btnAgregar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 80, 25));
 
         btnEditar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
@@ -143,10 +143,25 @@ public class GestionAcademica extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 80, 25));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 150, 30));
-        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 150, 30));
+        jPanel1.add(jdateInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 150, 30));
+        jPanel1.add(jdateFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 150, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 360, 190));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 360, 220));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 650, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -154,6 +169,22 @@ public class GestionAcademica extends javax.swing.JDialog {
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
         this.dispose();
     }//GEN-LAST:event_btnSalirMouseClicked
+
+    private void txtComisionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComisionKeyReleased
+       
+    }//GEN-LAST:event_txtComisionKeyReleased
+
+    private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
+        
+    }//GEN-LAST:event_btnEditarMouseClicked
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+
+    }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
         if(!txtBuscar.getText().isEmpty()){
@@ -165,25 +196,17 @@ public class GestionAcademica extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtBuscarKeyReleased
 
-    private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
-        //this.btnEditar.setVisible(false);
-    }//GEN-LAST:event_btnEditarMouseClicked
-
-    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-        //this.btnEliminar.setVisible(false);
-    }//GEN-LAST:event_btnEliminarMouseClicked
-
-    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
-
-    }//GEN-LAST:event_btnBuscarMouseClicked
-
-    private void txtBuscar1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscar1KeyReleased
+    private void txtActividadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtActividadKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscar1KeyReleased
+    }//GEN-LAST:event_txtActividadKeyReleased
 
-    private void txtBuscar2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscar2KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscar2KeyReleased
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+        String actividad=this.txtActividad.getText();
+        String comision=this.txtComision.getText();
+        
+        String periodo=this.jdateInicio.getDateFormatString()+"-"+this.jdateFin.getDateFormatString();
+        t.agregarActividad(new Gestion(actividad,comision,periodo));
+    }//GEN-LAST:event_btnAgregarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -233,18 +256,18 @@ public class GestionAcademica extends javax.swing.JDialog {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnSalir;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea textArea;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private com.toedter.calendar.JDateChooser jdateFin;
+    private com.toedter.calendar.JDateChooser jdateInicio;
+    private javax.swing.JTextField txtActividad;
     private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtBuscar1;
-    private javax.swing.JTextField txtBuscar2;
+    private javax.swing.JTextField txtComision;
     // End of variables declaration//GEN-END:variables
 }
