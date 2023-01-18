@@ -9,13 +9,14 @@ package SaulJM27;
  * @author Saul
  */
 public class CrearProyecto extends javax.swing.JDialog {
-    private Proyecto p;
+    private ModeloProyecto p;
     /**
      * Creates new form CrearProyecto
      */
-    public CrearProyecto(java.awt.Frame parent, boolean modal) {
+    public CrearProyecto(java.awt.Frame parent, boolean modal,ModeloProyecto p) {
         super(parent, modal);
         initComponents();
+        this.p=p;
     }
 
     /**
@@ -137,8 +138,9 @@ public class CrearProyecto extends javax.swing.JDialog {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         int n=Integer.parseInt(this.jTextField2.getText());
-        p=new Proyecto(n);
-        regresaProyecto (); 
+        String titulo=this.jTextField3.getText(); 
+        Proyecto proyecto;
+        p.agregarProyecto(new Proyecto(titulo)); 
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
@@ -171,7 +173,7 @@ public class CrearProyecto extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CrearProyecto dialog = new CrearProyecto(new javax.swing.JFrame(), true);
+                CrearProyecto dialog = new CrearProyecto(new javax.swing.JFrame(), true,new ModeloProyecto());
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -207,7 +209,7 @@ public class CrearProyecto extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 
-    public Proyecto regresaProyecto() {
+    public ModeloProyecto regresaProyecto() {
         return p; 
     }
 }
