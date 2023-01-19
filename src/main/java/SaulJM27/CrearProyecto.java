@@ -137,10 +137,10 @@ public class CrearProyecto extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        int n=Integer.parseInt(this.jTextField2.getText());
-        String titulo=this.jTextField3.getText(); 
-        Proyecto proyecto;
-        p.agregarProyecto(new Proyecto(titulo)); 
+    //    int n=Integer.parseInt(this.jTextField2.getText());
+      //  String titulo=this.jTextField3.getText(); 
+       // Proyecto proyecto;
+       // p.agregarProyecto(new Proyecto(titulo)); 
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
