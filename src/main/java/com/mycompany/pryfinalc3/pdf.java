@@ -12,6 +12,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import java.io.File;
@@ -106,7 +107,9 @@ public class pdf extends javax.swing.JFrame {
     private void btnCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseClicked
         try {
             try {
+                System.out.println("hola");
                 generarPdf(this.txtNombre.getText());
+                System.out.println("holaaa");
             } catch (IOException ex) {
                 Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -132,18 +135,25 @@ public class pdf extends javax.swing.JFrame {
             documento.open();
             BaseFont bf=BaseFont.createFont(BaseFont.MACROMAN,BaseFont.CP1250,BaseFont.EMBEDDED);
             Font f=new Font(bf,12,2,BaseColor.BLUE);
-            //f.setStyle(1);
-            //Font fuente=new Font("TimesRoman", Font.BOLD|Font.ITALIC, 15);
             Paragraph texto=new Paragraph("DATOS DEL ALUMNO");
             texto.setAlignment(1);
             documento.add(texto);
-            //Paragraph name=new Paragraph("Nombre: "+ this.txtNombre.getText());
-            //name.setFont(f);
+            
             documento.add(new Paragraph("Nombre: "+ this.txtNombre.getText(),f));
             documento.add(new Paragraph("Apellido: "+ this.txtApellido.getText(),f));
             documento.add(new Paragraph("Carrera: "+ this.txtCarrera.getText(),f));
             documento.add(new Paragraph("Semestre: "+ this.txtSemestre.getText(),f));
             documento.add(new Paragraph ("Matricula: "+ this.txtMatricula.getText(),f));
+            
+            String nombres=this.txtNombre.getText();
+            String apellido=this.txtApellido.getText();
+            String semestre=this.txtSemestre.getText();
+            String carrera=this.txtCarrera.getText();
+            String matricula=this.txtMatricula.getText();
+            Tablas t=new Tablas();
+            PdfPTable tab=t.tabla(nombre, apellido, carrera, semestre, matricula);
+            documento.add(tab);
+            
             documento.close();
             JOptionPane.showMessageDialog(this, "El pdf ha sido creado correctamente");
             
