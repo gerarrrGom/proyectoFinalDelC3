@@ -130,10 +130,12 @@ public class pdf extends javax.swing.JFrame {
         if(!(this.txtNombre.getText().isEmpty()|| this.txtApellido.getText().isEmpty())){
             FileOutputStream archivo= new FileOutputStream("C:\\Users\\52281\\Documents\\PDFS" + nombre + ".pdf");
             Document documento = new Document();
+            System.out.println("PRUEBA");
             PdfWriter.getInstance(documento,archivo);
             
             documento.open();
-            BaseFont bf=BaseFont.createFont(BaseFont.MACROMAN,BaseFont.CP1250,BaseFont.EMBEDDED);
+            System.out.println("PRUEBA2");
+            BaseFont bf=BaseFont.createFont(BaseFont.TIMES_ROMAN,BaseFont.CP1250,BaseFont.EMBEDDED);
             Font f=new Font(bf,12,2,BaseColor.BLUE);
             Paragraph texto=new Paragraph("DATOS DEL ALUMNO");
             texto.setAlignment(1);
@@ -155,6 +157,7 @@ public class pdf extends javax.swing.JFrame {
             documento.add(tab);
             
             documento.close();
+            System.out.println("PruebA3");
             JOptionPane.showMessageDialog(this, "El pdf ha sido creado correctamente");
             
         }else{
