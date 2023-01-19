@@ -195,7 +195,7 @@ public class GestionAcademica extends javax.swing.JDialog {
     }//GEN-LAST:event_txtBuscarKeyReleased
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-        String actividad=this.txtActividad.getText();
+        String actividad=this.jcomboActividad.getItemAt(WIDTH);
         String comision=this.txtComision.getText();
         String dia = Integer.toString(jdateInicio.getCalendar().get(Calendar.DAY_OF_MONTH));
         String mes = Integer.toString(jdateInicio.getCalendar().get(Calendar.MONTH) + 1);
