@@ -17,6 +17,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -54,6 +55,7 @@ public class pdf extends javax.swing.JFrame {
         txtSemestre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtMatricula = new javax.swing.JTextField();
+        btnProducto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Alumnos UNPA");
@@ -77,7 +79,7 @@ public class pdf extends javax.swing.JFrame {
                 btnAbrirPdfMouseClicked(evt);
             }
         });
-        getContentPane().add(btnAbrirPdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 90, -1));
+        getContentPane().add(btnAbrirPdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 90, -1));
 
         jLabel2.setText("Apellido");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 60, 20));
@@ -100,6 +102,14 @@ public class pdf extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 290, 30));
+
+        btnProducto.setText("pdf Producto");
+        btnProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProductoMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -126,6 +136,49 @@ public class pdf extends javax.swing.JFrame {
     private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMatriculaActionPerformed
+
+    private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
+        
+            FileOutputStream archivo= null;
+        try {
+            archivo = new FileOutputStream("C:\\Users\\52281\\Documents\\PDFS" + "productos" + ".pdf");
+            Document documento = new Document();
+            
+            PdfWriter.getInstance(documento,archivo);
+            
+            documento.open();
+            BaseFont bf;
+            
+            bf = BaseFont.createFont(BaseFont.TIMES_ROMAN,BaseFont.CP1250,BaseFont.EMBEDDED);
+            
+            Font f=new Font(bf,12,2,BaseColor.BLUE);
+            TablaPdfProducto t=new TablaPdfProducto();
+            
+            LinkedList<Producto> lista=new LinkedList();
+            lista.add(new Producto("100","Azucar","Azucar estandar",30,50));
+            lista.add(new Producto("200","Arroz","Azucar estandar",30,50));
+            lista.add(new Producto("300","Sal","Azucar estandar",30,50));
+            lista.add(new Producto("400","Atún","Azucar estandar",30,50));
+            
+            PdfPTable tab=t.tabla(lista);
+            
+                documento.add(tab);
+            
+            documento.close();
+            JOptionPane.showMessageDialog(this, "El pdf ha sido creado correctamente");
+        } catch (Exception ex) {
+            Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                archivo.close();
+            } catch (IOException ex) {
+                Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+            
+       
+        
+    }//GEN-LAST:event_btnProductoMouseClicked
     public void generarPdf(String nombre) throws FileNotFoundException, DocumentException, IOException{
         if(!(this.txtNombre.getText().isEmpty()|| this.txtApellido.getText().isEmpty())){
             FileOutputStream archivo= new FileOutputStream("C:\\Users\\52281\\Documents\\PDFS" + nombre + ".pdf");
@@ -214,6 +267,7 @@ public class pdf extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbrirPdf;
     private javax.swing.JButton btnCrear;
+    private javax.swing.JButton btnProducto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -8,7 +8,6 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-//import java.awt.Font;
 import com.itextpdf.text.Font;
 
 
@@ -23,7 +22,7 @@ public class Tablas {
     
     public PdfPTable tabla(String nombre,String apellido,String carrera, String semestre,String matricula){
         PdfPTable tabla = new PdfPTable(5);
-        PdfPCell celda1 = new PdfPCell(new Paragraph("DOCENCIA", FontFactory.getFont(
+        PdfPCell celda1 = new PdfPCell(new Paragraph("DATOS PERSONALES DEL ALUMNO", FontFactory.getFont(
                 "Arial", 14, Font.BOLD, BaseColor.GREEN)));
 
         celda1.setPadding(12);
@@ -31,9 +30,6 @@ public class Tablas {
         celda1.setColspan(5);
         tabla.addCell(celda1);
         
-        /*celda1=new PdfPCell(new Paragraph("Nombre"));
-        celda1.setColspan(5);
-        tabla.addCell(celda1);*/
         celda1=new PdfPCell(new Paragraph("Nombre"));
         tabla.addCell(celda1);
         
@@ -49,8 +45,6 @@ public class Tablas {
         celda1=new PdfPCell(new Paragraph("Matricula"));
         tabla.addCell(celda1);
         
-        /*celda1.setColspan(5);
-        tabla.addCell(celda1);*/
         
         celda1=new PdfPCell(new Paragraph(nombre));
         tabla.addCell(celda1);
