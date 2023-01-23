@@ -47,8 +47,8 @@ public class GestionAcademica extends javax.swing.JDialog {
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        jdateInicio = new com.toedter.calendar.JDateChooser();
-        jdateFin = new com.toedter.calendar.JDateChooser();
+        jdateInicio = new org.netbeans.modules.form.InvalidComponent();
+        jdateFin = new org.netbeans.modules.form.InvalidComponent();
         jcomboActividad = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -267,8 +267,8 @@ public class GestionAcademica extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> jcomboActividad;
-    private com.toedter.calendar.JDateChooser jdateFin;
-    private com.toedter.calendar.JDateChooser jdateInicio;
+    private org.netbeans.modules.form.InvalidComponent jdateFin;
+    private org.netbeans.modules.form.InvalidComponent jdateInicio;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtComision;
     // End of variables declaration//GEN-END:variables

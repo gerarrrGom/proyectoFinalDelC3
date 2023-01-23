@@ -28,6 +28,8 @@ public class GestionActividadess extends javax.swing.JDialog {
         situacion=false;
         llenarActividades();
         this.listActividades.setModel(l);
+        this.btnSalir.setSize(75, 25
+        );
     }
 
     /**
@@ -50,13 +52,14 @@ public class GestionActividadess extends javax.swing.JDialog {
         txtIndice = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Actividades"));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Actividades", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 0, 12))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         listActividades.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -70,42 +73,76 @@ public class GestionActividadess extends javax.swing.JDialog {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 550, 290));
 
+        btnSalir.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.setPreferredSize(new java.awt.Dimension(75, 25));
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSalirMouseClicked(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, 80, 30));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, 80, 25));
 
+        jPanel2.setBackground(new java.awt.Color(153, 255, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblActividad.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         lblActividad.setText("Actividad");
         jPanel2.add(lblActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 60, -1));
-        jPanel2.add(txtActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 350, -1));
 
+        txtActividad.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jPanel2.add(txtActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 350, 22));
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel2.setText("Indice:");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 50, 30));
-        jPanel2.add(txtIndice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 110, -1));
 
+        txtIndice.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jPanel2.add(txtIndice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 110, 22));
+
+        btnAgregar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnAgregar.setText("+");
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAgregarMouseClicked(evt);
             }
         });
-        jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 80, -1));
+        jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 80, 25));
 
+        btnAceptar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnAceptar.setText("Aceptar");
+        btnAceptar.setPreferredSize(new java.awt.Dimension(75, 25));
         btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAceptarMouseClicked(evt);
             }
         });
-        jPanel2.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 80, -1));
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 80, 25));
 
+        btnEliminar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnEliminar.setText("-");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 80, 25));
+
+        btnCancelar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.setPreferredSize(new java.awt.Dimension(75, 25));
         btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCancelarMouseClicked(evt);
@@ -116,15 +153,7 @@ public class GestionActividadess extends javax.swing.JDialog {
                 btnCancelarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 80, -1));
-
-        btnEliminar.setText("-");
-        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminarMouseClicked(evt);
-            }
-        });
-        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 80, -1));
+        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 80, 25));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 550, 100));
 
@@ -194,6 +223,14 @@ public class GestionActividadess extends javax.swing.JDialog {
         this.btnEliminar.setVisible(true);
             
     }//GEN-LAST:event_listActividadesMouseClicked
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     /**
      * @param args the command line arguments

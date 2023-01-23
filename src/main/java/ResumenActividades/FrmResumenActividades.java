@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class FrmResumenActividades extends javax.swing.JInternalFrame {
     private DefaultTableModel t;
     private ListaDeActividades a;
+    BDHorasActividad bd;
     /**
      * Creates new form FrmResumenActividadess
      */
@@ -23,7 +24,10 @@ public class FrmResumenActividades extends javax.swing.JInternalFrame {
         initComponents();
         t = (DefaultTableModel) this.tblActividades.getModel();
          a= new ListaDeActividades();
-         a.cargarActividades();
+         bd=new BDHorasActividad();
+         for(Actividad a1:bd.obtener()){
+             a.agregarActividad(a1);
+         }
          llenarTabla();
     }
 
@@ -47,8 +51,11 @@ public class FrmResumenActividades extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
 
+        setBackground(new java.awt.Color(39, 192, 65));
+        setOpaque(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tblActividades.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         tblActividades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -74,6 +81,19 @@ public class FrmResumenActividades extends javax.swing.JInternalFrame {
         });
         tblActividades.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(tblActividades);
+        tblActividades.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        if (tblActividades.getColumnModel().getColumnCount() > 0) {
+            tblActividades.getColumnModel().getColumn(0).setResizable(false);
+            tblActividades.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tblActividades.getColumnModel().getColumn(1).setResizable(false);
+            tblActividades.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tblActividades.getColumnModel().getColumn(2).setResizable(false);
+            tblActividades.getColumnModel().getColumn(2).setPreferredWidth(25);
+            tblActividades.getColumnModel().getColumn(3).setResizable(false);
+            tblActividades.getColumnModel().getColumn(3).setPreferredWidth(25);
+            tblActividades.getColumnModel().getColumn(4).setResizable(false);
+            tblActividades.getColumnModel().getColumn(4).setPreferredWidth(25);
+        }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 590, 310));
 
@@ -84,22 +104,26 @@ public class FrmResumenActividades extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 50, 20));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel2.setText("Horas-Semana");
         jLabel2.setToolTipText("");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel2.setOpaque(true);
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 130, 20));
 
-        btnRegistrar.setText("Registrar");
+        btnRegistrar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
+        btnRegistrar.setText("Guardar y Salir");
         btnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRegistrarMouseClicked(evt);
             }
         });
-        getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, 100, 30));
+        getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 130, 50));
 
         menu.setText("Actividades");
+        menu.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
 
+        jMenuItem1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jMenuItem1.setText("Gestionar actividades");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -114,6 +138,7 @@ public class FrmResumenActividades extends javax.swing.JInternalFrame {
         menu.add(jMenuItem1);
         menu.add(jSeparator1);
 
+        jMenuItem2.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jMenuItem2.setText("Salir");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +178,11 @@ public class FrmResumenActividades extends javax.swing.JInternalFrame {
                 a1.set(i, proceso);
             }
             a.setListaDeActividades(a1);
+            bd.borrar();
+            for(Actividad a2:a1){
+                bd.registrarProducto(a2);
+                this.dispose();
+            }
         }else{
             JOptionPane.showMessageDialog(this, "El conteo no puede ser mayor a 40 horas");
         }
@@ -189,6 +219,7 @@ public class FrmResumenActividades extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblActividades;
     // End of variables declaration//GEN-END:variables
     private void llenarTabla(){
+        t.setRowCount(0);
         for(Actividad a1:a.getListaDeActividades()){
             String[] fila = {a1.getIndice()+"",a1.getActividad(),a1.getHorasCicloA()+"",a1.getHorasCicloB()+"",a1.getHorasCicloC()+""};
             t.addRow(fila);
