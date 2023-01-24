@@ -5,6 +5,7 @@
 package cesar.gestionAcademica4;
 
 import java.util.Calendar;
+import java.util.LinkedList;
 
 /**
  *
@@ -12,6 +13,7 @@ import java.util.Calendar;
  */
 public class GestionAcademica extends javax.swing.JDialog {
     private TablaGestion t;
+    private BDActividades bd;
     /**
      * Creates new form GestionAcademica
      */
@@ -21,8 +23,14 @@ public class GestionAcademica extends javax.swing.JDialog {
         //this.txtBuscar.requestFocus();
         this.btnEditar.setVisible(false);
        this.btnEliminar.setVisible(false);
+       this.txtOtro.setVisible(false);
        t=new TablaGestion();
        this.jTable1.setModel(t);
+       bd=new BDActividades();
+       LinkedList<Gestion> lista=bd.obtener();
+       for(int i=0;i<lista.size();i++){
+           t.agregarActividad(lista.get(i));
+       }
     }
 
     /**
@@ -47,9 +55,11 @@ public class GestionAcademica extends javax.swing.JDialog {
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        jdateInicio = new org.netbeans.modules.form.InvalidComponent();
-        jdateFin = new org.netbeans.modules.form.InvalidComponent();
         jcomboActividad = new javax.swing.JComboBox<>();
+        jdateInicio = new com.toedter.calendar.JDateChooser();
+        jdateFin = new com.toedter.calendar.JDateChooser();
+        txtOtro = new javax.swing.JTextField();
+        btnPdf = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -65,7 +75,7 @@ public class GestionAcademica extends javax.swing.JDialog {
                 txtComisionKeyReleased(evt);
             }
         });
-        jPanel1.add(txtComision, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 130, 30));
+        jPanel1.add(txtComision, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 130, 30));
 
         btnBuscar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnBuscar.setText("Buscar");
@@ -82,7 +92,7 @@ public class GestionAcademica extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel2.setText("Comisión o puesto:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
 
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -93,7 +103,7 @@ public class GestionAcademica extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel4.setText("Periodo:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel5.setText("Inicio:");
@@ -131,20 +141,30 @@ public class GestionAcademica extends javax.swing.JDialog {
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 80, 25));
 
         btnSalir.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        btnSalir.setText("Salir");
+        btnSalir.setText("Salir y Guardar");
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSalirMouseClicked(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 80, 25));
-        jPanel1.add(jdateInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 150, 30));
-        jPanel1.add(jdateFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 150, 30));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 120, 25));
 
         jcomboActividad.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jPanel1.add(jcomboActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 52, 170, 30));
+        jcomboActividad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Radio", "Conferencia", "Foro", "Viaje", "otro" }));
+        jcomboActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcomboActividadActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jcomboActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 170, 30));
+        jPanel1.add(jdateInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 120, -1));
+        jPanel1.add(jdateFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 130, -1));
+        jPanel1.add(txtOtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 170, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 360, 220));
+        btnPdf.setText("Crear PDF");
+        jPanel1.add(btnPdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 390, 220));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -165,6 +185,11 @@ public class GestionAcademica extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+
+        ListaGestion actividades=t.getActividades();
+        for(int i=0;i<actividades.size();i++){
+            bd.registrarActividad(actividades.getActividad(i));
+        }
         this.dispose();
     }//GEN-LAST:event_btnSalirMouseClicked
 
@@ -196,19 +221,45 @@ public class GestionAcademica extends javax.swing.JDialog {
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
         //String actividad=this.jcomboActividad.getItemAt(WIDTH);
-        String actividad=jcomboActividad.getSelectedItem().toString();
-        String comision=this.txtComision.getText();
-        String dia = Integer.toString(jdateInicio.getCalendar().get(Calendar.DAY_OF_MONTH));
-        String mes = Integer.toString(jdateInicio.getCalendar().get(Calendar.MONTH) + 1);
-        String year = Integer.toString(jdateInicio.getCalendar().get(Calendar.YEAR));
-        String fecha = (dia + "/" +mes + "/" + year);
-        String dia1 = Integer.toString(jdateFin.getCalendar().get(Calendar.DAY_OF_MONTH));
-        String mes1 = Integer.toString(jdateFin.getCalendar().get(Calendar.MONTH) + 1);
-        String year1 = Integer.toString(jdateFin.getCalendar().get(Calendar.YEAR));
-        String fecha2 = (dia1 + "/" + mes1+ "/" + year1);
-        String periodo="Inicio:"+fecha+"     "+"Fin:"+fecha2; 
-        t.agregarActividad(new Gestion(actividad,comision,periodo));
+        if(!this.txtOtro.isVisible()){
+            String actividad = jcomboActividad.getSelectedItem().toString();
+            String comision = this.txtComision.getText();
+            String dia = Integer.toString(jdateInicio.getCalendar().get(Calendar.DAY_OF_MONTH));
+            String mes = Integer.toString(jdateInicio.getCalendar().get(Calendar.MONTH) + 1);
+            String year = Integer.toString(jdateInicio.getCalendar().get(Calendar.YEAR));
+            String fecha = (dia + "/" + mes + "/" + year);
+            String dia1 = Integer.toString(jdateFin.getCalendar().get(Calendar.DAY_OF_MONTH));
+            String mes1 = Integer.toString(jdateFin.getCalendar().get(Calendar.MONTH) + 1);
+            String year1 = Integer.toString(jdateFin.getCalendar().get(Calendar.YEAR));
+            String fecha2 = (dia1 + "/" + mes1 + "/" + year1);
+            String periodo = "Inicio:" + fecha + "     " + "Fin:" + fecha2;
+            t.agregarActividad(new Gestion(actividad, comision, periodo));
+        }else{
+            String actividad2 = this.txtOtro.getText();
+            String comision = this.txtComision.getText();
+            String dia = Integer.toString(jdateInicio.getCalendar().get(Calendar.DAY_OF_MONTH));
+            String mes = Integer.toString(jdateInicio.getCalendar().get(Calendar.MONTH) + 1);
+            String year = Integer.toString(jdateInicio.getCalendar().get(Calendar.YEAR));
+            String fecha = (dia + "/" + mes + "/" + year);
+            String dia1 = Integer.toString(jdateFin.getCalendar().get(Calendar.DAY_OF_MONTH));
+            String mes1 = Integer.toString(jdateFin.getCalendar().get(Calendar.MONTH) + 1);
+            String year1 = Integer.toString(jdateFin.getCalendar().get(Calendar.YEAR));
+            String fecha2 = (dia1 + "/" + mes1 + "/" + year1);
+            String periodo = "Inicio:" + fecha + "     " + "Fin:" + fecha2;
+            t.agregarActividad(new Gestion(actividad2, comision, periodo));
+        }
+        
     }//GEN-LAST:event_btnAgregarMouseClicked
+
+    private void jcomboActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboActividadActionPerformed
+        if(this.jcomboActividad.getSelectedItem().toString().compareToIgnoreCase("otro")==0){
+            this.txtOtro.setVisible(true);
+            this.jcomboActividad.setVisible(false);
+        }else{
+             this.txtOtro.setVisible(false);
+             this.jcomboActividad.setVisible(true);
+         }
+    }//GEN-LAST:event_jcomboActividadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,6 +308,7 @@ public class GestionAcademica extends javax.swing.JDialog {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnPdf;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -267,9 +319,10 @@ public class GestionAcademica extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> jcomboActividad;
-    private org.netbeans.modules.form.InvalidComponent jdateFin;
-    private org.netbeans.modules.form.InvalidComponent jdateInicio;
+    private com.toedter.calendar.JDateChooser jdateFin;
+    private com.toedter.calendar.JDateChooser jdateInicio;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtComision;
+    private javax.swing.JTextField txtOtro;
     // End of variables declaration//GEN-END:variables
 }

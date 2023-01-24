@@ -80,6 +80,10 @@ public class TablaGestion extends AbstractTableModel{
         actividades.eliminarActividad(indice);
         this.fireTableDataChanged();
     }   
+
+    public ListaGestion getActividades() {
+        return actividades;
+    }
     
     
 }
