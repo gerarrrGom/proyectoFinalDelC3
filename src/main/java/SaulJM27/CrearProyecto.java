@@ -4,19 +4,21 @@
  */
 package SaulJM27;
 
+import java.awt.Frame;
+
 /**
  *
  * @author Saul
  */
 public class CrearProyecto extends javax.swing.JDialog {
-    private ModeloProyecto p;
+    private Proyecto p;
     /**
      * Creates new form CrearProyecto
+     * @param parent
      */
-    public CrearProyecto(java.awt.Frame parent, boolean modal,ModeloProyecto p) {
+    public CrearProyecto(Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.p=p;
     }
 
     /**
@@ -62,6 +64,12 @@ public class CrearProyecto extends javax.swing.JDialog {
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 110, -1));
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 110, -1));
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 110, -1));
+
+        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField7ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 120, -1));
         getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 120, -1));
 
@@ -137,11 +145,23 @@ public class CrearProyecto extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-    //    int n=Integer.parseInt(this.jTextField2.getText());
-      //  String titulo=this.jTextField3.getText(); 
-       // Proyecto proyecto;
-       // p.agregarProyecto(new Proyecto(titulo)); 
+      int n=Integer.parseInt(this.jTextField2.getText());
+        String titulo=this.jTextField3.getText(); 
+        Proyecto proyecto;
+        String Responsabilidad=this.jTextField4.getText();
+        String FaseDeAprobacion=this.jTextField5.getText();
+        String InstalacionPrincipal=this.jTextField6.getText();
+        int FechaDeInicioDelProyecto=Integer.parseInt(this.jTextField7.getText());
+        int FechaDeTerminacion=Integer.parseInt(this.jTextField8.getText()); 
+        int FechaDeTerminaconDelProgrma=Integer.parseInt(this.jTextField9.getText());
+        String PorsentajeGlobalDelProy=this.jTextField10.getText();
+        p=new Proyecto(n, titulo, Responsabilidad, FaseDeAprobacion, InstalacionPrincipal, FechaDeInicioDelProyecto, FechaDeInicioDelProyecto, FechaDeTerminaconDelProgrma, PorsentajeGlobalDelProy);
+        this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,7 +193,7 @@ public class CrearProyecto extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CrearProyecto dialog = new CrearProyecto(new javax.swing.JFrame(), true,new ModeloProyecto());
+                CrearProyecto dialog = new CrearProyecto(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -209,7 +229,7 @@ public class CrearProyecto extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 
-    public ModeloProyecto regresaProyecto() {
+    public Proyecto regresaProyecto() {
         return p; 
     }
 }

@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package SaulJM27;
+import cesar.gestionAcademica4.Gestion;
+import java.util.Calendar;
+import java.util.LinkedList;
 
 /**
  *
@@ -10,6 +13,7 @@ package SaulJM27;
  */
 public class ProyectoDeInvestigacion extends javax.swing.JDialog {
     private ModeloProyecto m; 
+    private BDProyectsos bd;
 
     /**
      * Creates new form ProyectoDeInvestigacion
@@ -20,7 +24,12 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
         this.jButtonEliminar.setVisible(false); 
         this.jButtonEditar.setVisible(false); 
         m=new ModeloProyecto(); 
-        this.jTable1.setModel(m); 
+        this.jTable1.setModel(m);
+        bd=new BDProyectsos();
+       LinkedList<Proyecto> lista=bd.obtener();
+       for(int i=0;i<lista.size();i++){
+          m.agregarProyecto(lista.get(i));
+       }
     }
 
     /**
@@ -126,9 +135,11 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButtonAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarMouseClicked
-      // CrearProyecto c= new CrearProyecto(null, true ); 
-      // c.setVisible(true);
-      // Proyecto p=c.regresaProyecto();
+       CrearProyecto c= new CrearProyecto(null, true ); 
+       c.setVisible(true);
+       Proyecto p=c.regresaProyecto();
+       this.m.agregarProyecto(p);
+       
     }//GEN-LAST:event_jButtonAgregarMouseClicked
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
@@ -143,6 +154,20 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
             jButtonEditar.setVisible(false);
             jButtonEliminar.setVisible(false);
         }
+           // if(!this.txtOtro.isVisible()){
+           // String actividad = jcomboActividad.getSelectedItem().toString();
+          //  String NumeroDeProy = this.jTextField2.getText();
+           // String dia = Integer.toString(jdateInicio.getCalendar().get(Calendar.DAY_OF_MONTH));
+           // String mes = Integer.toString(jdateInicio.getCalendar().get(Calendar.MONTH) + 1);
+          //  String year = Integer.toString(jdateInicio.getCalendar().get(Calendar.YEAR));
+           // String fecha = (dia + "/" + mes + "/" + year);
+           // String dia1 = Integer.toString(jdateFin.getCalendar().get(Calendar.DAY_OF_MONTH));
+           // String mes1 = Integer.toString(jdateFin.getCalendar().get(Calendar.MONTH) + 1);
+           // String year1 = Integer.toString(jdateFin.getCalendar().get(Calendar.YEAR));
+           // String fecha2 = (dia1 + "/" + mes1 + "/" + year1);
+           // String periodo = "Inicio:" + fecha + "     " + "Fin:" + fecha2;
+           // t.agregarActividad(new Gestion(actividad, comision, periodo));
+     
     }//GEN-LAST:event_buscarKeyReleased
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed

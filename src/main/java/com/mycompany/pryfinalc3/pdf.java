@@ -15,6 +15,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
+import com.itextpdf.text.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -26,12 +27,13 @@ import javax.swing.JOptionPane;
  * @author mar
  */
 public class pdf extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form pdf
      */
     public pdf() {
         initComponents();
+        
     }
 
     /**
@@ -117,9 +119,7 @@ public class pdf extends javax.swing.JFrame {
     private void btnCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseClicked
         try {
             try {
-                System.out.println("hola");
                 generarPdf(this.txtNombre.getText());
-                System.out.println("holaaa");
             } catch (IOException ex) {
                 Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -147,6 +147,7 @@ public class pdf extends javax.swing.JFrame {
             PdfWriter.getInstance(documento,archivo);
             
             documento.open();
+            
             BaseFont bf;
             
             bf = BaseFont.createFont(BaseFont.TIMES_ROMAN,BaseFont.CP1250,BaseFont.EMBEDDED);
@@ -175,12 +176,11 @@ public class pdf extends javax.swing.JFrame {
                 Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-            
-       
+        
         
     }//GEN-LAST:event_btnProductoMouseClicked
     public void generarPdf(String nombre) throws FileNotFoundException, DocumentException, IOException{
-        if(!(this.txtNombre.getText().isEmpty()|| this.txtApellido.getText().isEmpty())){
+        /*if(!(this.txtNombre.getText().isEmpty()|| this.txtApellido.getText().isEmpty())){
             FileOutputStream archivo= new FileOutputStream("C:\\Users\\52281\\Documents\\PDFS" + nombre + ".pdf");
             Document documento = new Document();
             System.out.println("PRUEBA");
@@ -216,7 +216,10 @@ public class pdf extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(this, "Debe llenar los campos");
             
-        }
+        }*/
+        Plantilla p=new Plantilla(this.txtNombre.getText(),this.txtApellido.getText());
+        p.crearPlantilla();
+       
         
     }
     
