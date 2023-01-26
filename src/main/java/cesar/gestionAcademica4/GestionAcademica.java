@@ -84,7 +84,7 @@ public class GestionAcademica extends javax.swing.JDialog {
                 btnBuscarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 25));
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 80, 25));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel1.setText("Actividad:");
@@ -99,7 +99,7 @@ public class GestionAcademica extends javax.swing.JDialog {
                 txtBuscarKeyReleased(evt);
             }
         });
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 130, 30));
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 140, 30));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel4.setText("Periodo:");
@@ -156,10 +156,10 @@ public class GestionAcademica extends javax.swing.JDialog {
                 jcomboActividadActionPerformed(evt);
             }
         });
-        jPanel1.add(jcomboActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 170, 30));
+        jPanel1.add(jcomboActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 170, 30));
         jPanel1.add(jdateInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 120, -1));
         jPanel1.add(jdateFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 130, -1));
-        jPanel1.add(txtOtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 170, -1));
+        jPanel1.add(txtOtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 170, -1));
 
         btnPdf.setText("Crear PDF");
         jPanel1.add(btnPdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
@@ -185,8 +185,7 @@ public class GestionAcademica extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
-
-        ListaGestion actividades=t.getActividades();
+         ListaGestion actividades=t.getActividades();
         for(int i=0;i<actividades.size();i++){
             bd.registrarActividad(actividades.getActividad(i));
         }

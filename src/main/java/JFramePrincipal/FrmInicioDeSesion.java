@@ -4,17 +4,23 @@
  */
 package JFramePrincipal;
 
+import Administradores.Administrador;
+import Administradores.BDAdministradores;
+import javax.swing.JOptionPane;
+
 /**
  * @author Adrian Rubio
  * rubioalvaradoadrian@gmail.com
  */
 public class FrmInicioDeSesion extends javax.swing.JFrame {
-
+    private BDAdministradores bd;
     /**
      * Creates new form FrmInicioDeSesion
      */
     public FrmInicioDeSesion() {
         initComponents();
+        bd=new BDAdministradores();
+        this.jLabel3.setVisible(false);
     }
 
     /**
@@ -30,8 +36,8 @@ public class FrmInicioDeSesion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        txtContraseña = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        pswrdContraseña = new javax.swing.JPasswordField();
         btnCancelar = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
 
@@ -51,21 +57,31 @@ public class FrmInicioDeSesion extends javax.swing.JFrame {
         jLabel2.setText("Contraseña:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 100, 30));
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 150, 30));
-        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 150, 30));
 
         jLabel3.setFont(new java.awt.Font("Bodoni MT", 2, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("usuario/contraseña incorrectos!");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 240, 30));
+        jPanel1.add(pswrdContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 150, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 320, 190));
 
         btnCancelar.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseClicked(evt);
+            }
+        });
         getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 100, 40));
 
         btnAceptar.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
         btnAceptar.setText("Aceptar");
+        btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAceptarMouseClicked(evt);
+            }
+        });
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
@@ -79,6 +95,34 @@ public class FrmInicioDeSesion extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
+        String usuario=this.txtUsuario.getText();
+        char[] contraseña = this.pswrdContraseña.getPassword();
+        String password="";
+        for(char c1: contraseña){
+           password=password+c1;
+        }
+        this.txtUsuario.setText(password);
+        for(Administrador a:bd.obtener()){
+            if(a.getContraseña().compareTo(password)==0/*&&a.getUsuario().compareTo(usuario)==0*/){
+                FrmPrincipalAdmin f = new FrmPrincipalAdmin();
+                f.setVisible(true);
+                this.setVisible(false);
+            }else if(a.getDatos().getNombre().compareTo(usuario)==0){
+                FrmPrincipalUsuarios f=new FrmPrincipalUsuarios();
+                f.setVisible(true);
+                this.setVisible(false);
+            }
+        }
+        this.jLabel3.setVisible(true);
+        
+        
+    }//GEN-LAST:event_btnAceptarMouseClicked
+
+    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -122,7 +166,7 @@ public class FrmInicioDeSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JPasswordField pswrdContraseña;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

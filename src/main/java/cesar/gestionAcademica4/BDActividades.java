@@ -4,7 +4,7 @@
  */
 package cesar.gestionAcademica4;
 
-import cesar.gestionAcademica4.Gestion;
+//import cesar.gestionAcademica4.Gestion;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
@@ -13,7 +13,7 @@ public class BDActividades{
 
     public LinkedList<Gestion> obtener(){
         LinkedList<Gestion> actividades=null;
-         cesar.gestionAcademica4.Archivo archivo=new cesar.gestionAcademica4.Archivo("gestion_actividades.txt");
+        cesar.gestionAcademica4.Archivo archivo=new cesar.gestionAcademica4.Archivo("gestion_actividades.txt");
         LinkedList<String> lineas=archivo.obtenerTextoDelArchivo();
         if(lineas!=null){
             actividades=new LinkedList();
