@@ -22,7 +22,11 @@ public class Profesor {
         this.gradoAcademico = gradoAcademico;
         this.cursosImpartidos= cursosImpartidos;
     }
-
+    //me tome la libertad de agregar un constructor que solo reciba el nombre del profesor para que mi parte del codigo funcione por ahora : -Adrian Rubio-
+    public Profesor(String nombre) {
+        this.nombre = nombre;
+    }   
+    //me tome la libertad de agregar un constructor que solo reciba el nombre del profesor para que mi parte del codigo funcione por ahora : -Adrian Rubio-
     public String getNombre() {
         return nombre;
     }
