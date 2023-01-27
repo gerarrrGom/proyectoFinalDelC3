@@ -4,6 +4,7 @@
  */
 package SaulJM27;
 
+import ResumenActividades.Archivo;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
@@ -15,7 +16,7 @@ public class BDProyectsos {
     
     public LinkedList<Proyecto> obtener(){
         LinkedList<Proyecto> investigacion=null;
-        SaulJM27.Archivo archivo=new SaulJM27.Archivo("proyecto_investigacion.txt");
+        Archivo archivo=new Archivo("proyectos.txt");
         LinkedList<String> lineas=archivo.obtenerTextoDelArchivo();
         
         if(lineas!=null){
@@ -33,8 +34,6 @@ public class BDProyectsos {
                 int FechaDeTerminaciónProgramadaDelProyecto=Integer.parseInt(tokens.nextToken());
                 int FechaDeTerminacónDelProyectoReprogramada=Integer.parseInt(tokens.nextToken());
                 String PorsentajeGlobalDelProy=tokens.nextToken();
-
-                String periodo=tokens.nextToken();
                 Proyecto n=new Proyecto(numeroDeProyecto,TitulosDelProyecto,Responsabilidad,FaceDeAprobacion,IstalacionPrincipal,FechaDeInicioDelProyecto,FechaDeTerminaciónProgramadaDelProyecto,FechaDeTerminacónDelProyectoReprogramada,PorsentajeGlobalDelProy);
                 investigacion.add(n);
                 
@@ -44,7 +43,7 @@ public class BDProyectsos {
     }
     
     public boolean registrarActividad(Proyecto n){
-         SaulJM27.Archivo archivo=new SaulJM27.Archivo("proyecto_investigacion.txt");
+        Archivo archivo= new Archivo("proyectos.txt");
         return archivo.registrar(n.getNumeroDeProyecto()+ ";"
                     + n.getTitulosDelProyecto()+ ";"
                     + n.getResponsabilidad()+ ";"
@@ -57,7 +56,7 @@ public class BDProyectsos {
         
     }
     public void borrar(){
-        SaulJM27.Archivo archivo=new SaulJM27.Archivo("proyecto_investigacion.txt");
+        Archivo archivo=new Archivo("proyectos.txt");
         archivo.borrarContenido();
     }
 }
