@@ -23,7 +23,7 @@ public class ModeloProfesores extends AbstractTableModel{
     }
     @Override
     public int getColumnCount(){
-        return 3;
+        return 5;
     
 }
     @Override
@@ -94,6 +94,9 @@ public class ModeloProfesores extends AbstractTableModel{
     @Override
     public int getRowCount() {
         return profesores.size();
+    }
+    public ListaProfesores getProfesores(){
+        return profesores;
     }
     
 }
