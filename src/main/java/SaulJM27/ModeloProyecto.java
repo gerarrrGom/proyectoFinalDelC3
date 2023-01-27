@@ -17,6 +17,14 @@ import javax.swing.table.AbstractTableModel;
     public ModeloProyecto() {
         proyectos=new ListaProyectos();
     }
+
+    public ListaProyectos getProyectos() {
+        return proyectos;
+    }
+
+    public void setProyectos(ListaProyectos proyectos) {
+        this.proyectos = proyectos;
+    }
     
     
     @Override
