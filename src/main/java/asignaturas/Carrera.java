@@ -8,12 +8,13 @@ package asignaturas;
  *
  * @author Reyna Ibañez Tome
  */
-public class Asignaturas {
-    
+public class Carrera {
     private String nombre;
+    private ListaSemestre s;
 
-    public Asignaturas(String nombre) {
+    public Carrera(String nombre, ListaSemestre s) {
         this.nombre = nombre;
+        this.s = s;
     }
 
     public String getNombre() {
@@ -23,6 +24,14 @@ public class Asignaturas {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-}
-    
 
+    public ListaSemestre getS() {
+        return s;
+    }
+
+    public void setS(ListaSemestre s) {
+        this.s = s;
+    }
+    
+    
+}
