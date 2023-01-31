@@ -291,6 +291,7 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
         LinkedList<String> comentarios=archivo.obtenerTextoDelArchivo();
         comentarios.remove(num);
         archivo.borrarContenido();
+        
         for(int x=0;x<comentarios.size();x++){
             String c=comentarios.get(x);
             archivo.registrar(c);
@@ -298,7 +299,7 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
         archivo.registrar(fin);
         modeloComentarios.agregarComentario(new Comentario(fin));
         txtNumEliminar.setText("");
-        txtEditar.setText("");
+        //txtEditar.setText("");
     }//GEN-LAST:event_btnGuardarMouseClicked
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
