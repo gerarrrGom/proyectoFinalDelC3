@@ -4,20 +4,27 @@
  */
 package Rodolfo;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author REMEDIOS CONTRERAS
  */
 public class FrmComentarios extends javax.swing.JInternalFrame {
 
-    private ModeloComentarios modeloComentarios = null;
+    private ModeloComentarios modeloComentarios;
+    BDComentarios bd= new BDComentarios();
+    
     /**
      * Creates new form FrmComentarios
      */
     public FrmComentarios() {
-        initComponents();
+        initComponents(); 
         modeloComentarios = new ModeloComentarios();
-        jTable1.setModel(modeloComentarios);
+        tblComentarios.setModel(modeloComentarios);
+        for (int i = 0; i <bd.obtener().size(); i++) {
+            modeloComentarios.agregarComentario(bd.obtener().get(i));
+        }
     }
 
     /**
@@ -32,7 +39,7 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         btnAct = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblComentarios = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -57,7 +64,7 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblComentarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -68,7 +75,7 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(jTable1);
+        jScrollPane4.setViewportView(tblComentarios);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -104,6 +111,11 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseClicked(evt);
+            }
+        });
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
             }
         });
 
@@ -241,26 +253,33 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
 
     private void btnComentarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComentarMouseClicked
         String cuerpo=txtAddComentario.getText();
+        bd.registrarComentario(cuerpo);
         Comentario a=new Comentario(cuerpo);
         modeloComentarios.agregarComentario(a);
         txtAddComentario.setText("");
     }//GEN-LAST:event_btnComentarMouseClicked
 
     private void btnActMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActMouseClicked
-        
+        for (int i = 0; i <bd.obtener().size(); i++) {
+            modeloComentarios.agregarComentario(bd.obtener().get(i));
+        }
     }//GEN-LAST:event_btnActMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         // TODO add your handling code here:
-        int num=Integer.parseInt(txtNumEliminar.getText());
-        modeloComentarios.eliminarComentario(num);
-        txtNumEliminar.setText("");
+        modeloComentarios.eliminarComentario(tblComentarios.getSelectedRow());
+        bd.borrar();
+        for (int i = 0; i <modeloComentarios.getRowCount(); i++) {
+            bd.registrarComentario((Comentario)modeloComentarios.getValueAt(i, 1));
+        }
+        
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
-        // TODO add your handling code here:
+
         int num=Integer.parseInt(txtNumEliminar.getText());
-        String a=(String) modeloComentarios.getValueAt(num,0);
+        LinkedList<String> comentarios=archivo.obtenerTextoDelArchivo();
+        String a=comentarios.get(num);
         txtEditar.setText(a);
     }//GEN-LAST:event_btnEditarMouseClicked
 
@@ -268,10 +287,23 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         String fin=txtEditar.getText();
         int num=Integer.parseInt(txtNumEliminar.getText());
-        modeloComentarios.setValueAt(fin, num, 0);
+        modeloComentarios.eliminarComentario(num);
+        LinkedList<String> comentarios=archivo.obtenerTextoDelArchivo();
+        comentarios.remove(num);
+        archivo.borrarContenido();
+        for(int x=0;x<comentarios.size();x++){
+            String c=comentarios.get(x);
+            archivo.registrar(c);
+        }
+        archivo.registrar(fin);
+        modeloComentarios.agregarComentario(new Comentario(fin));
         txtNumEliminar.setText("");
         txtEditar.setText("");
     }//GEN-LAST:event_btnGuardarMouseClicked
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -289,7 +321,7 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblComentarios;
     private javax.swing.JTextArea txtAddComentario;
     private javax.swing.JTextArea txtEditar;
     private javax.swing.JTextField txtNumEliminar;

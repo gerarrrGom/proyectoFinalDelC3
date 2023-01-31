@@ -63,4 +63,5 @@ public class ModeloComentarios extends AbstractTableModel{
         comentarios.eliminar(indice);
         this.fireTableDataChanged(); 
     }
+    
 }
