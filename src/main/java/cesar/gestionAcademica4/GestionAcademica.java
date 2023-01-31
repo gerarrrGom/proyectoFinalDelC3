@@ -4,7 +4,7 @@
  */
 package cesar.gestionAcademica4;
 
-import java.util.Calendar;
+//import java.util.Calendar;
 import java.util.LinkedList;
 
 /**
@@ -24,11 +24,8 @@ public class GestionAcademica extends javax.swing.JDialog {
         this.jTable1.setModel(t);
         this.btnEditar.setVisible(false);
         this.btnEliminar.setVisible(false);
+        this.setLocationRelativeTo(this);
         //this.txtBuscar.requestFocus();
-        
-       
-       //t=new TablaGestion();
-       //this.jTable1.setModel(t);
        bd=new BDActividades();
        LinkedList<Gestion> lista=bd.obtener();
        for(int i=0;i<lista.size();i++){
@@ -135,8 +132,9 @@ public class GestionAcademica extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
-        bd.borrar();
         ListaGestion actividades=t.getActividades();
+        //borrar
+        //bd.borrar();
         for(int i=0;i<actividades.size();i++){
             bd.registrarActividad(actividades.getActividad(i));
         }
@@ -149,7 +147,8 @@ public class GestionAcademica extends javax.swing.JDialog {
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
            int n=this.jTable1.getSelectedRow();
-           t.eliminarActividad(n);
+           //bd.borrar();
+           t.eliminarActividad(n); 
            
     }//GEN-LAST:event_btnEliminarMouseClicked
 
@@ -170,7 +169,6 @@ public class GestionAcademica extends javax.swing.JDialog {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         this.btnEliminar.setVisible(true);
         this.btnEditar.setVisible(true);
-        
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**

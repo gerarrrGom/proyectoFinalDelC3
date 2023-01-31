@@ -50,6 +50,7 @@ public class Archivo {
     private File obtenerArchivo() {
         try {
             URL url = getClass().getClassLoader().getResource("archivos/" + nombre);
+            System.out.println(url);
             return new File(url.toURI());
         } catch (URISyntaxException ex) {
             ex.printStackTrace();

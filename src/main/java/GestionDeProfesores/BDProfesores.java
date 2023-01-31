@@ -16,7 +16,7 @@ public class BDProfesores {
          GestionDeProfesores.Archivo archivo=new GestionDeProfesores.Archivo("gestion_profesores.txt");
         LinkedList<String> lineas=archivo.obtenerTextoDelArchivo();
         if(lineas!=null){
-            profesores=new LinkedList();
+            profesores=new LinkedList<>();
             for(int i=0;i<lineas.size();i++){
                 String linea=lineas.get(i);
                 StringTokenizer tokens=new StringTokenizer(linea,";");
@@ -25,7 +25,9 @@ public class BDProfesores {
                 String apellidoMaterno=tokens.nextToken();
                 String gradoAcademico=tokens.nextToken();
                 String cursosImpartidos=tokens.nextToken();
-                Profesor p=new Profesor(nombre, apellidoPaterno, apellidoMaterno, gradoAcademico,  cursosImpartidos);
+                String contraseña=tokens.nextToken();
+                String usuario=tokens.nextToken();
+                Profesor p=new Profesor(nombre, apellidoPaterno, apellidoMaterno, gradoAcademico,  cursosImpartidos, contraseña, usuario);
                 profesores.add(p);
                 
             }
@@ -39,7 +41,9 @@ public class BDProfesores {
                     + p.getApellidoPaterno()+ ";"
                     + p.getApellidoMaterno()+ ";"
                     + p.getGradoAcademico() +";"
-                    + p.getCursosImpartidos());
+                    +p.getCursosImpartidos()+";"
+                    +p.getContraseña()+ ";"
+                    + p.getUsuario());
     }
     public void borrar(){
         GestionDeProfesores.Archivo archivo = new GestionDeProfesores.Archivo("gestion_profesores.txt");

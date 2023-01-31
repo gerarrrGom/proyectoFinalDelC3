@@ -14,7 +14,7 @@ import java.util.StringTokenizer;
 public class BDDesarrollo {
     public LinkedList<Promocion> obtener(){
         LinkedList<Promocion> actividades=null;
-        Amaranny.Archivo archivo=new Amaranny("gestion_actividades.txt");
+        Amaranny.Archivo archivo=new Amaranny.Archivo("gestion_actividades.txt");
         LinkedList<String> lineas=archivo.obtenerTextoDelArchivo();
         if(lineas!=null){
             actividades=new LinkedList();
@@ -24,7 +24,7 @@ public class BDDesarrollo {
                 String nombre=tokens.nextToken();
                 String comision=tokens.nextToken();
                 String periodo=tokens.nextToken();
-                Promocion n=new Promocion(actividad,institucion,hora,producto);
+                Promocion n=new Promocion("","",1,"");
                 actividades.add(n);
                 
             }
@@ -34,13 +34,13 @@ public class BDDesarrollo {
     
     public boolean registrarDesarrollo(Promocion n){
         cesar.gestionAcademica4.Archivo archivo=new cesar.gestionAcademica4.Archivo("gestion_actividades.txt");
-        return archivo.registrar(n.actividad()+ ";"
-                    + n.getinstitucion()+ ";"
-                    + n.gethora()+ ";"
-                    + n.getproducto());
+        return archivo.registrar(""+ ";"
+                    + ""+ ";"
+                    + 2+ ";"
+                    + "");
     }
     public void borrar(){
-        Amaranny.Archivo archivo = new Amafranny.Archivo("gestion_actividades.txt");
+        Amaranny.Archivo archivo = new Amaranny.Archivo("gestion_actividades.txt");
         archivo.borrarContenido();
     }
 }

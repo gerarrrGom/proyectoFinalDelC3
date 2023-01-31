@@ -14,13 +14,19 @@ public class Profesor {
     private String apellidoMaterno;
     private String gradoAcademico;
     private String cursosImpartidos;
+    private String contraseña;
+    private String usuario;
 
-    public Profesor(String nombre, String apellidoPaterno, String apellidoMaterno, String gradoAcademico, String cursosImpartidos) {
+    
+
+    public Profesor(String nombre, String apellidoPaterno, String apellidoMaterno, String gradoAcademico, String cursosImpartidos, String contraseña, String usuario) {
         this.nombre = nombre;
-        this.apellidoPaterno = apellidoPaterno ;
-        this.apellidoMaterno= apellidoMaterno;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
         this.gradoAcademico = gradoAcademico;
-        this.cursosImpartidos= cursosImpartidos;
+        this.cursosImpartidos = cursosImpartidos;
+        this.contraseña = contraseña;
+        this.usuario = usuario;
     }
     //me tome la libertad de agregar un constructor que solo reciba el nombre del profesor para que mi parte del codigo funcione por ahora : -Adrian Rubio-
     public Profesor(String nombre) {
@@ -67,5 +73,19 @@ public class Profesor {
         this.cursosImpartidos = cursosImpartidos;
     }
 
-    
+     public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 }
