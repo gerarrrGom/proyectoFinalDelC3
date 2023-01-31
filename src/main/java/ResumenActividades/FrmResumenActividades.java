@@ -178,11 +178,12 @@ public class FrmResumenActividades extends javax.swing.JInternalFrame {
                 a1.set(i, proceso);
             }
             a.setListaDeActividades(a1);
-            bd.borrar();
+            //bd.borrar();
             for(Actividad a2:a1){
                 bd.registrarProducto(a2);
-                this.dispose();
+               
             }
+             this.dispose();
         }else{
             JOptionPane.showMessageDialog(this, "El conteo no puede ser mayor a 40 horas");
         }

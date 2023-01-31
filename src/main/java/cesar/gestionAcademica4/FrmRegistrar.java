@@ -23,7 +23,7 @@ public class FrmRegistrar extends javax.swing.JDialog {
         super(parent, modal);
         
         initComponents();
-       
+       this.setLocationRelativeTo(null);
        this.txtOtro.setVisible(false);
 
     }
@@ -48,13 +48,14 @@ public class FrmRegistrar extends javax.swing.JDialog {
         jdateInicio = new com.toedter.calendar.JDateChooser();
         jdateFin = new com.toedter.calendar.JDateChooser();
         txtOtro = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setToolTipText("");
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtComision.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -66,7 +67,7 @@ public class FrmRegistrar extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel1.setText("Actividad:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel2.setText("Comisión o puesto:");
@@ -82,7 +83,7 @@ public class FrmRegistrar extends javax.swing.JDialog {
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel6.setText("Fin:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
 
         jcomboActividad.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jcomboActividad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Radio", "Conferencia", "Foro", "Viaje", "otro" }));
@@ -93,26 +94,27 @@ public class FrmRegistrar extends javax.swing.JDialog {
         });
         jPanel1.add(jcomboActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 190, -1));
         jPanel1.add(jdateInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 130, -1));
-        jPanel1.add(jdateFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 140, -1));
+        jPanel1.add(jdateFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 130, -1));
         jPanel1.add(txtOtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 190, -1));
 
-        jButton1.setText("Registrar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnRegistrarMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
+        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
 
-        jButton2.setText("Cancelar");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                btnCancelarMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 460, 250));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 460, 260));
+        jPanel1.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -131,7 +133,7 @@ public class FrmRegistrar extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jcomboActividadActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
         if(!this.txtOtro.isVisible()){
             String actividad = (String) jcomboActividad.getSelectedItem();
             String comision = this.txtComision.getText();
@@ -176,12 +178,12 @@ public class FrmRegistrar extends javax.swing.JDialog {
         
         
     
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btnRegistrarMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
        t=null;
        this.dispose();
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_btnCancelarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -229,8 +231,8 @@ public class FrmRegistrar extends javax.swing.JDialog {
     }
      
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
