@@ -1,9 +1,9 @@
-package SaulJM27;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package Amaranny;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -18,11 +18,10 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author "el profe Ariel"
+ * @author Amaranny
  */
 public class Archivo {
-
-    private String nombre;
+     private String nombre;
 
     public Archivo(String nombre) {
         this.nombre = nombre;
@@ -95,5 +94,3 @@ public class Archivo {
     }
 
 }
-
-

@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package SaulJM27;
-import cesar.gestionAcademica4.Gestion;
-import java.util.Calendar;
 import java.util.LinkedList;
 
 /**
@@ -46,11 +44,10 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
         jButtonAgregar = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
         jButtonEliminar = new javax.swing.JButton();
-        buscar = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -70,10 +67,10 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
                 jButtonAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 30));
+        jPanel1.add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, -1, 30));
 
         jButtonEditar.setText("Editar");
-        jPanel1.add(jButtonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 80, -1));
+        jPanel1.add(jButtonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 80, 30));
 
         jButtonEliminar.setText("Elimiar");
         jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -81,32 +78,7 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
                 jButtonEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 80, -1));
-
-        buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarActionPerformed(evt);
-            }
-        });
-        buscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                buscarKeyReleased(evt);
-            }
-        });
-        jPanel1.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 150, -1));
-
-        jLabel1.setText("Buscar");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 50, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 400, 110));
-
-        jButton4.setText("Salir");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, -1, -1));
+        jPanel1.add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 80, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,9 +91,37 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 680, 250));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 530, 250));
+
+        jButton1.setText("Agregar al archivo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, -1, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 590, 330));
+
+        jButton4.setText("Salir");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 340, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -143,36 +143,28 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonAgregarMouseClicked
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
-        // TODO add your handling code here:
+         int n=jTable1.getSelectedRow();
+         m.eliminarProyecto(n);
+            this.jButtonEliminar.setVisible(false);
+         this.jButtonEditar.setVisible(false);
+        
     }//GEN-LAST:event_jButtonEliminarActionPerformed
 
-    private void buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarKeyReleased
-           if(!buscar.getText().isEmpty()){
-            jButtonEditar.setVisible(true);
-            jButtonEliminar.setVisible(true);
-        }else{
-            jButtonEditar.setVisible(false);
-            jButtonEliminar.setVisible(false);
-        }
-           // if(!this.txtOtro.isVisible()){
-           // String actividad = jcomboActividad.getSelectedItem().toString();
-          //  String NumeroDeProy = this.jTextField2.getText();
-           // String dia = Integer.toString(jdateInicio.getCalendar().get(Calendar.DAY_OF_MONTH));
-           // String mes = Integer.toString(jdateInicio.getCalendar().get(Calendar.MONTH) + 1);
-          //  String year = Integer.toString(jdateInicio.getCalendar().get(Calendar.YEAR));
-           // String fecha = (dia + "/" + mes + "/" + year);
-           // String dia1 = Integer.toString(jdateFin.getCalendar().get(Calendar.DAY_OF_MONTH));
-           // String mes1 = Integer.toString(jdateFin.getCalendar().get(Calendar.MONTH) + 1);
-           // String year1 = Integer.toString(jdateFin.getCalendar().get(Calendar.YEAR));
-           // String fecha2 = (dia1 + "/" + mes1 + "/" + year1);
-           // String periodo = "Inicio:" + fecha + "     " + "Fin:" + fecha2;
-           // t.agregarActividad(new Gestion(actividad, comision, periodo));
-     
-    }//GEN-LAST:event_buscarKeyReleased
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        this.jButtonEliminar.setVisible(true);
+         this.jButtonEditar.setVisible(true);
+    }//GEN-LAST:event_jTable1MouseClicked
 
-    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarActionPerformed
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        bd.borrar();
+        for(int i=0; i<m.getProyectos().total();i++){
+            bd.registrarActividad(m.getProyectos().obtener(i));
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,12 +209,11 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField buscar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEliminar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

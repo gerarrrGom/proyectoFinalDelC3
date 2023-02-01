@@ -15,7 +15,7 @@ public class ListaProfesores {
     private LinkedList<Profesor> lista;
 
         public ListaProfesores() {
-            this.lista = lista;
+            lista=new LinkedList<>();
         }
     public void agregarProfesor(Profesor p){
          lista.add(p);
@@ -33,5 +33,6 @@ public class ListaProfesores {
      return lista.size();
     
     }
+    
  
 }

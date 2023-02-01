@@ -1,5 +1,8 @@
-package ResumenActividades;
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package GestionDeProfesores;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -50,7 +53,6 @@ public class Archivo {
     private File obtenerArchivo() {
         try {
             URL url = getClass().getClassLoader().getResource("archivos/" + nombre);
-            System.out.println(url);
             return new File(url.toURI());
         } catch (URISyntaxException ex) {
             ex.printStackTrace();

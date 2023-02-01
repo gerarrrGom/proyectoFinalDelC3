@@ -23,7 +23,7 @@ public class ModeloProfesores extends AbstractTableModel{
     }
     @Override
     public int getColumnCount(){
-        return 3;
+        return 5;
     
 }
     @Override
@@ -36,6 +36,8 @@ public class ModeloProfesores extends AbstractTableModel{
             case 2: return aux.getApellidoMaterno();
             case 3: return aux.getGradoAcademico();
             case 4: return aux.getCursosImpartidos();
+            case 5: return aux.getUsuario();
+            case 6: return aux.getContraseña();
             default: return "";
         }
     }
@@ -46,19 +48,23 @@ public class ModeloProfesores extends AbstractTableModel{
             case 1: return "Apellido paterno";
             case 2: return "Apellido materno";
             case 3: return "Grado academico";
-            default: return "Cursos impartidos";
+            case 4: return "Cursos impartidos";
+            case 5: return "Usuario";
+            default: return "Contraseña";
             
         }
     }
     @Override
     public Class getColumnClass(int col){
-        switch(col){
+         switch(col){
             case 0: return String.class;
             case 1: return String.class;
             case 2: return String.class;
             case 3: return String.class;
+            case 4: return String.class;
+            case 5: return String.class;
             default: return String.class;
-        }
+         }
     }
     @Override
     public boolean isCellEditable(int row, int col){
@@ -76,7 +82,12 @@ public class ModeloProfesores extends AbstractTableModel{
             break;
             case 3: aux.setGradoAcademico((String)value);
             break;
-            default: aux.setCursosImpartidos((String)value);
+            case 4: aux.setCursosImpartidos((String)value);
+            break;
+            case 5: aux.setContraseña((String)value);
+            break;
+            default: aux.setUsuario((String)value);
+
                 
             }
             fireTableCellUpdated(fila, columna);
@@ -94,6 +105,9 @@ public class ModeloProfesores extends AbstractTableModel{
     @Override
     public int getRowCount() {
         return profesores.size();
+    }
+    public ListaProfesores getProfesores(){
+        return profesores;
     }
     
 }
