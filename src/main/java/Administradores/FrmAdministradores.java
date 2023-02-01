@@ -13,7 +13,7 @@ import javax.swing.DefaultListModel;
  */
 public class FrmAdministradores extends javax.swing.JInternalFrame {
     private DefaultListModel l;
-    private BDAdministradores bd;
+    private BDUsuarios bd;
     /**
      * Creates new form NewJInternalFrame
      */
@@ -21,7 +21,7 @@ public class FrmAdministradores extends javax.swing.JInternalFrame {
         initComponents();
         l=new DefaultListModel();
         this.jList1.setModel(l);
-        bd=new BDAdministradores();
+        bd=new BDUsuarios();
         llenarLista();
         
     }
@@ -96,7 +96,7 @@ public class FrmAdministradores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        bd.registrarProducto(new Administrador(new Profesor(this.txtNombre.getText()),this.txtUsuario.getText(),this.txtContraseña.getText()));
+        bd.registrarProducto(new Usuario(new Profesor(this.txtNombre.getText()),Integer.parseInt(this.txtUsuario.getText())));
         llenarLista();
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -116,7 +116,7 @@ public class FrmAdministradores extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
     private void llenarLista(){
         l.clear();
-        for(Administrador a:bd.obtener()){
+        for(Usuario a:bd.obtener()){
             l.addElement(a.getDatos().getNombre());
         }
     }

@@ -95,6 +95,7 @@ public class GestionActividadess extends javax.swing.JDialog {
 
         lblActividad.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         lblActividad.setText("Actividad");
+        lblActividad.setToolTipText("Nombre de la actividad");
         jPanel2.add(lblActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 60, -1));
 
         txtActividad.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
@@ -118,6 +119,7 @@ public class GestionActividadess extends javax.swing.JDialog {
 
         btnAceptar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnAceptar.setText("Aceptar");
+        btnAceptar.setToolTipText("Guardar la actividad");
         btnAceptar.setPreferredSize(new java.awt.Dimension(75, 25));
         btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -4,8 +4,9 @@
  */
 package JFramePrincipal;
 
-import Administradores.Administrador;
-import Administradores.BDAdministradores;
+import Administradores.Usuario;
+import Administradores.BDUsuarios;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,13 +14,13 @@ import javax.swing.JOptionPane;
  * rubioalvaradoadrian@gmail.com
  */
 public class FrmInicioDeSesion extends javax.swing.JFrame {
-    private BDAdministradores bd;
+    private BDUsuarios bd;
     /**
      * Creates new form FrmInicioDeSesion
      */
     public FrmInicioDeSesion() {
         initComponents();
-        bd=new BDAdministradores();
+        bd=new BDUsuarios();
         this.jLabel3.setVisible(false);
     }
 
@@ -104,8 +105,8 @@ public class FrmInicioDeSesion extends javax.swing.JFrame {
            password=password+c1;
         }
         this.txtUsuario.setText(password);
-        for(Administrador a:bd.obtener()){
-            if(a.getContraseña().compareTo(password)==0/*&&a.getUsuario().compareTo(usuario)==0*/){
+        for (Usuario a : bd.obtener()) {
+            if(a.getPermisos()==0){
                 FrmPrincipalAdmin f = new FrmPrincipalAdmin();
                 f.setVisible(true);
                 this.setVisible(false);
@@ -115,9 +116,7 @@ public class FrmInicioDeSesion extends javax.swing.JFrame {
                 this.setVisible(false);
             }
         }
-        this.jLabel3.setVisible(true);
-        
-        
+        this.jLabel3.setVisible(true);        
     }//GEN-LAST:event_btnAceptarMouseClicked
 
     private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
