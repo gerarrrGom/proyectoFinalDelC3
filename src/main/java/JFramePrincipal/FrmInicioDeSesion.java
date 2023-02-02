@@ -6,8 +6,7 @@ package JFramePrincipal;
 
 import Administradores.Usuario;
 import Administradores.BDUsuarios;
-import java.util.Iterator;
-import javax.swing.JOptionPane;
+import GestionDeProfesores.BDProfesores;
 
 /**
  * @author Adrian Rubio
@@ -15,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class FrmInicioDeSesion extends javax.swing.JFrame {
     private BDUsuarios bd;
+    private BDProfesores bd1;
     /**
      * Creates new form FrmInicioDeSesion
      */

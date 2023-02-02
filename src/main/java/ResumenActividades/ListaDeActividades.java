@@ -24,6 +24,12 @@ public class ListaDeActividades {
     public void setListaDeActividades(LinkedList<Actividad> listaDeActividades) {
         this.listaDeActividades = listaDeActividades;
     }
+    public int total(){
+        return listaDeActividades.size();
+    }
+    public Actividad obtener(int indice){
+        return listaDeActividades.get(indice);
+    }
     
     public void cargarActividades(){
         listaDeActividades.add(new Actividad(1,"Docencia"));
@@ -38,6 +44,9 @@ public class ListaDeActividades {
     }
     public void agregarActividad(Actividad a){
         listaDeActividades.add(a);
+    }
+    public void agregarActividad(int indice,Actividad a){
+        listaDeActividades.add(indice, a);
     }
     public void eliminarActividad(double indice){
         for(int i=0;i< listaDeActividades.size();i++){

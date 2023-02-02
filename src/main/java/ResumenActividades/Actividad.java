@@ -8,7 +8,7 @@ package ResumenActividades;
  * @author Adrian Rubio
  * rubioalvaradoadrian@gmail.com
  */
-public class Actividad extends ActividadesEnGeneral{
+public class Actividad extends ActividadesEnGeneral implements Comparable<Actividad>{
     private int HorasCicloA; 
     private int HorasCicloB;
     private int HorasCicloC;
@@ -41,8 +41,16 @@ public class Actividad extends ActividadesEnGeneral{
     public void setHorasCicloC(int HorasCicloC) {
         this.HorasCicloC = HorasCicloC;
     }
-    
-    
-    
-    
+
+    @Override
+    public int compareTo(Actividad o) {
+        double comparedSize = o.getIndice();
+		if (this.getIndice() > comparedSize) {
+			return 1;
+		} else if (this.getIndice() == comparedSize) {
+			return 0;
+		} else {
+			return -1;
+		}
+    }    
 }
