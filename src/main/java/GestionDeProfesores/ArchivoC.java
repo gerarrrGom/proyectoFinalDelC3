@@ -2,7 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package GestionDeProfesores; 
+package GestionDeProfesores;
+
+/**
+ *
+ * @author Lenovo-80T6
+ */
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -19,11 +24,11 @@ import javax.swing.JOptionPane;
  *
  * @author "gerard"
  */
-public class Archivo {
+public class ArchivoC {
 
     private String nombre;
 
-    public Archivo(String nombre) {
+    public ArchivoC(String nombre) {
         this.nombre = nombre;
     }
 
@@ -92,5 +97,5 @@ public class Archivo {
         }
         return false;
     }
-
 }
+
