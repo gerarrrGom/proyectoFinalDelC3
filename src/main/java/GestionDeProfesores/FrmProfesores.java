@@ -84,6 +84,11 @@ public class FrmProfesores extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         btnpdf.setText("Crear Pdf");
@@ -156,7 +161,9 @@ public class FrmProfesores extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-        // TODO add your handling code here:
+        int n=this.jTable1.getSelectedRow();
+           //bd.borrar();
+           m.eliminarProfesor(n); 
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnpdfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnpdfMouseClicked
@@ -183,6 +190,11 @@ public class FrmProfesores extends javax.swing.JDialog {
             bd.registrarActividad(profesores.getProfesor(i));
         }
     }//GEN-LAST:event_btnAgregarMouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+         this.btnEliminar.setVisible(true);
+        this.btnEditar.setVisible(true);
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

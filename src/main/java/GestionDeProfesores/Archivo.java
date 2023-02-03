@@ -85,7 +85,7 @@ public class Archivo {
 		File archivo=obtenerArchivo();
 		String directorio=archivo.getParent();
                 archivo.delete();
-                new FileWriter(directorio +"/"+ nombre, true);
+                new FileWriter(directorio + nombre, true);
                 return true;
 	}catch(IOException ex){
             ex.printStackTrace();
