@@ -67,10 +67,14 @@ public class Encabezado extends PdfPageEventHelper {
             // add text
             PdfPCell text = new PdfPCell();
             text.setPaddingBottom(15);
-            text.setPaddingLeft(10);
+            text.setPaddingLeft(50);
             text.setBorder(Rectangle.NO_BORDER);
-            //text.setBorderColor(BaseColor.BLUE);
-            text.addElement(new Phrase("INFORME ANUALL DE ACTIVIDADES", new Font(Font.FontFamily.TIMES_ROMAN, 16)));
+             BaseFont bf;
+            
+            bf = BaseFont.createFont(BaseFont.HELVETICA_BOLD,BaseFont.CP1250,BaseFont.EMBEDDED);
+            Font f=new Font(bf,12,2,BaseColor.BLACK);
+            text.addElement(new Phrase("INFORME ANUAL DE ACTIVIDADES",f));
+
             header.addCell(text);
             // write content
             header.writeSelectedRows(0, -1, 34, 803, writer.getDirectContent());
