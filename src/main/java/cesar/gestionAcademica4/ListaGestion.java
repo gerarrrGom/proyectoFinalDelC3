@@ -16,6 +16,14 @@ public class ListaGestion {
     public ListaGestion() {
         lista=new LinkedList();
     }
+
+    public LinkedList<Gestion> getLista() {
+        return lista;
+    }
+
+    public void setLista(LinkedList<Gestion> lista) {
+        this.lista = lista;
+    }
     
     public void agregarActividad(Gestion p){
         lista.add(p);
