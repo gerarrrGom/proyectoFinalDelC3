@@ -4,7 +4,13 @@
  */
 package cesar.gestionAcademica4;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import utilidades.ObjetosParaEditar;
 
 /**
  *
@@ -13,6 +19,7 @@ import java.util.Calendar;
 public class FrmRegistrar extends javax.swing.JDialog {
     private Gestion t;
     private BDActividades bd;
+    private boolean situacion;
     
 
 
@@ -23,6 +30,29 @@ public class FrmRegistrar extends javax.swing.JDialog {
         super(parent, modal);
         
         initComponents();
+        if(ObjetosParaEditar.g!=null){
+            t=ObjetosParaEditar.g;
+            Date fechaParseada = null;
+            this.txtComision.setText(t.getComision());
+            this.jcomboActividad.setSelectedItem(t.getNombre());
+            String fechas[]=t.getPeriodo().split(":");
+            String arr[]=fechas[1].split(" ");
+            try {
+                fechaParseada= new SimpleDateFormat("dd/MM/yyyy").parse(arr[0]);
+            } catch (ParseException ex) {
+                Logger.getLogger(FrmRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            this.jdateInicio.setDate(fechaParseada);
+            try {
+                fechaParseada= new SimpleDateFormat("dd/MM/yyyy").parse(fechas[2]);
+            } catch (ParseException ex) {
+                Logger.getLogger(FrmRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.jdateFin.setDate(fechaParseada);
+            
+            
+        }
        this.setLocationRelativeTo(null);
        this.txtOtro.setVisible(false);
 
@@ -126,9 +156,11 @@ public class FrmRegistrar extends javax.swing.JDialog {
     private void jcomboActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboActividadActionPerformed
         if(this.jcomboActividad.getSelectedItem().toString().compareToIgnoreCase("otro")==0){
             this.txtOtro.setVisible(true);
+            situacion=(true);
             this.jcomboActividad.setVisible(false);
         }else{
             this.txtOtro.setVisible(false);
+            situacion=false;
             this.jcomboActividad.setVisible(true);
         }
     }//GEN-LAST:event_jcomboActividadActionPerformed
@@ -147,8 +179,7 @@ public class FrmRegistrar extends javax.swing.JDialog {
             String fecha2 = (dia1 + "/" + mes1 + "/" + year1);
             String periodo = "Inicio:" + fecha + "     " + "Fin:" + fecha2;
             t=(new Gestion(actividad, comision, periodo));
-            //this.jdateInicio.setDateFormatString(fecha);
-            //this.jdateFin.setDateFormatString(fecha2);
+            
         }else{
             String actividad2 = this.txtOtro.getText();
             String comision = this.txtComision.getText();
@@ -181,8 +212,15 @@ public class FrmRegistrar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
-       t=null;
-       this.dispose();
+       if(situacion){
+           txtOtro.setVisible(false);
+           jcomboActividad.setVisible(true);
+           situacion=false;
+       }else{
+           t=null;
+           this.dispose();
+       }
+       
     }//GEN-LAST:event_btnCancelarMouseClicked
 
     /**
