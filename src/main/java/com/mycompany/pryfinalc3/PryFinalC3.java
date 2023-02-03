@@ -5,6 +5,9 @@
 
 package com.mycompany.pryfinalc3;
 
+import SaulJM27.BDProyectsos;
+import SaulJM27.Proyecto;
+
 /**
  *
  * @author Lenovo-80T6
@@ -12,6 +15,8 @@ package com.mycompany.pryfinalc3;
 public class PryFinalC3 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        BDProyectsos bd=new BDProyectsos();
+        bd.registrarActividad(new Proyecto(0, "1", "2", "3", "4", 0, 0, 0, "hola"));
+        
     }
 }
