@@ -52,23 +52,31 @@ public class Plantilla {
             
             e.agregarEncabezado(w);
             
-            documento.add(new Paragraph("Profesor investigador:"+ nombre + " " + apellido));
+            
+            documento.setMargins(3, 3, 527, 2);
+            documento.add(new Paragraph("\n\n\n\n\nProfesor investigador:"+ nombre + " " + apellido));
             documento.newPage();
+            e.agregarEncabezado(w);
             BaseFont bf;
             
             bf = BaseFont.createFont(BaseFont.TIMES_ROMAN,BaseFont.CP1250,BaseFont.EMBEDDED);
             
             Font f=new Font(bf,12,2,BaseColor.BLUE);
-            Paragraph texto=new Paragraph("DATOS DEL ALUMNO");
-            texto.setAlignment(1);
-            documento.add(texto);
+            //Paragraph texto=new Paragraph("DATOS DEL ALUMNO");
+            //texto.setAlignment(1);
+            //documento.add(texto);
             
             documento.add(new Paragraph("Nombre: "+ nombre,f));
             documento.add(new Paragraph("Apellido: "+ apellido,f));
  
-            Tablas t=new Tablas();
+            /*Tablas t=new Tablas();
             PdfPTable tab=t.tabla(nombre, apellido,"",  "","");
-            documento.add(tab);
+            documento.add(tab);*/
+            
+            documento.newPage();
+            e.agregarEncabezado(w);
+            documento.newPage();
+            e.agregarEncabezado(w);
             documento.close();
             JOptionPane.showMessageDialog(null, "El pdf ha sido creado correctamente");
             
