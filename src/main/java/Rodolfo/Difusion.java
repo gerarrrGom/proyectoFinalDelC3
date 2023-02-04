@@ -12,28 +12,28 @@ import java.util.Date;
  */
 public class Difusion extends Object{
     String nombre;
-    Date fechaI;
-    Date fechaF;
+    String fechaI;
+    String fechaF;
 
-    public Difusion(String nombre, Date fechaI, Date fechaF) {
+    public Difusion(String nombre, String fechaI, String fechaF) {
         this.nombre = nombre;
         this.fechaI = fechaI;
         this.fechaF = fechaF;
     }
 
-    public Date getFechaI() {
+    public String getFechaI() {
         return fechaI;
     }
 
-    public void setFechaI(Date fechaI) {
+    public void setFechaI(String fechaI) {
         this.fechaI = fechaI;
     }
 
-    public Date getFechaF() {
+    public String getFechaF() {
         return fechaF;
     }
 
-    public void setFechaF(Date fechaF) {
+    public void setFechaF(String fechaF) {
         this.fechaF = fechaF;
     }
 

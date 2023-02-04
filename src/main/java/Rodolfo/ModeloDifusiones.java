@@ -67,9 +67,9 @@ public class ModeloDifusiones extends AbstractTableModel{
         switch(columna){
             case 0: aux.setNombre((String)value);
                     break;
-            case 1: aux.setFechaI((Date)value);
+            case 1: aux.setFechaI((String)value);
                     break;
-            default: aux.setFechaF((Date)value);
+            default: aux.setFechaF((String)value);
         }
         fireTableCellUpdated(fila, columna);
     }
