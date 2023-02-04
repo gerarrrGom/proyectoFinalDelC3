@@ -4,7 +4,10 @@
  */
 package Administradores;
 
+import GestionDeProfesores.BDProfesores;
+import GestionDeProfesores.ListaProfesores;
 import GestionDeProfesores.Profesor;
+import java.util.LinkedList;
 import javax.swing.DefaultListModel;
 
 /**
@@ -13,7 +16,9 @@ import javax.swing.DefaultListModel;
  */
 public class FrmAdministradores extends javax.swing.JInternalFrame {
     private DefaultListModel l;
-    private BDAdministradores bd;
+    private BDUsuarios bd;
+    private BDProfesores bd1;
+    private LinkedList<Profesor> profe;
     /**
      * Creates new form NewJInternalFrame
      */
@@ -21,8 +26,10 @@ public class FrmAdministradores extends javax.swing.JInternalFrame {
         initComponents();
         l=new DefaultListModel();
         this.jList1.setModel(l);
-        bd=new BDAdministradores();
+        bd=new BDUsuarios();
+        bd1=new BDProfesores();
         llenarLista();
+        profe=bd1.obtener();
         
     }
 
@@ -41,11 +48,9 @@ public class FrmAdministradores extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        txtUsuario = new javax.swing.JTextField();
-        txtContraseña = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -61,7 +66,7 @@ public class FrmAdministradores extends javax.swing.JInternalFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Nombre:");
+        jLabel1.setText("Profesor");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, 20));
 
         jButton1.setText("registrar");
@@ -77,14 +82,16 @@ public class FrmAdministradores extends javax.swing.JInternalFrame {
         });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 53, 90, 40));
 
-        jLabel2.setText("Usuario");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 120, -1));
 
-        jLabel3.setText("Contraseña");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
-        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 240, -1));
-        jPanel2.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 240, -1));
-        jPanel2.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 240, -1));
+        jLabel4.setText("Permisos:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 60, 20));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 220, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 500, 110));
 
@@ -96,28 +103,35 @@ public class FrmAdministradores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        bd.registrarProducto(new Administrador(new Profesor(this.txtNombre.getText()),this.txtUsuario.getText(),this.txtContraseña.getText()));
+        bd.registrarProducto(new Usuario(profe.get(this.jList1.getSelectedIndex()),Integer.parseInt(this.jTextField1.getText())));
         llenarLista();
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
     private void llenarLista(){
         l.clear();
-        for(Administrador a:bd.obtener()){
-            l.addElement(a.getDatos().getNombre());
+        for(Usuario a:bd.obtener()){
+            l.addElement(a.getDatos().getNombre()+" permisos: "+a.getPermisos());
+        }
+    }
+    private void llenarArchivo(){
+        for(Profesor a:bd1.obtener()){
+            bd.registrarProducto(new Usuario(a,0));
         }
     }
 }

@@ -4,6 +4,7 @@
  */
 package SaulJM27;
 import java.util.LinkedList;
+import utilidades.ObjetosParaEditar;
 
 /**
  *
@@ -46,7 +47,7 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
         jButtonEliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -67,18 +68,33 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
                 jButtonAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, -1, 30));
+        jPanel1.add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, -1, 30));
 
         jButtonEditar.setText("Editar");
-        jPanel1.add(jButtonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 80, 30));
+        jButtonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEditarMouseClicked(evt);
+            }
+        });
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 80, 30));
 
-        jButtonEliminar.setText("Elimiar");
+        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEliminarMouseClicked(evt);
+            }
+        });
         jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 80, 30));
+        jPanel1.add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 80, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,13 +116,13 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 530, 250));
 
-        jButton1.setText("Agregar al archivo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jButton2.setText("Guardar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, -1, 30));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 80, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 590, 330));
 
@@ -139,7 +155,9 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
        c.setVisible(true);
        Proyecto p=c.regresaProyecto();
        this.m.agregarProyecto(p);
-       
+       for(int i=0; i<m.getProyectos().total();i++){
+            bd.registrarActividad(m.getProyectos().obtener(i));
+        }
     }//GEN-LAST:event_jButtonAgregarMouseClicked
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
@@ -159,12 +177,39 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButton4MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        bd.borrar();
-        for(int i=0; i<m.getProyectos().total();i++){
-            bd.registrarActividad(m.getProyectos().obtener(i));
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+
+    }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    private void jButtonEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarMouseClicked
+        int n=this.jTable1.getSelectedRow();
+        ObjetosParaEditar.p=m.getProyectos().obtener(n);
+        
+        CrearProyecto a=new CrearProyecto(null,true);  
+        a.setVisible(true);
+                m.eliminarProyecto(n);
+        if(a.regresaProyecto()!=null){
+            ListaProyectos p;
+            p=new ListaProyectos();
+            LinkedList h= m.getProyectos().getProyectos();
+            h.add(n, a.regresaProyecto());
+            p.setLista(h);
+            m.setProyectos(p);
+        }    
+    }//GEN-LAST:event_jButtonEditarMouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+                ListaProyectos proyectos=m.getProyectos();
+                bd.borrar();
+                    for (int i=0; i<proyectos.size(); i++){
+                        bd.registrarActividad(proyectos.getProyectos(i));
+                    }
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButtonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarMouseClicked
+        int n=this.jTable1.getSelectedRow();
+        m.eliminarProyecto(n);
+    }//GEN-LAST:event_jButtonEliminarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -209,7 +254,7 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonEditar;

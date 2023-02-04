@@ -2,12 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.docencia;
+package utilidades;
+
+import SaulJM27.Proyecto;
+import cesar.gestionAcademica4.Gestion;
 
 /**
  *
- * @author cardo
+ * @author cesar
  */
-public class CursosImpartidos {
-    
+public class ObjetosParaEditar {
+    public static Gestion g;
+    public static Proyecto p;    
 }

@@ -10,9 +10,9 @@ import java.util.StringTokenizer;
  @ author Adrian Rubio
  * rubioalvaradoadrian@gmail.com
  */
-public class BDAdministradores {
-        public LinkedList<Administrador> obtener(){
-        LinkedList<Administrador> administradores=null;
+public class BDUsuarios {
+        public LinkedList<Usuario> obtener(){
+        LinkedList<Usuario> administradores=null;
         Archivo archivo=new Archivo("administradores.txt");
         LinkedList<String> lineas=archivo.obtenerTextoDelArchivo();
         if(lineas!=null){
@@ -20,10 +20,9 @@ public class BDAdministradores {
             for(int i=0;i<lineas.size();i++){
                 String linea=lineas.get(i);
                 StringTokenizer tokens=new StringTokenizer(linea,";");
-                String nombre=tokens.nextToken();
-                String usuario=tokens.nextToken();
-                String contraseña=tokens.nextToken();
-                Administrador n=new Administrador(new Profesor(nombre), contraseña, usuario);
+                String nombre=tokens.nextToken();  
+                int permiso=Integer.parseInt(tokens.nextToken());
+                Usuario n=new Usuario(new Profesor(nombre),permiso);
                 administradores.add(n);
                 
             }
@@ -31,14 +30,13 @@ public class BDAdministradores {
         return administradores;
     }
     
-    public boolean registrarProducto(Administrador a){
-        Archivo archivo=new Archivo("administradores.txt");
+    public boolean registrarProducto(Usuario a){
+        Archivo archivo=new Archivo("usuarios.txt");
         return archivo.registrar(a.getDatos().getNombre()+ ";"
-                    + a.getUsuario()+ ";"
-                    + a.getContraseña()+ ";");
+                    + a.getPermisos()+";");
     }
     public void borrar(){
-        Archivo archivo = new Archivo("administradores.txt");
+        Archivo archivo = new Archivo("usuarios.txt");
         archivo.borrarContenido();
     }
 }

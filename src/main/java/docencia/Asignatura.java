@@ -2,18 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.docencia;
+package docencia;
 
 /**
  *
  * @author cardo
  */
 public class Asignatura {
-    private String nombre;
-    private int semestre;
-    public Asignatura(String nombre,int semestre) {
+     private String nombre;
+     
+      public Asignatura(String nombre) {
         this.nombre = nombre;
-        this.semestre=semestre;
     }
 
     public String getNombre() {
@@ -23,13 +22,8 @@ public class Asignatura {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public int getSemestre() {
-        return semestre;
+     @Override
+    public String toString(){
+        return nombre+" "; 
     }
-
-    public void setSemestre(int semestre) {
-        this.semestre = semestre;
-    }
-
 }
