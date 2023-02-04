@@ -7,42 +7,40 @@ import java.util.StringTokenizer;
 
 public class BDCiclosYPeriodos {
     
-     public LinkedList<Profesor> obtener(){
-        LinkedList<Profesor> profesores=null;
-         GestionDeProfesores.Archivo archivo=new GestionDeProfesores.Archivo("gestion_profesores.txt");
+     public LinkedList<Ciclo> obtener(){
+        LinkedList<Ciclo> list=null;
+         GestionDeProfesores.Archivo archivo=new GestionDeProfesores.Archivo("ciclosYperiodos.txt");
         LinkedList<String> lineas=archivo.obtenerTextoDelArchivo();
         if(lineas!=null){
-            profesores=new LinkedList<>();
+            list=new LinkedList<>();
             for(int i=0;i<lineas.size();i++){
                 String linea=lineas.get(i);
                 StringTokenizer tokens=new StringTokenizer(linea,";");
-                String nombre=tokens.nextToken();
-                String apellidoPaterno=tokens.nextToken();
-                String apellidoMaterno=tokens.nextToken();
-                String gradoAcademico=tokens.nextToken();
-                String cursosImpartidos=tokens.nextToken();
-                String contraseña=tokens.nextToken();
-                String usuario=tokens.nextToken();
-                Profesor p=new Profesor(nombre, apellidoPaterno, apellidoMaterno, gradoAcademico,  cursosImpartidos, contraseña, usuario);
-                profesores.add(p);
+                String fechaInicio=tokens.nextToken();
+                String fechaTermino=tokens.nextToken();
+                Periodo periodoA=Periodo.parsePeriodo(tokens.nextToken());
+                Periodo periodoB=Periodo.parsePeriodo(tokens.nextToken());
+                Periodo periodoZ=Periodo.parsePeriodo(tokens.nextToken());;
+                Ciclo c=new Ciclo(fechaInicio, fechaTermino, periodoA, periodoB, periodoZ);
+                list.add(c);
                 
             }
         }
-        return profesores;
+        return list;
     }
     
-    public boolean registrarActividad(Profesor p){
-        GestionDeProfesores.Archivo archivo=new GestionDeProfesores.Archivo("gestion_profesores.txt");
-        return archivo.registrar(p.getNombre()+ ";"
-                    + p.getApellidoPaterno()+ ";"
-                    + p.getApellidoMaterno()+ ";"
-                    + p.getGradoAcademico() +";"
-                    +p.getCursosImpartidos()+";"
-                    +p.getContraseña()+ ";"
-                    + p.getUsuario());
+    public boolean registrarCiclo(Ciclo c){
+        GestionDeProfesores.Archivo archivo=new GestionDeProfesores.Archivo("ciclosYPeriodos.txt");
+        return archivo.registrar(c.getFechaInicio()+ ";"
+                    + c.getFechaTermino()+ ";"
+                    + c.getPeriodoA()+ ";"
+                    + c.getPeriodoB()+";"
+                    +c.getPeriodoB()+";"
+                    +c.getPeriodoZ());
+                    
     }
     public void borrar(){
-        GestionDeProfesores.Archivo archivo = new GestionDeProfesores.Archivo("gestion_profesores.txt");
+        GestionDeProfesores.Archivo archivo = new GestionDeProfesores.Archivo("ciclosYPeriodos.txt");
         archivo.borrarContenido();
     }
 }

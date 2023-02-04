@@ -32,6 +32,15 @@ public class Periodo {
     }
     private String fechaInicio;
     private String fechaTérmino;
-    
-    
+
+    @Override
+    public String toString() {
+        return fechaInicio + "-" + fechaTérmino;
+    }
+
+    public static Periodo parsePeriodo(String s){
+     Periodo p;
+     String s1[]=s.split("-");
+     return p=new Periodo(s1[0],s1[1]);
+    }
 }

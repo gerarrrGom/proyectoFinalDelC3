@@ -4,15 +4,21 @@ package GestionDeProfesores;
 public class Ciclo {
     
     private String fechaInicio;
-    private String fechaTérmino;
+    private String fechaTermino;
     private Periodo periodoA;
     private Periodo periodoB;
     private Periodo periodoZ;
-
-    public Ciclo(String fechaInicio, String fechaTérmino) {
+    
+     public Ciclo(String fechaInicio, String fechaTermino, Periodo periodoA, Periodo periodoB, Periodo periodoZ) {
         this.fechaInicio = fechaInicio;
-        this.fechaTérmino = fechaTérmino;
+        this.fechaTermino = fechaTermino;
+        this.periodoA = periodoA;
+        this.periodoB = periodoB;
+        this.periodoZ = periodoZ;
     }
+
+    
+    
 
     public String getFechaInicio() {
         return fechaInicio;
@@ -22,12 +28,13 @@ public class Ciclo {
         this.fechaInicio = fechaInicio;
     }
 
-    public String getFechaTérmino() {
-        return fechaTérmino;
+    public String getFechaTermino() {
+        return fechaTermino;
     }
 
-    public void setFechaTérmino(String fechaTérmino) {
-        this.fechaTérmino = fechaTérmino;
+
+    public void setFechaTermino(String fechaTérmino) {
+        this.fechaTermino = fechaTérmino;
     }
 
     public Periodo getPeriodoA() {
