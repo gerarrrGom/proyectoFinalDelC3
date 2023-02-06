@@ -87,12 +87,6 @@ public class FrmRegistrar extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setToolTipText("");
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtComision.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtComisionKeyReleased(evt);
-            }
-        });
         jPanel1.add(txtComision, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 190, -1));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
@@ -122,10 +116,10 @@ public class FrmRegistrar extends javax.swing.JDialog {
                 jcomboActividadActionPerformed(evt);
             }
         });
-        jPanel1.add(jcomboActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 190, -1));
+        jPanel1.add(jcomboActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 190, -1));
         jPanel1.add(jdateInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 130, -1));
         jPanel1.add(jdateFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 130, -1));
-        jPanel1.add(txtOtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 190, -1));
+        jPanel1.add(txtOtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 190, -1));
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,10 +142,6 @@ public class FrmRegistrar extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtComisionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComisionKeyReleased
-
-    }//GEN-LAST:event_txtComisionKeyReleased
 
     private void jcomboActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboActividadActionPerformed
         if(this.jcomboActividad.getSelectedItem().toString().compareToIgnoreCase("otro")==0){

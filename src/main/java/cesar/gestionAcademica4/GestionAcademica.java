@@ -5,7 +5,12 @@
 package cesar.gestionAcademica4;
 
 //import java.util.Calendar;
+//import com.itextpdf.text.DocumentException;
+//import com.mycompany.pryfinalc3.pdf;
+//import java.io.IOException;
 import java.util.LinkedList;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 import utilidades.ObjetosParaEditar;
 
 /**
@@ -97,6 +102,11 @@ public class GestionAcademica extends javax.swing.JDialog {
         jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 80, 30));
 
         btnPdf.setText("Crear PDF");
+        btnPdf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPdfMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnPdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 90, 30));
 
         btnSalir.setText("Salir");
@@ -155,13 +165,18 @@ public class GestionAcademica extends javax.swing.JDialog {
             h.add(n, act.getT());
             g.setLista(h);
             t.setActividades(g);
-        }    
+        }
+        this.btnEditar.setVisible(false);
+        this.btnEliminar.setVisible(false);
     }//GEN-LAST:event_btnEditarMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
            int n=this.jTable1.getSelectedRow();
            //bd.borrar();
-           t.eliminarActividad(n); 
+           t.eliminarActividad(n);
+        this.btnEditar.setVisible(false);
+        this.btnEliminar.setVisible(false);
+           
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
@@ -185,6 +200,11 @@ public class GestionAcademica extends javax.swing.JDialog {
         this.btnEditar.setVisible(true);
         
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void btnPdfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPdfMouseClicked
+       FrmPdf p=new FrmPdf(null,true);  
+        p.setVisible(true);
+    }//GEN-LAST:event_btnPdfMouseClicked
 
     /**
      * @param args the command line arguments
