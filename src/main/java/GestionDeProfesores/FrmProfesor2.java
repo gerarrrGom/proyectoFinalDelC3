@@ -239,9 +239,6 @@ public class FrmProfesor2 extends javax.swing.JDialog {
       
       this.p=new Profesor(nombre, apellidoPaterno, apellidoMaterno, gradoAcademico, cursosImpartidos, contraseña, usuario);
       
-      this.dispose();
-      
-      
     }//GEN-LAST:event_btnCargarMouseClicked
 
     private void btnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarActionPerformed

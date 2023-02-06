@@ -9,7 +9,7 @@ import SaulJM27.Articulos;
 import SaulJM27.Indicadores;
 import SaulJM27.Proyecto;
 import cesar.gestionAcademica4.Gestion;
-
+import GestionDeProfesores.Profesor;
 /**
  *
  * @author cesar
@@ -20,4 +20,5 @@ public class ObjetosParaEditar {
     public static Articulos s;
     public static Indicadores c; 
     public static Promocion a;
+    public static Profesor pr;
 }

@@ -7,6 +7,7 @@ package GestionDeProfesores;
 
 import java.util.Calendar;
 import java.util.LinkedList;
+import utilidades.ObjetosParaEditar;
 
 /**
  *
@@ -43,13 +44,13 @@ public class FrmProfesores extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnpdf = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -65,14 +66,12 @@ public class FrmProfesores extends javax.swing.JDialog {
             }
         });
 
-        btnEditar.setText("Editar");
-        btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSalir.setText("Salir");
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEditarMouseClicked(evt);
+                btnSalirMouseClicked(evt);
             }
         });
-
-        btnSalir.setText("Salir");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -113,6 +112,13 @@ public class FrmProfesores extends javax.swing.JDialog {
             }
         });
 
+        btnEditar.setText("Editar");
+        btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -125,15 +131,15 @@ public class FrmProfesores extends javax.swing.JDialog {
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(28, 28, 28)
                         .addComponent(btnpdf)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16))))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,10 +151,10 @@ public class FrmProfesores extends javax.swing.JDialog {
                     .addComponent(btnAgregar)
                     .addComponent(btnSalir)
                     .addComponent(btnpdf)
-                    .addComponent(btnEditar)
                     .addComponent(btnEliminar)
+                    .addComponent(btnEditar)
                     .addComponent(jButton1))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,7 +171,7 @@ public class FrmProfesores extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -182,7 +188,21 @@ public class FrmProfesores extends javax.swing.JDialog {
     }//GEN-LAST:event_btnpdfMouseClicked
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
-        // TODO add your handling code here:
+        int n=this.jTable1.getSelectedRow();
+        ObjetosParaEditar.pr=m.getProfesores().getProfesor(n);
+        m.eliminarProfesor(n);
+        FrmProfesor2 prf=new FrmProfesor2(null,true);  
+        prf.setVisible(true);
+        if(prf.regresarProfesor()!=null){
+            ListaProfesores lp;
+            lp=new ListaProfesores();
+            LinkedList l= m.getProfesores().getLista();
+            l.add(n, prf.regresarProfesor());
+            lp.setLista(l);
+            m.setProfes(lp);
+        }
+        this.btnEditar.setVisible(false);
+        this.btnEliminar.setVisible(false);
     }//GEN-LAST:event_btnEditarMouseClicked
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -190,15 +210,11 @@ public class FrmProfesores extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-      FrmProfesor2 p= new FrmProfesor2(null,true);
-      p.setVisible(true);
-      p.regresarProfesor();
-      if(p.regresarProfesor()!=null){
-           m.agregarProfesor(p.regresarProfesor());
-      }
-        ListaProfesores profesores=m.getProfesores();
-        for(int i=0;i<profesores.size();i++){
-            bd.registrarActividad(profesores.getProfesor(i));
+      FrmProfesor2 prf=new FrmProfesor2(null,true);  
+        prf.setVisible(true);
+        Profesor p=prf.regresarProfesor();
+        if(p!=null){
+            m.agregarProfesor(p);
         }
     }//GEN-LAST:event_btnAgregarMouseClicked
 
@@ -209,13 +225,17 @@ public class FrmProfesores extends javax.swing.JDialog {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         ListaProfesores profes=m.getProfesores();
-        //borrar
+        
         bd.borrar();
         for(int i=0;i<profes.size();i++){
-            bd.registrarActividad(profes.getProfesor(i));
+            bd.registrarProfesor(profes.getProfesor(i));
         }
         
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+       this.dispose();
+    }//GEN-LAST:event_btnSalirMouseClicked
 
     /**
      * @param args the command line arguments

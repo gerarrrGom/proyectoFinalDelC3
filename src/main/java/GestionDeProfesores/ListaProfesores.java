@@ -17,6 +17,13 @@ public class ListaProfesores {
         public ListaProfesores() {
             lista=new LinkedList<>();
         }
+    public LinkedList<Profesor> getLista() {
+        return lista;
+    }
+    
+    public void setLista(LinkedList<Profesor> lista) {
+        this.lista = lista;
+    }
     public void agregarProfesor(Profesor p){
          lista.add(p);
     }   

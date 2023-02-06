@@ -35,7 +35,7 @@ public class BDProfesores {
         return profesores;
     }
     
-    public boolean registrarActividad(Profesor p){
+    public boolean registrarProfesor(Profesor p){
         GestionDeProfesores.Archivo archivo=new GestionDeProfesores.Archivo("gestion_profesores.txt");
         return archivo.registrar(p.getNombre()+ ";"
                     + p.getApellidoPaterno()+ ";"

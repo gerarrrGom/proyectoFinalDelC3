@@ -16,7 +16,11 @@ public class ModeloProfesores extends AbstractTableModel{
     public ModeloProfesores(){
         profesores =new ListaProfesores();
     }
-    
+     public void setProfes(ListaProfesores profesores){
+        this.profesores=profesores;
+        this.fireTableDataChanged();
+    }
+
     public int getRownCount(){
         return profesores.size();
         
