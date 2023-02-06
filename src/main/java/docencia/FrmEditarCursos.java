@@ -3,21 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package docencia;
+
 import static docencia.FrmDocencia.tablaCursos;
+import utilidades.ObjetosParaEditar;
+
 /**
  *
  * @author cardo
  */
 public class FrmEditarCursos extends javax.swing.JDialog {
+
     private ModeloCursosImpartidos modelo;
     private BDCursosImpartidos bd;
-    private int numero;
+    private CursosImpartidos c;
+    private CursosImpartidos curso;
+
     /**
      * Creates new form FrmEditarCursos
      */
     public FrmEditarCursos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        c = ObjetosParaEditar.c;
+        this.setTitle("Editar curso");
+        setCursoEditar();
     }
 
     /**
@@ -45,9 +54,10 @@ public class FrmEditarCursos extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(245, 245, 220));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Editar curso", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 24))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
         jLabel1.setText("Carrera: ");
@@ -103,9 +113,9 @@ public class FrmEditarCursos extends javax.swing.JDialog {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel6)
@@ -115,25 +125,23 @@ public class FrmEditarCursos extends javax.swing.JDialog {
                             .addComponent(jLabel2))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(spnAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(19, 19, 19)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cboCarreras, 0, 190, Short.MAX_VALUE)
                                     .addComponent(cboAsignaturas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(spnHoras)
                                     .addComponent(spnSemestre)
-                                    .addComponent(cboCiclo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(spnAlumnos))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton2)))
-                .addContainerGap())
+                                    .addComponent(cboCiclo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
                     .addComponent(cboCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -162,26 +170,7 @@ public class FrmEditarCursos extends javax.swing.JDialog {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 364, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -192,8 +181,8 @@ public class FrmEditarCursos extends javax.swing.JDialog {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        editar(numero);
-        
+        editar();
+        //txtCursoAModificar.setText(c.toString());
         this.dispose();
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -238,18 +227,28 @@ public class FrmEditarCursos extends javax.swing.JDialog {
             }
         });
     }
-    public void indice(int indice){
-         numero =indice;
-    }
-    public void editar(int indice){
-        String carrera =  cboCarreras.getSelectedItem().toString();
-        String asignatura =  cboAsignaturas.getSelectedItem().toString();
-        int semestre =(int) spnSemestre.getValue();
+    public void editar() {
+
+        String carrera = cboCarreras.getSelectedItem().toString();
+        String asignatura = cboAsignaturas.getSelectedItem().toString();
+        int semestre = (int) spnSemestre.getValue();
         String cicloEscolar = cboCiclo.getSelectedItem().toString();
-        float horas =(float) spnHoras.getValue();
-        int alumnos =(int) spnAlumnos.getValue();
-        CursosImpartidos c = new CursosImpartidos(new Carrera(carrera),new Asignatura(asignatura),semestre,cicloEscolar,horas,alumnos);
-        modelo.editarCurso(indice, c);
+        float horas = (float) spnHoras.getValue();
+        int alumnos = (int) spnAlumnos.getValue();
+        curso = new CursosImpartidos(new Carrera(carrera), new Asignatura(asignatura), semestre, cicloEscolar, horas, alumnos);
+    }
+
+    public CursosImpartidos getCurso() {
+        return curso;
+    }
+    public void setCursoEditar(){
+        cboCarreras.setSelectedItem(c.getCarrera().getNombreCarrera());
+        cboAsignaturas.setSelectedItem(c.getAsignatura().getNombre());
+        spnSemestre.setValue(c.getSemestre());
+        cboCiclo.setSelectedItem(c.getCicloEscolar());
+        spnHoras.setValue(c.getHoras());
+        spnAlumnos.setValue(c.getNumAlumnos());
+        //cboCarreras.add(c.getCarrera());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -3,32 +3,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package docencia;
+
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.table.DefaultTableModel;
+import utilidades.ObjetosParaEditar;
 
 /**
  *
  * @author cardo
  */
 public class FrmDocencia extends javax.swing.JInternalFrame {
-    
+
     private ModeloCursosImpartidos modelo;
     private BDCursosImpartidos bd;
-     private String[] columnas;
-    
+    private int count;
 
     /**
      * Creates new form FrmDocencia
      */
     public FrmDocencia() {
         initComponents();
-        this.setTitle("Docencia");
-        jPanel2.setVisible(false);
-        bd=new BDCursosImpartidos();
-       // bd.borrar();
-       modelo = new ModeloCursosImpartidos();
-       tablaCursos.setModel(modelo);
+        this.setTitle("Cursos Impartidos");
+        bd = new BDCursosImpartidos();
+        bd.borrar();
+        count =0;
+        modelo = new ModeloCursosImpartidos();
+        tablaCursos.setModel(modelo);
+        btnEditarCurso.setVisible(false);
+        btnEliminarCurso.setVisible(false);
+        btnGuardarCurso.setVisible(false);
+        btnAgregarActividades.setVisible(false);
     }
 
     /**
@@ -42,38 +46,32 @@ public class FrmDocencia extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        bntAgregarCurso = new javax.swing.JButton();
+        btnAgregarCurso = new javax.swing.JButton();
         btnEditarCurso = new javax.swing.JButton();
         btnGuardarCurso = new javax.swing.JButton();
-        btnEliminarCurso1 = new javax.swing.JButton();
+        btnEliminarCurso = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        btnAgregarActividades = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaCursos = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 153));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), "Cursos impartidos", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 24))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jPanel4.setBackground(new java.awt.Color(255, 204, 153));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bntAgregarCurso.setBackground(new java.awt.Color(153, 204, 255));
-        bntAgregarCurso.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
-        bntAgregarCurso.setText("Agregar Curso");
-        bntAgregarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAgregarCurso.setBackground(new java.awt.Color(153, 204, 255));
+        btnAgregarCurso.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
+        btnAgregarCurso.setText("Agregar Curso");
+        btnAgregarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bntAgregarCursoMouseClicked(evt);
+                btnAgregarCursoMouseClicked(evt);
             }
         });
-        jPanel4.add(bntAgregarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 140, 30));
+        jPanel4.add(btnAgregarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 120, 30));
 
         btnEditarCurso.setBackground(new java.awt.Color(153, 204, 255));
         btnEditarCurso.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
@@ -83,7 +81,7 @@ public class FrmDocencia extends javax.swing.JInternalFrame {
                 btnEditarCursoMouseClicked(evt);
             }
         });
-        jPanel4.add(btnEditarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 120, 30));
+        jPanel4.add(btnEditarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 120, 30));
 
         btnGuardarCurso.setBackground(new java.awt.Color(153, 204, 255));
         btnGuardarCurso.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
@@ -93,17 +91,37 @@ public class FrmDocencia extends javax.swing.JInternalFrame {
                 btnGuardarCursoMouseClicked(evt);
             }
         });
-        jPanel4.add(btnGuardarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 140, 30));
+        jPanel4.add(btnGuardarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 90, 30));
 
-        btnEliminarCurso1.setBackground(new java.awt.Color(153, 204, 255));
-        btnEliminarCurso1.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
-        btnEliminarCurso1.setText("Eliminar Curso");
-        btnEliminarCurso1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnEliminarCurso.setBackground(new java.awt.Color(153, 204, 255));
+        btnEliminarCurso.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
+        btnEliminarCurso.setText("Eliminar Curso");
+        btnEliminarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminarCurso1MouseClicked(evt);
+                btnEliminarCursoMouseClicked(evt);
             }
         });
-        jPanel4.add(btnEliminarCurso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 140, 30));
+        jPanel4.add(btnEliminarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 130, 30));
+
+        jButton1.setBackground(new java.awt.Color(255, 102, 0));
+        jButton1.setFont(new java.awt.Font("BodoniFLF", 1, 18)); // NOI18N
+        jButton1.setText("Salir");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, -1, -1));
+
+        btnAgregarActividades.setBackground(new java.awt.Color(153, 204, 255));
+        btnAgregarActividades.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
+        btnAgregarActividades.setText("Agregar Actividades");
+        btnAgregarActividades.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarActividadesMouseClicked(evt);
+            }
+        });
+        jPanel4.add(btnAgregarActividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 160, 30));
 
         tablaCursos.setBackground(new java.awt.Color(245, 245, 220));
         tablaCursos.setModel(new javax.swing.table.DefaultTableModel(
@@ -125,133 +143,107 @@ public class FrmDocencia extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 270));
-
-        jPanel2.setBackground(new java.awt.Color(255, 204, 153));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), "Productos de las actividades de apoyo docente realizadas", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 24))); // NOI18N
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable1.setBackground(new java.awt.Color(245, 245, 220));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 660, 270));
-
-        jPanel3.setBackground(new java.awt.Color(255, 204, 153));
-        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 204, 153), 2, true));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton6.setBackground(new java.awt.Color(153, 204, 255));
-        jButton6.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton6.setText("Agregar Actividad");
-        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 30));
-
-        jButton2.setBackground(new java.awt.Color(153, 204, 255));
-        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton2.setText("Editar Actividad");
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, 30));
-
-        jButton7.setBackground(new java.awt.Color(153, 204, 255));
-        jButton7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton7.setText("Eliminar Actividad");
-        jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 160, 30));
-
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, 48));
-
-        jButton1.setBackground(new java.awt.Color(255, 102, 0));
-        jButton1.setFont(new java.awt.Font("BodoniFLF", 1, 18)); // NOI18N
-        jButton1.setText("Salir");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, -1, -1));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 690, 360));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bntAgregarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntAgregarCursoMouseClicked
-        FrmAgregarCursos agregarCurso = new FrmAgregarCursos(null,true);
-        agregarCurso.setVisible(true);
-        modelo.agregarCurso(agregarCurso.getCurso());
-    }//GEN-LAST:event_bntAgregarCursoMouseClicked
+    private void btnAgregarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCursoMouseClicked
+        if(count<3){
+            FrmAgregarCursos agregarCurso = new FrmAgregarCursos(null, true);
+            agregarCurso.setVisible(true);
+            modelo.agregarCurso(agregarCurso.getCurso());
+            btnEditarCurso.setVisible(true);
+            btnEliminarCurso.setVisible(true);
+            btnGuardarCurso.setVisible(true);
+            btnAgregarActividades.setVisible(true);
+            count++;
+        }else{
+            this.btnAgregarCurso.setVisible(false);
+        }
+
+    }//GEN-LAST:event_btnAgregarCursoMouseClicked
+
+    private void btnEditarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarCursoMouseClicked
+        ObjetosParaEditar.c = modelo.listaCursos().obtener(tablaCursos.getSelectedRow());
+        FrmEditarCursos editarCurso = new FrmEditarCursos(null, true);
+        editarCurso.setVisible(true);
+        modelo.editarCurso(modelo.listaCursos().obtener(tablaCursos.getSelectedRow()), editarCurso.getCurso());
+
+    }//GEN-LAST:event_btnEditarCursoMouseClicked
+
+    private void btnGuardarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarCursoMouseClicked
+
+        for (int i = 0; i < modelo.listaCursos().total(); i++) {
+            bd.registrarCurso(modelo.listaCursos().obtener(i));
+        }
+        this.dispose();
+
+    }//GEN-LAST:event_btnGuardarCursoMouseClicked
+
+    private void btnEliminarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarCursoMouseClicked
+        // TODO add your handling code here:
+
+        modelo.eliminarCurso(tablaCursos.getSelectedRow());
+        if(count==3){
+            this.btnAgregarCurso.setVisible(true);
+            count--;
+        }
+        
+    }//GEN-LAST:event_btnEliminarCursoMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
 
-    private void btnEditarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarCursoMouseClicked
-        FrmEditarCursos editarCurso = new FrmEditarCursos(null,true);
-        editarCurso.setVisible(true);
-        int x= tablaCursos.getSelectedRow();
-        if(x>=0){
-            editarCurso.indice(x);
-        }
-        
-    }//GEN-LAST:event_btnEditarCursoMouseClicked
-
-    private void btnGuardarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarCursoMouseClicked
+    private void btnAgregarActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarActividadesMouseClicked
+        ObjetosParaEditar.c = modelo.listaCursos().obtener(tablaCursos.getSelectedRow());
         for (int i = 0; i <modelo.listaCursos().total(); i++) {
-            bd.registrarCurso(modelo.listaCursos().obtener(i));
+            if(ObjetosParaEditar.c.equals(modelo.listaCursos().obtener(i))&&i==0){
+                FrmActividades frmActividades = new FrmActividades(null, true);
+                frmActividades.setTitle("Agrega actividades en "+ObjetosParaEditar.c.getCarrera().getNombreCarrera());
+                frmActividades.setVisible(true);
+            }else if(ObjetosParaEditar.c.equals(modelo.listaCursos().obtener(i))&&i==1){
+                FrmActividades2 frmActividades2 = new FrmActividades2(null, true);
+                frmActividades2.setTitle("Agrega actividades en "+ObjetosParaEditar.c.getCarrera().getNombreCarrera());
+                frmActividades2.setVisible(true);
+            }else if(ObjetosParaEditar.c.equals(modelo.listaCursos().obtener(i))&&i==2){
+                FrmActividades3 frmActividades3 = new FrmActividades3(null, true);
+                frmActividades3.setTitle("Agrega actividades en "+ObjetosParaEditar.c.getCarrera().getNombreCarrera());
+                frmActividades3.setVisible(true);
+            }
         }
-        
-    }//GEN-LAST:event_btnGuardarCursoMouseClicked
-
-    private void btnEliminarCurso1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarCurso1MouseClicked
-        // TODO add your handling code here:
-        int x= tablaCursos.getSelectedRow();
-        if(x>=0){
-            modelo.eliminarCurso(x);
-        }
-    }//GEN-LAST:event_btnEliminarCurso1MouseClicked
+       
+    }//GEN-LAST:event_btnAgregarActividadesMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntAgregarCurso;
+    private javax.swing.JButton btnAgregarActividades;
+    private javax.swing.JButton btnAgregarCurso;
     private javax.swing.JButton btnEditarCurso;
-    private javax.swing.JButton btnEliminarCurso1;
+    private javax.swing.JButton btnEliminarCurso;
     private javax.swing.JButton btnGuardarCurso;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     public static javax.swing.JTable tablaCursos;
     // End of variables declaration//GEN-END:variables
-   
+
 }
