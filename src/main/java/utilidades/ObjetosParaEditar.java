@@ -4,6 +4,7 @@
  */
 package utilidades;
 
+import Amaranny.Promocion;
 import SaulJM27.Articulos;
 import SaulJM27.Indicadores;
 import SaulJM27.Proyecto;
@@ -18,4 +19,5 @@ public class ObjetosParaEditar {
     public static Proyecto p;  
     public static Articulos s;
     public static Indicadores c; 
+    public static Promocion a;
 }

@@ -16,6 +16,10 @@ public class TablaPromocion extends AbstractTableModel{
     public TablaPromocion() {
         desarrollo=new ListaPromocion();
     }
+    public void setDesarollo(ListaPromocion desarrollo){
+        this.desarrollo=desarrollo;
+        this.fireTableDataChanged();
+    }
     
     @Override
     public int getRowCount(){
@@ -24,7 +28,7 @@ public class TablaPromocion extends AbstractTableModel{
     
     @Override
     public int getColumnCount(){
-       return 3; 
+       return 4; 
     }
     
     @Override

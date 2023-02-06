@@ -16,6 +16,13 @@ public class ListaPromocion {
     public ListaPromocion() {
         lista=new LinkedList();
     }
+    public LinkedList<Promocion> getLista() {
+        return lista;
+    }
+
+    public void setLista(LinkedList<Promocion> lista) {
+        this.lista = lista;
+    }
     
     public void agregarDesarrollo(Promocion p){
         lista.add(p);
