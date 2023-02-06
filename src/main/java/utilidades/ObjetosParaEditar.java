@@ -4,6 +4,8 @@
  */
 package utilidades;
 
+import SaulJM27.Articulos;
+import SaulJM27.Indicadores;
 import SaulJM27.Proyecto;
 import cesar.gestionAcademica4.Gestion;
 
@@ -13,5 +15,7 @@ import cesar.gestionAcademica4.Gestion;
  */
 public class ObjetosParaEditar {
     public static Gestion g;
-    public static Proyecto p;    
+    public static Proyecto p;  
+    public static Articulos s;
+    public static Indicadores c; 
 }
