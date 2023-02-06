@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package Administradores;
+package Usuarios;
 
 import GestionDeProfesores.BDProfesores;
 import GestionDeProfesores.ListaProfesores;
@@ -14,7 +14,7 @@ import javax.swing.DefaultListModel;
  *
  * @author victo
  */
-public class FrmAdministradores extends javax.swing.JInternalFrame {
+public class FrmUsuarios extends javax.swing.JInternalFrame {
     private DefaultListModel l;
     private BDUsuarios bd;
     private BDProfesores bd1;
@@ -22,7 +22,7 @@ public class FrmAdministradores extends javax.swing.JInternalFrame {
     /**
      * Creates new form NewJInternalFrame
      */
-    public FrmAdministradores() {
+    public FrmUsuarios() {
         initComponents();
         l=new DefaultListModel();
         this.jList1.setModel(l);

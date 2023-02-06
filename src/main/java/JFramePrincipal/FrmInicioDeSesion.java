@@ -4,8 +4,8 @@
  */
 package JFramePrincipal;
 
-import Administradores.Usuario;
-import Administradores.BDUsuarios;
+import Usuarios.Usuario;
+import Usuarios.BDUsuarios;
 import GestionDeProfesores.BDProfesores;
 
 /**

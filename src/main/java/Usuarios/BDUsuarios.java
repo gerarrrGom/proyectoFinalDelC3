@@ -1,5 +1,5 @@
 
-package Administradores;
+package Usuarios;
 import GestionDeProfesores.Profesor;
 import ResumenActividades.Actividad;
 import ResumenActividades.Archivo;

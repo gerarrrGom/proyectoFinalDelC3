@@ -34,6 +34,11 @@ public class FrmRegistrar extends javax.swing.JDialog {
             t=ObjetosParaEditar.g;
             Date fechaParseada = null;
             this.txtComision.setText(t.getComision());
+            String a=t.getNombre();
+            if(a.compareTo("Radio")==0||a.compareTo("Conferencia")==0||a.compareTo("Viaje")==0||a.compareTo("Foro")==0){                
+            }else{
+                this.jcomboActividad.addItem(t.getNombre());
+            }            
             this.jcomboActividad.setSelectedItem(t.getNombre());
             String fechas[]=t.getPeriodo().split(":");
             String arr[]=fechas[1].split(" ");

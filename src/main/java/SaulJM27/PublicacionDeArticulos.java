@@ -77,6 +77,9 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonAgregarMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonAgregarMouseEntered(evt);
+            }
         });
         jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,7 +155,6 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
         l.setVisible(true);
         Articulos s = l.regresaArticulos();
         this.a.agregarArticulos(s);
-
     }//GEN-LAST:event_jButtonAgregarMouseClicked
 
     private void jButtonEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarMouseClicked
@@ -187,6 +189,10 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAgregarActionPerformed
+
+    private void jButtonAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAgregarMouseEntered
 
     /**
      * @param args the command line arguments

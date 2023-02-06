@@ -91,7 +91,6 @@ public class CrearArticulo extends javax.swing.JDialog {
         String Revista = this.jTextFieldRevista.getText();
         String face = this.jTextFieldFace.getText();
         int n = Integer.parseInt(this.jTextFieldFecha.getText());
-        Articulos articulos;
         a = new Articulos(titulo, Revista, face, n);
         this.dispose();    }//GEN-LAST:event_jButton1MouseClicked
 
@@ -154,6 +153,6 @@ public class CrearArticulo extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
       public Articulos regresaArticulos() {
-        return s; 
+        return a; 
 }
 }
