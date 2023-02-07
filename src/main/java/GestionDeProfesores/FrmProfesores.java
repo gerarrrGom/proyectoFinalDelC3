@@ -24,7 +24,7 @@ public class FrmProfesores extends javax.swing.JDialog {
        this.jTable1.setModel(m);
        this.btnEditar.setVisible(false);
        this.btnEliminar.setVisible(false);
-       this.btnpdf.setVisible(false);
+       //this.btnpdf.setVisible(false);
        
        bd=new BDProfesores();
        LinkedList<Profesor> lista=bd.obtener();
@@ -54,6 +54,7 @@ public class FrmProfesores extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        btnAgregar.setBackground(new java.awt.Color(108, 160, 220));
         btnAgregar.setText("Agregar");
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -66,6 +67,7 @@ public class FrmProfesores extends javax.swing.JDialog {
             }
         });
 
+        btnSalir.setBackground(new java.awt.Color(108, 160, 220));
         btnSalir.setText("Salir");
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -91,6 +93,7 @@ public class FrmProfesores extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        btnpdf.setBackground(new java.awt.Color(108, 160, 220));
         btnpdf.setText("Crear Pdf");
         btnpdf.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -98,6 +101,7 @@ public class FrmProfesores extends javax.swing.JDialog {
             }
         });
 
+        btnEliminar.setBackground(new java.awt.Color(108, 160, 220));
         btnEliminar.setText("Eliminar");
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -105,6 +109,7 @@ public class FrmProfesores extends javax.swing.JDialog {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(108, 160, 220));
         jButton1.setText("Guardar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -112,6 +117,7 @@ public class FrmProfesores extends javax.swing.JDialog {
             }
         });
 
+        btnEditar.setBackground(new java.awt.Color(108, 160, 220));
         btnEditar.setText("Editar");
         btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -184,7 +190,8 @@ public class FrmProfesores extends javax.swing.JDialog {
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnpdfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnpdfMouseClicked
-        // TODO add your handling code here:
+       FrmPdf f= new FrmPdf(null, true);
+       f.setVisible(true);
     }//GEN-LAST:event_btnpdfMouseClicked
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
