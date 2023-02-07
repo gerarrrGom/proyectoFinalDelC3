@@ -11,7 +11,6 @@ import java.util.LinkedList;
  */
 public class ListaArticulos {
     private LinkedList<Articulos> articulos;
-    private LinkedList<Articulos> Articulos;
 
     public ListaArticulos() {
         articulos=new LinkedList();
@@ -36,7 +35,7 @@ public class ListaArticulos {
         return articulos; 
     }
      public void setLista(LinkedList<Articulos> articulos) {
-        this.Articulos = articulos;
+        this.articulos = articulos;
     }
     
     public void agregarArticulos(Articulos a){

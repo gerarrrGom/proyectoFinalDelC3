@@ -5,6 +5,7 @@
 package SaulJM27;
 
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import utilidades.ObjetosParaEditar;
 
 /**
@@ -68,6 +69,11 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 440, 171));
@@ -92,6 +98,11 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
         jButtonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonEditarMouseClicked(evt);
+            }
+        });
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
             }
         });
         jPanel1.add(jButtonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, -1));
@@ -163,27 +174,33 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
 
         CrearArticulo d = new CrearArticulo(null, true);
         d.setVisible(true);
-        a.eliminarArticulos(f);
+       
         if (d.regresaArticulos() != null) {
+            a.eliminarArticulos(f);
             ListaArticulos s;
             s = new ListaArticulos();
-            LinkedList h = a.getArticulos().getArticulos();
+            LinkedList<Articulos> h= a.getArticulos().getArticulos();
             h.add(f, d.regresaArticulos());
             s.setLista(h);
             a.setArticulos(s);
-        }
+            ObjetosParaEditar.s=null;
+        }else{
+            JOptionPane.showMessageDialog(this, "null", "Hola", 1);
+        }    
+       this.jButtonEditar.setVisible(false);
+       this.jButtonEliminar.setVisible(false);
     }//GEN-LAST:event_jButtonEditarMouseClicked
-
+       
     private void jButtonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarMouseClicked
         int n = this.jTable1.getSelectedRow();
         a.eliminarArticulos(n);    }//GEN-LAST:event_jButtonEliminarMouseClicked
 
     private void jButtonGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGuardarMouseClicked
-        ListaArticulos articulos = a.getArticulos();
-        bd.borrar();
-        for (int i = 0; i < articulos.size(); i++) {
-            bd.registrarArticulos(articulos.getArticulos(i));
-        }
+          ListaArticulos articulos=a.getArticulos();
+                bd.borrar();
+                    for (int i=0; i<articulos.size(); i++){
+                        bd.registrarArticulos(articulos.getArticulos(i));
+                    }
     }//GEN-LAST:event_jButtonGuardarMouseClicked
 
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
@@ -193,6 +210,15 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
     private void jButtonAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAgregarMouseEntered
+
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+         this.jButtonEliminar.setVisible(true);
+         this.jButtonEditar.setVisible(true);
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

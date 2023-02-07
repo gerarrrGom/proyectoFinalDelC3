@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package SaulJM27;
-
+import java.awt.Frame;
+import utilidades.ObjetosParaEditar;
 /**
  *
  * @author Saul
@@ -12,11 +13,20 @@ public class CrearIndicadores extends javax.swing.JDialog {
     private Indicadores c;
     /**
      * Creates new form CrearIndicadores
+     * @param parent
      */
-    public CrearIndicadores(java.awt.Frame parent, boolean modal) {
+    public CrearIndicadores(Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-         
+        if(ObjetosParaEditar.c!=null){
+            c=ObjetosParaEditar.c;
+            int n=c.getNumeroDeProyecto();
+            this.jTextFieldNumeroDeProy.setText(n+"");
+            int l=c.getNumeroIndicador();
+            this.jTextFieldNumeroIndicador.setText(l+"");
+            this.jTextFieldDescripcion.setText(c.getDescripcion());
+        }
+           this.setLocationRelativeTo(null);
     }
 
     /**
@@ -28,9 +38,9 @@ public class CrearIndicadores extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldNumeroDeProy = new javax.swing.JTextField();
+        jTextFieldNumeroIndicador = new javax.swing.JTextField();
+        jTextFieldDescripcion = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -39,22 +49,27 @@ public class CrearIndicadores extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNumeroDeProy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldNumeroDeProyActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 120, 30));
+        getContentPane().add(jTextFieldNumeroDeProy, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 120, 30));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNumeroIndicador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldNumeroIndicadorActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 120, 30));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 120, 30));
+        getContentPane().add(jTextFieldNumeroIndicador, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 120, 30));
+        getContentPane().add(jTextFieldDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 120, 30));
 
         jButton1.setText("Agregar al Archivo");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, -1, -1));
 
         jLabel1.setText("Núm. Proyecto");
@@ -69,13 +84,21 @@ public class CrearIndicadores extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldNumeroDeProyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNumeroDeProyActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldNumeroDeProyActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldNumeroIndicadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNumeroIndicadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextFieldNumeroIndicadorActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        int n=Integer.parseInt(this.jTextFieldNumeroDeProy.getText());
+        int a=Integer.parseInt(this.jTextFieldNumeroIndicador.getText());
+        String Descripcion=this.jTextFieldDescripcion.getText(); 
+        c=new Indicadores(n, a,Descripcion);
+        this.dispose();
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -124,9 +147,9 @@ public class CrearIndicadores extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextFieldDescripcion;
+    private javax.swing.JTextField jTextFieldNumeroDeProy;
+    private javax.swing.JTextField jTextFieldNumeroIndicador;
     // End of variables declaration//GEN-END:variables
 
      public Indicadores regresaIndicadores() {

@@ -10,19 +10,18 @@ import java.util.LinkedList;
  * @author Saul
  */
 public class ListaIndicadores {
-    private LinkedList<Indicadores> Indicadores;
     private LinkedList<Indicadores> indicadores;
 
     public ListaIndicadores() {
-        Indicadores=new LinkedList();
+        indicadores=new LinkedList();
     }
     
     public void agregar(Indicadores n){
-        Indicadores.add(n);
+        indicadores.add(n);
     }
     
     public void eliminar(int indice){
-        Indicadores.remove(indice);
+        indicadores.remove(indice);
     }           
     
     public int total(){
@@ -36,7 +35,7 @@ public class ListaIndicadores {
         return indicadores; 
     }
      public void setLista(LinkedList<Indicadores> indicadores) {
-        this.Indicadores = indicadores;
+        this.indicadores = indicadores;
     }
     
     public void agregarIndicadores(Indicadores n){

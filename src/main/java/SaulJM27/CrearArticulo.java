@@ -3,21 +3,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package SaulJM27;
-
-import static utilidades.ObjetosParaEditar.s;
+import java.awt.Frame;
+import utilidades.ObjetosParaEditar;
 
 /**
  *
  * @author Saul
  */
 public class CrearArticulo extends javax.swing.JDialog {
-    private Articulos a; 
+    private Articulos n; 
     /**
      * Creates new form CrearArticulo
+     * @param parent
      */
-    public CrearArticulo(java.awt.Frame parent, boolean modal) {
+    public CrearArticulo(Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+          if(ObjetosParaEditar.s!=null){
+            n = ObjetosParaEditar.s;
+            this.jTextFieldTitulo.setText(n.getTitulo());
+            this.jTextFieldRevista.setText(n.getRevista());
+            this.jTextFieldFace.setText(n.getFase());
+            int l=n.getFecha();
+            this.jTextFieldFecha.setText(l+"");
+        }
+       this.setLocationRelativeTo(null);
     }
 
     /**
@@ -88,10 +98,11 @@ public class CrearArticulo extends javax.swing.JDialog {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
 
         String titulo = this.jTextFieldTitulo.getText();
-        String Revista = this.jTextFieldRevista.getText();
+        String revista = this.jTextFieldRevista.getText();
         String face = this.jTextFieldFace.getText();
-        int n = Integer.parseInt(this.jTextFieldFecha.getText());
-        a = new Articulos(titulo, Revista, face, n);
+        int l = Integer.parseInt(this.jTextFieldFecha.getText());
+        n = new Articulos(titulo, revista, face, l);
+        
         this.dispose();    }//GEN-LAST:event_jButton1MouseClicked
 
     private void jTextFieldFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFechaActionPerformed
@@ -153,6 +164,6 @@ public class CrearArticulo extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
       public Articulos regresaArticulos() {
-        return a; 
+        return n; 
 }
 }

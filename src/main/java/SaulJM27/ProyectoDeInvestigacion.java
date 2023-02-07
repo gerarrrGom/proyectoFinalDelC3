@@ -57,6 +57,7 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButtonAgregar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButtonAgregar.setText("Agregar");
         jButtonAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -70,6 +71,7 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
         });
         jPanel1.add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, -1, 30));
 
+        jButtonEditar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButtonEditar.setText("Editar");
         jButtonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -83,6 +85,7 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
         });
         jPanel1.add(jButtonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 80, 30));
 
+        jButtonEliminar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButtonEliminar.setText("Eliminar");
         jButtonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -94,8 +97,9 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
                 jButtonEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 80, 30));
+        jPanel1.add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 100, 30));
 
+        jTable1.setBackground(new java.awt.Color(108, 160, 220));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -116,6 +120,7 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 530, 250));
 
+        jButton2.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButton2.setText("Guardar");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -126,6 +131,7 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 590, 330));
 
+        jButton4.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButton4.setText("Salir");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -182,28 +188,27 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
     private void jButtonEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarMouseClicked
-        int n=this.jTable1.getSelectedRow();
-        ObjetosParaEditar.p=m.getProyectos().obtener(n);
-        
-        CrearProyecto a=new CrearProyecto(null,true);  
+        int n = this.jTable1.getSelectedRow();
+        ObjetosParaEditar.p = m.getProyectos().obtener(n);
+        CrearProyecto a = new CrearProyecto(null, true);
         a.setVisible(true);
-                m.eliminarProyecto(n);
-        if(a.regresaProyecto()!=null){
+        m.eliminarProyecto(n);
+        if (a.regresaProyecto() != null) {
             ListaProyectos p;
-            p=new ListaProyectos();
-            LinkedList h= m.getProyectos().getProyectos();
+            p = new ListaProyectos();
+            LinkedList h = m.getProyectos().getProyectos();
             h.add(n, a.regresaProyecto());
             p.setLista(h);
             m.setProyectos(p);
-        }    
+        }
     }//GEN-LAST:event_jButtonEditarMouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-                ListaProyectos proyectos=m.getProyectos();
-                bd.borrar();
-                    for (int i=0; i<proyectos.size(); i++){
-                        bd.registrarActividad(proyectos.getProyectos(i));
-                    }
+        ListaProyectos proyectos = m.getProyectos();
+        bd.borrar();
+        for (int i = 0; i < proyectos.size(); i++) {
+            bd.registrarActividad(proyectos.getProyectos(i));
+        }
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButtonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarMouseClicked

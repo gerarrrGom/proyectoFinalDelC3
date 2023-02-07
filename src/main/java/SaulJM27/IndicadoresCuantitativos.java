@@ -64,17 +64,42 @@ public class IndicadoresCuantitativos extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 440, 160));
 
         jButtonGuardar.setText("Guardar");
+        jButtonGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonGuardarMouseClicked(evt);
+            }
+        });
         jPanel1.add(jButtonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         jButtonEditar.setText("Editar");
+        jButtonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEditarMouseClicked(evt);
+            }
+        });
         jPanel1.add(jButtonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
 
         jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEliminarMouseClicked(evt);
+            }
+        });
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, -1, -1));
 
         jButtonAgregar.setText("Agregar");
@@ -90,7 +115,7 @@ public class IndicadoresCuantitativos extends javax.swing.JDialog {
         });
         jPanel1.add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 12, 480, 230));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 480, 230));
 
         jButton1.setText("Salir");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -112,14 +137,55 @@ public class IndicadoresCuantitativos extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButtonAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarMouseClicked
-          CrearIndicadores n= new CrearIndicadores(null, true ); 
-       n.setVisible(true);
-     //  Indicadores I=n.regresaIndicadores();
-     //  this.I.agregarIndicadores(c);
-      // for(int i=0; i<I.getIndicadores().total();i++){
-        //    bd.registrarActividad(I.getIndicadores().obtener(i));
-      //  }                                          
+        CrearIndicadores n = new CrearIndicadores(null, true);
+        n.setVisible(true);
+        Indicadores c = n.regresaIndicadores();
+        this.I.agregarIndicadores(c);
+        for (int i = 0; i < I.getIndicadores().total(); i++) {
+            bd.registrarActividad(I.getIndicadores().obtener(i));
+        }             
     }//GEN-LAST:event_jButtonAgregarMouseClicked
+
+    private void jButtonGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGuardarMouseClicked
+         ListaIndicadores indicadores = I.getIndicadores();
+        bd.borrar();
+        for (int i = 0; i <indicadores.size(); i++) {
+            bd.registrarActividad(indicadores.getIndicadores(i));
+        }
+    }//GEN-LAST:event_jButtonGuardarMouseClicked
+
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+         int o=jTable1.getSelectedRow();
+         I.eliminarIndicadores(o);
+         this.jButtonEliminar.setVisible(false);
+         this.jButtonEditar.setVisible(false);
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+         this.jButtonEliminar.setVisible(true);
+         this.jButtonEditar.setVisible(true);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButtonEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarMouseClicked
+         int n = this.jTable1.getSelectedRow();
+        ObjetosParaEditar.c = I.getIndicadores().obtener(n);
+        CrearIndicadores a = new CrearIndicadores(null, true);
+        a.setVisible(true);
+        I.eliminarIndicadores(n);
+        if (a.regresaIndicadores()!= null) {
+            ListaIndicadores c;
+            c = new ListaIndicadores();
+            LinkedList p = I.getIndicadores().getIndicadores();
+            p.add(n, a.regresaIndicadores());
+            c.setLista(p);
+            I.setIndicadores(c);
+        }
+    }//GEN-LAST:event_jButtonEditarMouseClicked
+
+    private void jButtonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarMouseClicked
+        int v=this.jTable1.getSelectedRow();
+        I.eliminarIndicadores(v);
+    }//GEN-LAST:event_jButtonEliminarMouseClicked
 
     /**
      * @param args the command line arguments
