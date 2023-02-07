@@ -55,8 +55,10 @@ public class FrmProfesor2 extends javax.swing.JDialog {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel1.setText("Nombre(s)");
 
+        jLabel2.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel2.setText("Apellido Paterno");
 
         txtApellidoMaterno.addActionListener(new java.awt.event.ActionListener() {
@@ -65,14 +67,19 @@ public class FrmProfesor2 extends javax.swing.JDialog {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel3.setText("Apellido Materno");
 
         cmbGrado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LICENCIATURA", "MAESTRÍA", "DOCTORADO" }));
 
+        cmbCursos.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         cmbCursos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Base de datos", "Calculo diferencial", "Claculo integral", "Porgramación Estructurada", "Programación orientada a objetos", "Teoría de la computacion", " " }));
 
+        jLabel5.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel5.setText("Grado Académico");
 
+        btnCargar.setBackground(new java.awt.Color(108, 160, 220));
+        btnCargar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnCargar.setText("Cargar Datos");
         btnCargar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -85,8 +92,11 @@ public class FrmProfesor2 extends javax.swing.JDialog {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel4.setText("Cursos Impartidos");
 
+        btnSalir.setBackground(new java.awt.Color(108, 160, 220));
+        btnSalir.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -99,8 +109,11 @@ public class FrmProfesor2 extends javax.swing.JDialog {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel6.setText("contraseña");
 
+        jButton1.setBackground(new java.awt.Color(108, 160, 220));
+        jButton1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButton1.setText("cancelar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -108,6 +121,7 @@ public class FrmProfesor2 extends javax.swing.JDialog {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel7.setText("Usuario");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

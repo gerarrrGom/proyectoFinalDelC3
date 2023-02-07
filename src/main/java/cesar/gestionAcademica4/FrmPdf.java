@@ -106,6 +106,7 @@ public class FrmPdf extends javax.swing.JDialog {
         } catch (HeadlessException e) {
             e.getCause();
         } 
+        this.txtNombre.setText(null);
     }//GEN-LAST:event_btnCrearMouseClicked
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
@@ -113,7 +114,7 @@ public class FrmPdf extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalirMouseClicked
 public void abrirPdf(String nombre){
         try {
-            File f=new File("\\\\CESARJZB\\Users\\cesar\\Documents\\" /*+ nombre + ".pdf"*/);
+            File f=new File("\\\\CESARJZB\\Users\\cesar\\Documents\\");
             Desktop.getDesktop().open(f);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null,ex,"Atencion",2);

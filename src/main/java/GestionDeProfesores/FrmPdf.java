@@ -4,18 +4,40 @@
  */
 package GestionDeProfesores;
 
+import cesar.gestionAcademica4.Gestion;
+import cesar.gestionAcademica4.TablaPdfActividad;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.mycompany.pryfinalc3.pdf;
+import java.awt.Desktop;
+import java.awt.HeadlessException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Gerardo
  */
 public class FrmPdf extends javax.swing.JDialog {
-
+BDProfesores bd;
     /**
      * Creates new form FrmPdf
      */
     public FrmPdf(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        bd= new BDProfesores();
     }
 
     /**
@@ -30,8 +52,8 @@ public class FrmPdf extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCrearPdf = new javax.swing.JButton();
+        btnAbrirPdf = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -40,11 +62,21 @@ public class FrmPdf extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel1.setText("Introduce el nombre de tu PDF:");
 
-        jButton1.setBackground(new java.awt.Color(51, 102, 255));
-        jButton1.setText("Crear PDF");
+        btnCrearPdf.setBackground(new java.awt.Color(51, 102, 255));
+        btnCrearPdf.setText("Crear PDF");
+        btnCrearPdf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCrearPdfMouseClicked(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(51, 153, 255));
-        jButton2.setText("Abrir PDF");
+        btnAbrirPdf.setBackground(new java.awt.Color(51, 153, 255));
+        btnAbrirPdf.setText("Salir");
+        btnAbrirPdf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAbrirPdfMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -57,8 +89,8 @@ public class FrmPdf extends javax.swing.JDialog {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
+                    .addComponent(btnAbrirPdf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCrearPdf, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
                 .addGap(27, 27, 27))
         );
         jPanel1Layout.setVerticalGroup(
@@ -67,14 +99,14 @@ public class FrmPdf extends javax.swing.JDialog {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCrearPdf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAbrirPdf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -98,6 +130,73 @@ public class FrmPdf extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCrearPdfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearPdfMouseClicked
+        exportar();
+        try {
+            int eleccion = JOptionPane.showConfirmDialog(this, "¿Desea abrir el pdf creado?");
+            if (eleccion == 0) {
+                abrirPdf("Gestión_Profesores");
+            }
+        } catch (HeadlessException e) {
+            e.getCause();
+        } 
+    }//GEN-LAST:event_btnCrearPdfMouseClicked
+
+    private void btnAbrirPdfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbrirPdfMouseClicked
+this.dispose();
+
+    }//GEN-LAST:event_btnAbrirPdfMouseClicked
+ public void abrirPdf(String nombre){
+ try {
+            File f = new File("C:\\Users\\HP End User\\Documents\\PDFAriel\\");
+            Desktop.getDesktop().open(f);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, ex, "Atencion", 2);
+
+        }
+
+    }
+    
+    
+    
+    private void exportar() {
+        FileOutputStream archivo = null;
+        try {
+            archivo = new FileOutputStream("C:\\Users\\HP End User\\Documents\\PDFAriel\\" +this.jTextField1.getText()+ ".pdf");
+            Document documento = new Document();
+
+            PdfWriter.getInstance(documento, archivo);
+
+            documento.open();
+
+            BaseFont bf;
+
+            bf = BaseFont.createFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, BaseFont.EMBEDDED);
+
+            Font f = new Font(bf, 12, 2, BaseColor.BLUE);
+            TablPdf act = new TablPdf();
+
+            LinkedList<Profesor> lista = bd.obtener();
+            PdfPTable tab = act.tabla(lista);
+            documento.add(tab);
+            documento.close();
+            JOptionPane.showMessageDialog(this, "El pdf ha sido creado correctamente");
+        } catch (Exception ex) {
+            Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                archivo.close();
+            } catch (IOException ex) {
+                Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+  }
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -141,10 +240,13 @@ public class FrmPdf extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAbrirPdf;
+    private javax.swing.JButton btnCrearPdf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
 }
+
+
