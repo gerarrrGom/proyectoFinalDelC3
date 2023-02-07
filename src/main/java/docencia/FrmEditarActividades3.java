@@ -3,19 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package docencia;
+
 import utilidades.ObjetosParaEditar;
+
 /**
  *
  * @author cardo
  */
-public class FrmEditarActividades extends javax.swing.JDialog {
+public class FrmEditarActividades3 extends javax.swing.JDialog {
     private CursosImpartidos c;
     private Actividades a;
     private Actividades actividad;
     /**
-     * Creates new form FrmEditarActividades
+     * Creates new form FrmEditarActividades3
      */
-    public FrmEditarActividades(java.awt.Frame parent, boolean modal) {
+    public FrmEditarActividades3(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         c = ObjetosParaEditar.curso;
@@ -112,20 +114,20 @@ public class FrmEditarActividades extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmEditarActividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEditarActividades3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmEditarActividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEditarActividades3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmEditarActividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEditarActividades3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmEditarActividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEditarActividades3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrmEditarActividades dialog = new FrmEditarActividades(new javax.swing.JFrame(), true);
+                FrmEditarActividades3 dialog = new FrmEditarActividades3(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -148,6 +150,7 @@ public class FrmEditarActividades extends javax.swing.JDialog {
     private javax.swing.JTextField txtMateriales;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+
     public void editar(){
         String nombre = txtNombre.getText();
         String materiales = txtMateriales.getText();
@@ -162,5 +165,4 @@ public class FrmEditarActividades extends javax.swing.JDialog {
         txtMateriales.setText(actividad.getMateriales());
         txtDescripcion.setText(actividad.getDescripcion());
     }
-
 }

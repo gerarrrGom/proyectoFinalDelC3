@@ -10,11 +10,10 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author cardo
  */
-public class ModeloActividades extends AbstractTableModel {
-
+public class ModeloActividades2 extends AbstractTableModel {
     private ListaActividades actividades;
 
-    public ModeloActividades() {
+    public ModeloActividades2() {
         actividades = new ListaActividades();
     }
 
@@ -112,5 +111,4 @@ public class ModeloActividades extends AbstractTableModel {
         fireTableCellUpdated(fila, columna);
 
     }
-
 }

@@ -12,7 +12,7 @@ import utilidades.ObjetosParaEditar;
  */
 public class FrmActividades3 extends javax.swing.JDialog {
 
-    private ModeloActividades modelo;
+    private ModeloActividades3 modelo;
     private BDActividades bd;
     private CursosImpartidos c;
 
@@ -23,9 +23,9 @@ public class FrmActividades3 extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
          bd = new BDActividades();
-        modelo = new ModeloActividades();
+        modelo = new ModeloActividades3();
         c = ObjetosParaEditar.curso;
-        this.setTitle("Agrega actividades en "+ c.getCarrera().getNombreCarrera());
+        this.setTitle("Actividades en "+ c.getCarrera().getNombreCarrera());
         this.tblActividad.setModel(modelo);
     }
 
@@ -49,11 +49,12 @@ public class FrmActividades3 extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel2.setBackground(new java.awt.Color(205, 133, 63));
         jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblActividad.setBackground(new java.awt.Color(245, 245, 220));
+        tblActividad.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
         tblActividad.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -69,37 +70,50 @@ public class FrmActividades3 extends javax.swing.JDialog {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 660, 270));
 
-        jPanel3.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel3.setBackground(new java.awt.Color(245, 245, 220));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 204, 153), 2, true));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAgregarActividad.setBackground(new java.awt.Color(153, 204, 255));
-        btnAgregarActividad.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnAgregarActividad.setBackground(new java.awt.Color(108, 160, 220));
+        btnAgregarActividad.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
         btnAgregarActividad.setText("Agregar Actividad");
         btnAgregarActividad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregarActividad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarActividadMouseClicked(evt);
+            }
+        });
         jPanel3.add(btnAgregarActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 160, 30));
 
-        btnEditarActividad.setBackground(new java.awt.Color(153, 204, 255));
-        btnEditarActividad.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnEditarActividad.setBackground(new java.awt.Color(108, 160, 220));
+        btnEditarActividad.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
         btnEditarActividad.setText("Editar Actividad");
+        btnEditarActividad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarActividad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditarActividadMouseClicked(evt);
+            }
+        });
         jPanel3.add(btnEditarActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, 30));
 
-        btnEliminarActividad.setBackground(new java.awt.Color(153, 204, 255));
-        btnEliminarActividad.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnEliminarActividad.setBackground(new java.awt.Color(108, 160, 220));
+        btnEliminarActividad.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
         btnEliminarActividad.setText("Eliminar Actividad");
+        btnEliminarActividad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(btnEliminarActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 160, 30));
 
-        btnGuardarActividad.setBackground(new java.awt.Color(153, 255, 255));
-        btnGuardarActividad.setFont(new java.awt.Font("BodoniFLF", 1, 18)); // NOI18N
+        btnGuardarActividad.setBackground(new java.awt.Color(108, 160, 220));
+        btnGuardarActividad.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
         btnGuardarActividad.setText("Guardar");
+        btnGuardarActividad.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
         btnGuardarActividad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnGuardarActividadMouseClicked(evt);
             }
         });
-        jPanel3.add(btnGuardarActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
+        jPanel3.add(btnGuardarActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 100, 30));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 650, 48));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 660, 48));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,8 +141,25 @@ public class FrmActividades3 extends javax.swing.JDialog {
 
     private void btnGuardarActividadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarActividadMouseClicked
         // TODO add your handling code here:
+         for (int i = 0; i < modelo.listaActividades().total(); i++) {
+            bd.registrarCurso(modelo.listaActividades().obtener(i));
+        }
         this.dispose();
     }//GEN-LAST:event_btnGuardarActividadMouseClicked
+
+    private void btnAgregarActividadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarActividadMouseClicked
+        FrmAgregarActividades3 frmAgregarActividades3 = new FrmAgregarActividades3(null, true);
+        frmAgregarActividades3.setVisible(true);
+        modelo.agregarActividad(frmAgregarActividades3.getActiviad());
+    }//GEN-LAST:event_btnAgregarActividadMouseClicked
+
+    private void btnEditarActividadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarActividadMouseClicked
+        ObjetosParaEditar.actividad = modelo.listaActividades().obtener(tblActividad.getSelectedRow());
+        FrmEditarActividades3 frmEditarActividades3 = new FrmEditarActividades3(null,true);
+        frmEditarActividades3.setVisible(true);
+         modelo.editarActividad(modelo.listaActividades().obtener(tblActividad.getSelectedRow()),frmEditarActividades3.getActiviad());
+
+    }//GEN-LAST:event_btnEditarActividadMouseClicked
 
     /**
      * @param args the command line arguments

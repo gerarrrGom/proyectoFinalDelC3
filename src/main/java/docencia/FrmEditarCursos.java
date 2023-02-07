@@ -100,8 +100,10 @@ public class FrmEditarCursos extends javax.swing.JDialog {
         spnAlumnos.setFont(new java.awt.Font("BodoniFLF", 3, 14)); // NOI18N
         spnAlumnos.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
-        jButton2.setFont(new java.awt.Font("BodoniFLF", 1, 18)); // NOI18N
+        jButton2.setBackground(new java.awt.Color(141, 182, 205));
+        jButton2.setFont(new java.awt.Font("BodoniFLF", 1, 16)); // NOI18N
         jButton2.setText("Guardar");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
@@ -167,7 +169,7 @@ public class FrmEditarCursos extends javax.swing.JDialog {
                     .addComponent(spnAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 300));
@@ -248,7 +250,7 @@ public class FrmEditarCursos extends javax.swing.JDialog {
         cboCiclo.setSelectedItem(c.getCicloEscolar());
         spnHoras.setValue(c.getHoras());
         spnAlumnos.setValue(c.getNumAlumnos());
-        //cboCarreras.add(c.getCarrera());
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
