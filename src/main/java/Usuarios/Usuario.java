@@ -8,7 +8,8 @@ import GestionDeProfesores.Profesor;
 
 /**
  *
- * @author victo
+ * @author Adrian Rubio
+ * rubioalvaradoadrian@gmail.com
  */
 public class Usuario {
     private Profesor datos;

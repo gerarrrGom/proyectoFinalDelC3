@@ -13,7 +13,8 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author victo
+ * @author Adrian Rubio
+ * rubioalvaradoadrian@gmail.com
  */
 public class ModeloActividadesAcademicas extends AbstractTableModel {
 

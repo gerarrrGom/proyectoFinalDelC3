@@ -4,7 +4,23 @@
  */
 package ResumenActividades;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.mycompany.pryfinalc3.Producto;
+import com.mycompany.pryfinalc3.TablaPdfProducto;
+import com.mycompany.pryfinalc3.pdf;
+import java.awt.Desktop;
+import java.awt.HeadlessException;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,19 +51,48 @@ public class FrmResumenActividades extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuBar3 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuBar4 = new javax.swing.JMenuBar();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblActividades = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
+
+        jMenu1.setText("File");
+        jMenuBar2.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar2.add(jMenu2);
+
+        jMenu3.setText("File");
+        jMenuBar3.add(jMenu3);
+
+        jMenu4.setText("Edit");
+        jMenuBar3.add(jMenu4);
+
+        jMenu5.setText("File");
+        jMenuBar4.add(jMenu5);
+
+        jMenu6.setText("Edit");
+        jMenuBar4.add(jMenu6);
 
         setBackground(new java.awt.Color(39, 192, 65));
         setTitle("Llenar Horas/Semana");
         setOpaque(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tblActividades.setBackground(new java.awt.Color(245, 245, 220));
         tblActividades.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         tblActividades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -105,6 +150,7 @@ public class FrmResumenActividades extends javax.swing.JInternalFrame {
         jLabel2.setOpaque(true);
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 150, 20));
 
+        btnRegistrar.setBackground(new java.awt.Color(141, 182, 205));
         btnRegistrar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnRegistrar.setText("Guardar y Salir");
         btnRegistrar.setToolTipText("Guarda los datos y cierra la ventana");
@@ -115,6 +161,7 @@ public class FrmResumenActividades extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 130, 50));
 
+        btnAgregar.setBackground(new java.awt.Color(141, 182, 205));
         btnAgregar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnAgregar.setText("agregar/eliminar");
         btnAgregar.setToolTipText("agregar o eliminar de la tabla");
@@ -124,6 +171,16 @@ public class FrmResumenActividades extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 130, 50));
+
+        jButton1.setBackground(new java.awt.Color(141, 182, 205));
+        jButton1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
+        jButton1.setText("Exportar a pdf");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 130, 50));
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -135,7 +192,11 @@ public class FrmResumenActividades extends javax.swing.JInternalFrame {
             for (Actividad a2 : t.getActividades().getListaDeActividades()) {
                 bd.registrarProducto(a2);
             }
-            this.dispose();
+            int n = JOptionPane.showConfirmDialog(this, "¿Desea salir?");
+            if (n != 0) {
+            } else {
+                this.dispose();
+            }
         } else {
             JOptionPane.showMessageDialog(this, "El conteo no puede ser mayor a 40 horas");
         }
@@ -150,13 +211,35 @@ public class FrmResumenActividades extends javax.swing.JInternalFrame {
         t.ordenar();
     }//GEN-LAST:event_btnAgregarMouseClicked
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        exportar();
+        try {
+            int eleccion = JOptionPane.showConfirmDialog(this, "¿Desea abrir el pdf creado?");
+            if (eleccion == 0) {
+                abrirPdf("Resumen_Actividades");
+            }
+        } catch (HeadlessException e) {
+            e.getCause();
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuBar jMenuBar3;
+    private javax.swing.JMenuBar jMenuBar4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblActividades;
     // End of variables declaration//GEN-END:variables
@@ -164,6 +247,49 @@ public class FrmResumenActividades extends javax.swing.JInternalFrame {
         LinkedList<Actividad> lista = bd.obtener();
         for (Actividad a1 : lista) {
             t.agregarActividad(a1);
+        }
+    }
+
+    private void exportar() {
+        FileOutputStream archivo = null;
+        try {
+            archivo = new FileOutputStream("C:\\Users\\victo\\Downloads\\PDFS" + "Resumen_Actividades" + ".pdf");
+            Document documento = new Document();
+
+            PdfWriter.getInstance(documento, archivo);
+
+            documento.open();
+
+            BaseFont bf;
+
+            bf = BaseFont.createFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, BaseFont.EMBEDDED);
+
+            Font f = new Font(bf, 12, 2, BaseColor.BLUE);
+            TablaPdfActividades t = new TablaPdfActividades();
+
+            LinkedList<Actividad> lista = bd.obtener();
+            PdfPTable tab = t.tabla(lista);
+            documento.add(tab);
+            documento.close();
+            JOptionPane.showMessageDialog(this, "El pdf ha sido creado correctamente");
+        } catch (Exception ex) {
+            Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                archivo.close();
+            } catch (IOException ex) {
+                Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public void abrirPdf(String nombre) {
+        try {
+            File f = new File("C:\\Users\\victo\\Downloads\\PDFS" + nombre + ".pdf");
+            Desktop.getDesktop().open(f);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, ex, "Atencion", 2);
+
         }
     }
 }

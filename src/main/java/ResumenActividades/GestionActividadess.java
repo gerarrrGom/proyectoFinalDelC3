@@ -4,14 +4,8 @@
  */
 package ResumenActividades;
 
-import java.awt.AWTKeyStroke;
-import java.awt.Component;
-import java.awt.RenderingHints.Key;
-import java.awt.Window;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.Collections;
-import java.util.LinkedList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -61,12 +55,13 @@ public class GestionActividadess extends javax.swing.JDialog {
         btnCancelar = new javax.swing.JButton();
         txtIndice = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agrega/elimina actividades");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(205, 133, 63));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Actividades", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 0, 12))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -97,7 +92,7 @@ public class GestionActividadess extends javax.swing.JDialog {
         });
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, 80, 40));
 
-        jPanel2.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(245, 245, 220));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -115,6 +110,7 @@ public class GestionActividadess extends javax.swing.JDialog {
         });
         jPanel2.add(txtActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 350, 30));
 
+        btnAgregar.setBackground(new java.awt.Color(141, 182, 205));
         btnAgregar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnAgregar.setText("+");
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -129,6 +125,7 @@ public class GestionActividadess extends javax.swing.JDialog {
         });
         jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 80, 40));
 
+        btnAceptar.setBackground(new java.awt.Color(141, 182, 205));
         btnAceptar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnAceptar.setText("Aceptar");
         btnAceptar.setToolTipText("Guardar la actividad");
@@ -150,6 +147,7 @@ public class GestionActividadess extends javax.swing.JDialog {
         });
         jPanel2.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 80, 40));
 
+        btnEliminar.setBackground(new java.awt.Color(141, 182, 205));
         btnEliminar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnEliminar.setText("-");
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -159,6 +157,7 @@ public class GestionActividadess extends javax.swing.JDialog {
         });
         jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 80, 40));
 
+        btnCancelar.setBackground(new java.awt.Color(141, 182, 205));
         btnCancelar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setPreferredSize(new java.awt.Dimension(75, 25));
@@ -187,6 +186,7 @@ public class GestionActividadess extends javax.swing.JDialog {
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 20));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 550, 110));
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -260,9 +260,7 @@ public class GestionActividadess extends javax.swing.JDialog {
         this.txtActividad.setVisible(true);
         this.txtIndice.setText(a1.getIndice()+"");
         this.txtActividad.setText(a1.getActividad());
-        this.btnEliminar.setVisible(true);
-        
-            
+        this.btnEliminar.setVisible(true);                   
     }//GEN-LAST:event_listActividadesMouseClicked
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -361,6 +359,7 @@ public class GestionActividadess extends javax.swing.JDialog {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
@@ -391,5 +390,4 @@ public class GestionActividadess extends javax.swing.JDialog {
      public ListaDeActividades regresarActividades(){
          return a;
      }
-
 }
