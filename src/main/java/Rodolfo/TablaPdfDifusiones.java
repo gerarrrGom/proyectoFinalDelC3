@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cesar.gestionAcademica4;
+package Rodolfo;
 
+import cesar.gestionAcademica4.*;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
@@ -17,45 +18,13 @@ import java.util.LinkedList;
  * @author Cesar Juventino Zepeda Barriga
  * correo:cesar_zb12@hotmail.com
  */
-public class TablaPdfActividad {
+public class TablaPdfDifusiones {
 
     private PdfPTable tabla;
 
-    public PdfPTable tabla(Gestion n) {
+    public PdfPTable tabla(Difusion n) {
         PdfPTable tabla = new PdfPTable(3);
-        PdfPCell celda1 = new PdfPCell(new Paragraph("DATOS DE LA ACTVIDAD", FontFactory.getFont(
-                "Arial", 16, Font.BOLD, BaseColor.GREEN)));
-
-        celda1.setPadding(12);
-
-        celda1.setColspan(3);
-        tabla.addCell(celda1);
-
-        celda1 = new PdfPCell(new Paragraph("Nombre de la Actividad"));
-        tabla.addCell(celda1);
-
-        celda1 = new PdfPCell(new Paragraph("Comisión o puesto"));
-        tabla.addCell(celda1);
-
-        celda1 = new PdfPCell(new Paragraph("Periodo"));
-        tabla.addCell(celda1);
-
-        celda1 = new PdfPCell(new Paragraph(n.getNombre()));
-        tabla.addCell(celda1);
-
-        celda1 = new PdfPCell(new Paragraph(n.getComision()));
-        tabla.addCell(celda1);
-
-        celda1 = new PdfPCell(new Paragraph(n.getPeriodo()));
-        tabla.addCell(celda1);
-
-      
-        return tabla;
-    }
-
-    public PdfPTable tabla(LinkedList<Gestion> lista) {
-        PdfPTable tabla = new PdfPTable(3);
-        PdfPCell celda1 = new PdfPCell(new Paragraph("DATOS DE LAS ACTIVIDADES", FontFactory.getFont(
+        PdfPCell celda1 = new PdfPCell(new Paragraph("Difusiones", FontFactory.getFont(
                 "Arial", 14, Font.BOLD, BaseColor.GREEN)));
 
         celda1.setPadding(12);
@@ -63,26 +32,58 @@ public class TablaPdfActividad {
         celda1.setColspan(3);
         tabla.addCell(celda1);
 
-        celda1 = new PdfPCell(new Paragraph("Nombre de la actividad"));
+        celda1 = new PdfPCell(new Paragraph("NOMBRE"));
         tabla.addCell(celda1);
 
-        celda1 = new PdfPCell(new Paragraph("Comisión o puesto"));
+        celda1 = new PdfPCell(new Paragraph("FECHA DE INICIO"));
         tabla.addCell(celda1);
 
-        celda1 = new PdfPCell(new Paragraph("Periodo"));
+        celda1 = new PdfPCell(new Paragraph("FECHA FINAL"));
+        tabla.addCell(celda1);
+
+        celda1 = new PdfPCell(new Paragraph(n.getNombre()+""));
+        tabla.addCell(celda1);
+
+        celda1 = new PdfPCell(new Paragraph(n.getFechaI()+""));
+        tabla.addCell(celda1);
+
+        celda1 = new PdfPCell(new Paragraph(n.getFechaF()+""));
+        tabla.addCell(celda1);
+
+      
+        return tabla;
+    }
+
+    public PdfPTable tabla(LinkedList<Difusion> lista) {
+        PdfPTable tabla = new PdfPTable(3);
+        PdfPCell celda1 = new PdfPCell(new Paragraph("Difusiones", FontFactory.getFont(
+                "Arial", 14, Font.BOLD, BaseColor.GREEN)));
+
+        celda1.setPadding(12);
+
+        celda1.setColspan(3);
+        tabla.addCell(celda1);
+
+        celda1 = new PdfPCell(new Paragraph("NOMBRE"));
+        tabla.addCell(celda1);
+
+        celda1 = new PdfPCell(new Paragraph("FECHA DE INICIO"));
+        tabla.addCell(celda1);
+
+        celda1 = new PdfPCell(new Paragraph("FECHA FINAL"));
         tabla.addCell(celda1);
 
         
 
         for (int i = 0; i < lista.size(); i++) {
-            Gestion p=lista.get(i);
-            celda1 = new PdfPCell(new Paragraph(p.getNombre()));
+            Difusion p=lista.get(i);
+            celda1 = new PdfPCell(new Paragraph(p.getNombre()+""));
             tabla.addCell(celda1);
 
-            celda1 = new PdfPCell(new Paragraph(p.getComision()));
+            celda1 = new PdfPCell(new Paragraph(p.getFechaI()+""));
             tabla.addCell(celda1);
 
-            celda1 = new PdfPCell(new Paragraph(p.getPeriodo()));
+            celda1 = new PdfPCell(new Paragraph(p.getFechaF()+""));
             tabla.addCell(celda1);
         }
 

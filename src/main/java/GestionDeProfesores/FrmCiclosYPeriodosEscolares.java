@@ -118,10 +118,10 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jdatePerin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spnPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jdateperfin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jdatePerin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jdateperfin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(spnPer))
                 .addGap(88, 88, 88))
         );
         jPanel3Layout.setVerticalGroup(
@@ -233,7 +233,11 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnCargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarMouseClicked
-           /* String periodo=this.spnPer.getValue().toString();
+           
+        Periodo periodoA = null, periodoB = null, periodoZ= null;
+        
+        
+            String periodo=this.spnPer.getValue().toString();
             String dia = Integer.toString(jDateInicio.getCalendar().get(Calendar.DAY_OF_MONTH));
             String mes = Integer.toString(jDateInicio.getCalendar().get(Calendar.MONTH) + 1);
             String year = Integer.toString(jDateInicio.getCalendar().get(Calendar.YEAR));
@@ -244,45 +248,44 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
             String fechaTermino = (dia1 + "/" + mes1 + "/" + year1);
             String ciclo = "Inicio:" + fechaInicio + "     " + "Fin:" + fechaTermino;
             
-            if(this.spnPer.getValue().toString().compareToIgnoreCase("A")==0){
+            if(periodo.compareToIgnoreCase("A")==0){
             String diaper1 = Integer.toString(jdatePerin.getCalendar().get(Calendar.DAY_OF_MONTH));
             String mesper1 = Integer.toString(jdatePerin.getCalendar().get(Calendar.MONTH) + 1);
             String yearper1 = Integer.toString(jdatePerin.getCalendar().get(Calendar.YEAR));
-            String inicioperiodoA = (diaper1 + "/" + mesper1 + "/" + yearper1);
+            String inicioPeriodoA = (diaper1 + "/" + mesper1 + "/" + yearper1);
             String diafinper = Integer.toString(jdateperfin.getCalendar().get(Calendar.DAY_OF_MONTH));
             String mesfinper = Integer.toString(jdateperfin.getCalendar().get(Calendar.MONTH) + 1);
             String yearfinper = Integer.toString(jdateperfin.getCalendar().get(Calendar.YEAR));
-            String finperiodoA = (diafinper + "/" + mesfinper + "/" + yearfinper);
-            String periodoA = "Inicio:" + inicioperiodoA + "     " + "Fin:" + finperiodoA;
-             c=(new Ciclo(fechaInicio, fechaTermino, periodoA, periodoB, periodoZ));
+            String finPeriodoA = (diafinper + "/" + mesfinper + "/" + yearfinper);
+            periodoA = new Periodo(inicioPeriodoA, finPeriodoA);
+             
             }
-            else if(this.spnPer.getValue().toString().compareToIgnoreCase("B")==0){
+            else if(periodo.compareToIgnoreCase("B")==0){
             String diaper2 = Integer.toString(jdatePerin.getCalendar().get(Calendar.DAY_OF_MONTH));
             String mesper2 = Integer.toString(jdatePerin.getCalendar().get(Calendar.MONTH) + 1);
             String yearper2 = Integer.toString(jdatePerin.getCalendar().get(Calendar.YEAR));
-            String inicioperiodoB = (diaper2 + "/" + mesper2 + "/" + yearper2);
+            String inicioPeriodoB = (diaper2 + "/" + mesper2 + "/" + yearper2);
             String diafinper2 = Integer.toString(jdateperfin.getCalendar().get(Calendar.DAY_OF_MONTH));
             String mesfinper2 = Integer.toString(jdateperfin.getCalendar().get(Calendar.MONTH) + 1);
             String yearfinper2 = Integer.toString(jdateperfin.getCalendar().get(Calendar.YEAR));
-            String finperiodoB = (diafinper2 + "/" + mesfinper2 + "/" + yearfinper2);
+            String finPeriodoB = (diafinper2 + "/" + mesfinper2 + "/" + yearfinper2);
             
-            String periodoB = "Inicio:" + inicioperiodoB + "     " + "Fin:" + finperiodoB;
-             c=(new Ciclo(fechaInicio, fechaTermino, periodoA, periodoB, periodoZ));
+            periodoB = new Periodo(inicioPeriodoB, finPeriodoB);
+             
             }
-            else if(this.spnPer.getValue().toString().compareToIgnoreCase("C")==0){
+            else if(periodo.compareToIgnoreCase("Z")==0){
             String diaper3 = Integer.toString(jdatePerin.getCalendar().get(Calendar.DAY_OF_MONTH));
             String mesper3 = Integer.toString(jdatePerin.getCalendar().get(Calendar.MONTH) + 1);
             String yearper3 = Integer.toString(jdatePerin.getCalendar().get(Calendar.YEAR));
-            String inicioperiodoZ = (diaper3 + "/" + mesper3 + "/" + yearper3);
+            String inicioPeriodoZ = (diaper3 + "/" + mesper3 + "/" + yearper3);
             String diafinper3 = Integer.toString(jdateperfin.getCalendar().get(Calendar.DAY_OF_MONTH));
             String mesfinper3 = Integer.toString(jdateperfin.getCalendar().get(Calendar.MONTH) + 1);
             String yearfinper3 = Integer.toString(jdateperfin.getCalendar().get(Calendar.YEAR));
-            String finperiodoZ = (diafinper3 + "/" + mesfinper3 + "/" + yearfinper3);
-            String periodoZ = "Inicio:" + inicioperiodoZ + "     " + "Fin:" + finperiodoZ;
-            c=(new Ciclo(fechaInicio, fechaTermino, periodoA, periodoB, periodoZ));
-            }
+            String finPeriodoZ = (diafinper3 + "/" + mesfinper3 + "/" + yearfinper3);
+            periodoZ = new Periodo(inicioPeriodoZ, finPeriodoZ);
             
-          c=(new Ciclo(fechaInicio, fechaTermino, periodoA, periodoB, periodoZ));*/
+            }
+          c=(new Ciclo(fechaInicio, fechaTermino, periodoA, periodoB, periodoZ));
     }//GEN-LAST:event_btnCargarMouseClicked
 
     /**

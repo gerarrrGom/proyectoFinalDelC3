@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package cesar.gestionAcademica4;
+package Rodolfo;
 
+import cesar.gestionAcademica4.*;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 
@@ -27,17 +28,17 @@ import javax.swing.JOptionPane;
  * @author Cesar Juventino Zepeda Barriga
  * correo:cesar_zb12@hotmail.com
  */
-public class FrmPdf extends javax.swing.JDialog {
-        private Gestion g;
-        BDActividades bd;
+public class FrmPdfDifusiones extends javax.swing.JDialog {
+        private Difusion g;
+        BDDifusiones bd;
     /**
      * Creates new form FrmPdf
      */
-    public FrmPdf(java.awt.Frame parent, boolean modal) {
+    public FrmPdfDifusiones(java.awt.Frame parent, boolean modal) {
        super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(this);
-        bd=new BDActividades();
+        bd=new BDDifusiones();
         
         //String nombre=this.txtNombre.getText();
     }
@@ -65,11 +66,11 @@ public class FrmPdf extends javax.swing.JDialog {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtNombre.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 170, -1));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 170, -1));
 
         jLabel1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel1.setText("Introduce el nombre de tu PDF:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         btnCrear.setBackground(new java.awt.Color(108, 160, 220));
         btnCrear.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
@@ -106,7 +107,6 @@ public class FrmPdf extends javax.swing.JDialog {
         } catch (HeadlessException e) {
             e.getCause();
         } 
-        this.txtNombre.setText(null);
     }//GEN-LAST:event_btnCrearMouseClicked
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
@@ -114,7 +114,7 @@ public class FrmPdf extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalirMouseClicked
 public void abrirPdf(String nombre){
         try {
-            File f=new File("\\\\CESARJZB\\Users\\cesar\\Documents\\");
+            File f=new File("C:\\Users\\REMEDIOS CONTRERAS\\Documents\\" /*+ nombre + ".pdf"*/);
             Desktop.getDesktop().open(f);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null,ex,"Atencion",2);
@@ -126,7 +126,7 @@ public void abrirPdf(String nombre){
     private void exportar() {
         FileOutputStream archivo = null;
         try {
-            archivo = new FileOutputStream("\\\\CESARJZB\\Users\\cesar\\Documents\\" +this.txtNombre.getText()+ ".pdf");
+            archivo = new FileOutputStream("C:\\Users\\REMEDIOS CONTRERAS\\Documents\\" +this.txtNombre.getText()+ ".pdf");
             Document documento = new Document();
 
             PdfWriter.getInstance(documento, archivo);
@@ -138,9 +138,9 @@ public void abrirPdf(String nombre){
             bf = BaseFont.createFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, BaseFont.EMBEDDED);
 
             Font f = new Font(bf, 12, 2, BaseColor.BLUE);
-            TablaPdfActividad act = new TablaPdfActividad();
+            TablaPdfDifusiones act = new TablaPdfDifusiones();
 
-            LinkedList<Gestion> lista = bd.obtener();
+            LinkedList<Difusion> lista = bd.obtener();
             PdfPTable tab = act.tabla(lista);
             documento.add(tab);
             documento.close();
@@ -176,20 +176,21 @@ public void abrirPdf(String nombre){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPdf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPdfDifusiones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPdf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPdfDifusiones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPdf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPdfDifusiones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPdf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPdfDifusiones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrmPdf dialog = new FrmPdf(new javax.swing.JFrame(), true);
+                FrmPdfDifusiones dialog = new FrmPdfDifusiones(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

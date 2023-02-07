@@ -53,6 +53,7 @@ public class FrmDifusion extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btnPDF = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -193,7 +194,15 @@ public class FrmDifusion extends javax.swing.JInternalFrame {
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setText("Salir");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 463, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, -1, -1));
+
+        btnPDF.setText("Crear PDF");
+        btnPDF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPDFMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -206,8 +215,6 @@ public class FrmDifusion extends javax.swing.JInternalFrame {
         bd.registrarDifusion(a);
         modeloDifusiones.agregarDifusion(a);
         txtNombre.setText("");
-        fchInicio.setDateFormatString("");
-        fchFinal.setDateFormatString("");
     }//GEN-LAST:event_btnAgregarMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
@@ -243,9 +250,12 @@ public class FrmDifusion extends javax.swing.JInternalFrame {
         fchInicio.setDateFormatString("");
         fchFinal.setDateFormatString("");
         txtNombre.setText("");
-        fchInicio.setDateFormatString("");
-        fchFinal.setDateFormatString("");
     }//GEN-LAST:event_btnGuardarMouseClicked
+
+    private void btnPDFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPDFMouseClicked
+        FrmPdfDifusiones pdf=new FrmPdfDifusiones(null, true);
+        pdf.setVisible(true);
+    }//GEN-LAST:event_btnPDFMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -253,6 +263,7 @@ public class FrmDifusion extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnPDF;
     private com.toedter.calendar.JDateChooser fchFinal;
     private com.toedter.calendar.JDateChooser fchInicio;
     private javax.swing.JButton jButton1;

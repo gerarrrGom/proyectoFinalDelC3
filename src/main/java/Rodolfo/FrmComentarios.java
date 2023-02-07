@@ -48,6 +48,7 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
         txtAddComentario = new javax.swing.JTextArea();
         btnComentar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
+        btnPDF = new javax.swing.JButton();
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -144,6 +145,13 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
             }
         });
 
+        btnPDF.setText("Crear PDF");
+        btnPDF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPDFMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -153,6 +161,8 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnPDF)
+                        .addGap(74, 74, 74)
                         .addComponent(btnGuardar)
                         .addGap(31, 31, 31)
                         .addComponent(btnComentar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -172,7 +182,8 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnComentar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGuardar))
+                    .addComponent(btnGuardar)
+                    .addComponent(btnPDF))
                 .addContainerGap())
         );
 
@@ -245,6 +256,11 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnEliminarMouseClicked
 
+    private void btnPDFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPDFMouseClicked
+        FrmPdfComentarios pdf=new FrmPdfComentarios(null, true);
+        pdf.setVisible(true);
+    }//GEN-LAST:event_btnPDFMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAct;
@@ -252,6 +268,7 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnPDF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

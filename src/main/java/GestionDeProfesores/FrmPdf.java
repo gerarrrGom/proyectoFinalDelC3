@@ -4,8 +4,7 @@
  */
 package GestionDeProfesores;
 
-import cesar.gestionAcademica4.Gestion;
-import cesar.gestionAcademica4.TablaPdfActividad;
+
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -133,7 +132,7 @@ BDProfesores bd;
     private void btnCrearPdfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearPdfMouseClicked
         exportar();
         try {
-            int eleccion = JOptionPane.showConfirmDialog(this, "¿Desea abrir el pdf creado?");
+            int eleccion = JOptionPane.showConfirmDialog(this, "¿Abrir el PDF?");
             if (eleccion == 0) {
                 abrirPdf("Gestión_Profesores");
             }

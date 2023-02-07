@@ -10,12 +10,14 @@ import utilidades.ObjetosParaEditar;
  */
 public class FrmComputacion extends javax.swing.JDialog {
     private ModeloComputacion modeloCompu;
+    private BDCursos bd;
     /**
      * Creates new form FrmComputacion
      */
     public FrmComputacion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        bd = new BDCursos();
         modeloCompu = new ModeloComputacion();
         this.tblComputacion.setModel(modeloCompu);
     }
@@ -36,6 +38,7 @@ public class FrmComputacion extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -66,13 +69,13 @@ public class FrmComputacion extends javax.swing.JDialog {
                 btnEditarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, -1, -1));
+        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 90, -1, -1));
 
         jButton2.setText("Eliminar");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, -1, -1));
 
         jButton3.setText("Salir");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 270, -1, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, -1, -1));
 
         btnAgregar.setText("Agregar");
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -81,6 +84,14 @@ public class FrmComputacion extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, -1, -1));
+
+        jButton1.setText("PDF");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 760, 330));
 
@@ -101,6 +112,14 @@ public class FrmComputacion extends javax.swing.JDialog {
         frm.setVisible(true);
         modeloCompu.editarCurso(ObjetosParaEditar.curs, frm.getCompu());
     }//GEN-LAST:event_btnEditarMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        for (int i = 0; i < modeloCompu.getRowCount(); i++) {
+            bd.registrarCarrera(modeloCompu.listaCursos().obtener(i));
+        }
+        FrmPdf frm = new FrmPdf(null, true);
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -147,6 +166,7 @@ public class FrmComputacion extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
