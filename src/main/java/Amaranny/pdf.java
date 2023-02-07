@@ -4,15 +4,12 @@
  */
 package Amaranny;
 
-import cesar.gestionAcademica4.Gestion;
-import cesar.gestionAcademica4.TablaPdfActividad;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.mycompany.pryfinalc3.pdf;
 import java.awt.Desktop;
 import java.awt.HeadlessException;
 import java.io.File;
@@ -27,17 +24,18 @@ import javax.swing.JOptionPane;
  *
  * @author Amaranny
  */
-public class frmCPdf extends javax.swing.JDialog {
-    private Oportunidades op;
-    BDOportunidades bd;
+public class pdf extends javax.swing.JDialog {
+     private Promocion p;
+     BDDesarrollo bd;
     /**
-     * Creates new form frmCPdf
+     * Creates new form pdf
      */
-    public frmCPdf(java.awt.Frame parent, boolean modal) {
+    public pdf(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        bd=new BDOportunidades();
+        bd=new BDDesarrollo();
+       
     }
 
     /**
@@ -51,28 +49,26 @@ public class frmCPdf extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        btnPdf = new javax.swing.JToggleButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
-        jLabel1.setText("Nombre del pdf:");
+        jLabel1.setFont(new java.awt.Font("Bodoni MT", 0, 16)); // NOI18N
+        jLabel1.setText("Nombre del pdf");
 
-        jTextField1.setFont(new java.awt.Font("Bodoni MT", 0, 12)); // NOI18N
-
-        btnPdf.setBackground(new java.awt.Color(102, 153, 255));
-        btnPdf.setFont(new java.awt.Font("Bodoni MT", 0, 12)); // NOI18N
-        btnPdf.setText("CrearPdf");
-        btnPdf.addMouseListener(new java.awt.event.MouseAdapter() {
+        jToggleButton1.setBackground(new java.awt.Color(102, 153, 255));
+        jToggleButton1.setFont(new java.awt.Font("Bodoni MT", 0, 16)); // NOI18N
+        jToggleButton1.setText("CrearPdf");
+        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnPdfMouseClicked(evt);
+                jToggleButton1MouseClicked(evt);
             }
         });
 
         jToggleButton2.setBackground(new java.awt.Color(102, 153, 255));
-        jToggleButton2.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
-        jToggleButton2.setText("Salir");
+        jToggleButton2.setFont(new java.awt.Font("Bodoni MT", 0, 16)); // NOI18N
+        jToggleButton2.setText("salir");
         jToggleButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jToggleButton2MouseClicked(evt);
@@ -84,38 +80,41 @@ public class frmCPdf extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnPdf)
-                    .addComponent(jToggleButton2))
-                .addGap(43, 43, 43))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(jToggleButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jToggleButton1)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnPdf)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(25, 25, 25)
+                            .addComponent(jLabel1))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jToggleButton1)))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToggleButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPdfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPdfMouseClicked
-        exportar();
+    private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
+       exportar();
         try {
             int eleccion = JOptionPane.showConfirmDialog(this, "¿Desea abrir el pdf creado?");
             if (eleccion == 0) {
@@ -126,10 +125,10 @@ public class frmCPdf extends javax.swing.JDialog {
         } 
         this.jTextField1.setText(null);
         
-    }//GEN-LAST:event_btnPdfMouseClicked
+    }//GEN-LAST:event_jToggleButton1MouseClicked
 
     private void jToggleButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MouseClicked
-        this.dispose();
+       this.dispose();
     }//GEN-LAST:event_jToggleButton2MouseClicked
 
     public void abrirPdf(String nombre){
@@ -158,24 +157,23 @@ public class frmCPdf extends javax.swing.JDialog {
             bf = BaseFont.createFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, BaseFont.EMBEDDED);
 
             Font f = new Font(bf, 12, 2, BaseColor.BLUE);
-            tablaPdf act = new tablaPdf();
+            tablaPdfPromo act = new tablaPdfPromo();
 
-            LinkedList<Oportunidades> lista = bd.obtener();
+            LinkedList<Promocion> lista = bd.obtener();
             PdfPTable tab = act.tabla(lista);
             documento.add(tab);
             documento.close();
             JOptionPane.showMessageDialog(this, "El pdf ha sido creado correctamente");
         } catch (Exception ex) {
-            Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(com.mycompany.pryfinalc3.pdf.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 archivo.close();
             } catch (IOException ex) {
-                Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(com.mycompany.pryfinalc3.pdf.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
-
     /**
      * @param args the command line arguments
      */
@@ -193,20 +191,20 @@ public class frmCPdf extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmCPdf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pdf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmCPdf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pdf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmCPdf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pdf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmCPdf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pdf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                frmCPdf dialog = new frmCPdf(new javax.swing.JFrame(), true);
+                pdf dialog = new pdf(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -219,9 +217,9 @@ public class frmCPdf extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnPdf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     // End of variables declaration//GEN-END:variables
 }

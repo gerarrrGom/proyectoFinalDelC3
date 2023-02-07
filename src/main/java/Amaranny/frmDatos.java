@@ -256,7 +256,7 @@ public class frmDatos extends javax.swing.JDialog {
         this.txtOtros.setVisible(true);
         
         this.jComboBox3.setVisible(true);
-        this.txtOtroo.setVisible(true);
+        
        
         this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked

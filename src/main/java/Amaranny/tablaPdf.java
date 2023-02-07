@@ -47,7 +47,7 @@ public class tablaPdf {
     }
 
     public PdfPTable tabla(LinkedList<Oportunidades> lista) {
-        PdfPTable tabla = new PdfPTable(5);
+        PdfPTable tabla = new PdfPTable(2);
         PdfPCell celda1 = new PdfPCell(new Paragraph("DATOS DE OPORTUNIDADES", FontFactory.getFont(
                 "Arial", 14, Font.BOLD, BaseColor.GREEN)));
 

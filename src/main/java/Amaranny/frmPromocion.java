@@ -241,8 +241,8 @@ public class frmPromocion extends javax.swing.JDialog {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseClicked
-        frmCPdf pdf=new frmCPdf(null,true);
-        pdf.setVisible(true);
+        pdf p=new pdf(null,true);
+        p.setVisible(true);
     }//GEN-LAST:event_btnCrearMouseClicked
 
     /**
