@@ -4,10 +4,13 @@
  */
 package com.mycompany.pryfinalc3;
 
+import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.Header;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.BaseFont;
@@ -29,51 +32,51 @@ public class Plantilla {
     private String apellido;
     private Document documento;
     private FileOutputStream archivo;
-    private Paragraph titulo;
+    //private Paragraph titulo;
+    private Encabezado encabezado;
     
 
-    public Plantilla(String nombre,String apellido) {
+    public Plantilla(String nombre,String apellido) throws BadElementException, IOException {
         this.nombre = nombre;
         this.apellido=apellido;
         documento= new Document();
-        titulo=new Paragraph("Informe anual de actividades. Octubre de 2022 a Febrero de 2023");
-        
-        
+        encabezado=new Encabezado();   
     }
+    
     public void crearPlantilla(){
         try {
             archivo = new FileOutputStream("C:\\Users\\52281\\Documents\\PDFS" + nombre + ".pdf");
-            PdfWriter.getInstance(documento,archivo);
-           
+            PdfWriter w=PdfWriter.getInstance(documento,archivo);
+            Encabezado e=new Encabezado();
             documento.open();
             
-            Image logo=Image.getInstance("C:/Users/52281/Pictures/logoUnpa.jpg");
-            
-            logo.scaleToFit(100, 150);
-            logo.setAlignment(Chunk.ALIGN_LEFT);
-            documento.add(logo);
-            titulo.setAlignment(2);
+            e.agregarEncabezado(w);
             
             
-            documento.add(titulo);
-            
-            documento.add(new Paragraph("Profesor investigador:"+ nombre + " " + apellido));
-            
+            documento.setMargins(3, 3, 527, 2);
+            documento.add(new Paragraph("\n\n\n\n\nProfesor investigador:"+ nombre + " " + apellido));
+            documento.newPage();
+            e.agregarEncabezado(w);
             BaseFont bf;
             
             bf = BaseFont.createFont(BaseFont.TIMES_ROMAN,BaseFont.CP1250,BaseFont.EMBEDDED);
             
             Font f=new Font(bf,12,2,BaseColor.BLUE);
-            Paragraph texto=new Paragraph("DATOS DEL ALUMNO");
-            texto.setAlignment(1);
-            documento.add(texto);
+            //Paragraph texto=new Paragraph("DATOS DEL ALUMNO");
+            //texto.setAlignment(1);
+            //documento.add(texto);
             
             documento.add(new Paragraph("Nombre: "+ nombre,f));
             documento.add(new Paragraph("Apellido: "+ apellido,f));
  
-            Tablas t=new Tablas();
+            /*Tablas t=new Tablas();
             PdfPTable tab=t.tabla(nombre, apellido,"",  "","");
-            documento.add(tab);
+            documento.add(tab);*/
+            
+            documento.newPage();
+            e.agregarEncabezado(w);
+            documento.newPage();
+            e.agregarEncabezado(w);
             documento.close();
             JOptionPane.showMessageDialog(null, "El pdf ha sido creado correctamente");
             
@@ -86,8 +89,6 @@ public class Plantilla {
                 Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-            
-        
     }
     
     

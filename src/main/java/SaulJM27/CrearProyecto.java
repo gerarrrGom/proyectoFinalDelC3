@@ -5,6 +5,7 @@
 package SaulJM27;
 
 import java.awt.Frame;
+import utilidades.ObjetosParaEditar;
 
 /**
  *
@@ -19,6 +20,25 @@ public class CrearProyecto extends javax.swing.JDialog {
     public CrearProyecto(Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+         if(ObjetosParaEditar.p!=null){
+            p=ObjetosParaEditar.p;
+            int n=p.getNumeroDeProyecto();
+            this.jTextField2.setText(n+"");
+            this.jTextField3.setText(p.getTitulosDelProyecto());
+            this.jTextField4.setText(p.getResponsabilidad());
+            this.jTextField5.setText(p.getFaceDeAprobacion());
+            this.jTextField6.setText(p.getIstalacionPrincipal());
+            int c=p.getFechaDeInicioDelProyecto();
+            this.jTextField7.setText(c+"");
+            int b=p.getFechaDeTerminaciónProgramadaDelProyecto();
+            this.jTextField8.setText(b+"");
+            int l=p.getFechaDeTerminacónDelProyectoReprogramada();
+            this.jTextField9.setText(l+"");
+            this.jTextField10.setText(p.getPorsentajeGlobalDelProy());
+    
+        }
+       this.setLocationRelativeTo(null);
     }
 
     /**

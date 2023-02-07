@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package GestionDeProfesores;
+package GestionDeProfesores; 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author "el profe Ariel"
+ * @author "gerard"
  */
 public class Archivo {
 
@@ -85,7 +85,7 @@ public class Archivo {
 		File archivo=obtenerArchivo();
 		String directorio=archivo.getParent();
                 archivo.delete();
-                new FileWriter(directorio + nombre, true);
+                new FileWriter(directorio +"/"+ nombre, true);
                 return true;
 	}catch(IOException ex){
             ex.printStackTrace();

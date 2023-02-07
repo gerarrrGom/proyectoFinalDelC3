@@ -4,6 +4,7 @@
  */
 package cesar.gestionAcademica4;
 
+import javax.swing.event.EventListenerList;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -16,7 +17,10 @@ public class TablaGestion extends AbstractTableModel{
     public TablaGestion() {
         actividades=new ListaGestion();
     }
-    
+    public void setActividades(ListaGestion actividades){
+        this.actividades=actividades;
+        this.fireTableDataChanged();
+    }
     @Override
     public int getRowCount(){
         return actividades.size();

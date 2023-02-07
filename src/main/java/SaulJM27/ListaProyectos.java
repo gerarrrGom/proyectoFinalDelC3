@@ -32,5 +32,27 @@ public class ListaProyectos {
     public Proyecto obtener(int indice){
         return proyectos.get(indice);
     }
-
+    public LinkedList<Proyecto>getProyectos(){
+        return proyectos; 
+    }
+     public void setLista(LinkedList<Proyecto> proyectos) {
+        this.proyectos = proyectos;
+    }
+    
+    public void agregarProyectos(Proyecto m){
+        proyectos.add(m);
+    }
+    public Proyecto getProyectos(int indice){
+        return proyectos.get(indice);
+    }
+    
+    public void eliminarProyectos(int indice){
+        proyectos.remove(indice);
+    }
+    
+    public int size(){
+        return proyectos.size();
+    }
+    
 }
+

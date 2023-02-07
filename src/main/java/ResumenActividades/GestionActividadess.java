@@ -4,9 +4,16 @@
  */
 package ResumenActividades;
 
+import java.awt.AWTKeyStroke;
 import java.awt.Component;
+import java.awt.RenderingHints.Key;
+import java.awt.Window;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.util.Collections;
 import java.util.LinkedList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,20 +55,22 @@ public class GestionActividadess extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         lblActividad = new javax.swing.JLabel();
         txtActividad = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txtIndice = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        txtIndice = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Agrega/elimina actividades");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Actividades", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 0, 12))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        listActividades.setToolTipText("Seleccionar Actividad");
         listActividades.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listActividadesMouseClicked(evt);
@@ -86,7 +95,7 @@ public class GestionActividadess extends javax.swing.JDialog {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, 80, 25));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, 80, 40));
 
         jPanel2.setBackground(new java.awt.Color(153, 255, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -95,17 +104,16 @@ public class GestionActividadess extends javax.swing.JDialog {
 
         lblActividad.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         lblActividad.setText("Actividad");
-        jPanel2.add(lblActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 60, -1));
+        lblActividad.setToolTipText("Nombre de la actividad");
+        jPanel2.add(lblActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 60, -1));
 
         txtActividad.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jPanel2.add(txtActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 350, 22));
-
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel2.setText("Indice:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 50, 30));
-
-        txtIndice.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jPanel2.add(txtIndice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 110, 22));
+        txtActividad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtActividadKeyPressed(evt);
+            }
+        });
+        jPanel2.add(txtActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 350, 30));
 
         btnAgregar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnAgregar.setText("+");
@@ -114,10 +122,16 @@ public class GestionActividadess extends javax.swing.JDialog {
                 btnAgregarMouseClicked(evt);
             }
         });
-        jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 80, 25));
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 80, 40));
 
         btnAceptar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnAceptar.setText("Aceptar");
+        btnAceptar.setToolTipText("Guardar la actividad");
         btnAceptar.setPreferredSize(new java.awt.Dimension(75, 25));
         btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -129,7 +143,12 @@ public class GestionActividadess extends javax.swing.JDialog {
                 btnAceptarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 80, 25));
+        btnAceptar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnAceptarKeyPressed(evt);
+            }
+        });
+        jPanel2.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 80, 40));
 
         btnEliminar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnEliminar.setText("-");
@@ -138,7 +157,7 @@ public class GestionActividadess extends javax.swing.JDialog {
                 btnEliminarMouseClicked(evt);
             }
         });
-        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 80, 25));
+        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 80, 40));
 
         btnCancelar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -153,14 +172,29 @@ public class GestionActividadess extends javax.swing.JDialog {
                 btnCancelarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 80, 25));
+        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 80, 40));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 550, 100));
+        txtIndice.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        txtIndice.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtIndiceKeyPressed(evt);
+            }
+        });
+        jPanel2.add(txtIndice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 110, 30));
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel2.setText("Indice:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 20));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 550, 110));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+        situacionBase();
+        this.listActividades.clearSelection();
+        this.txtIndice.requestFocus();
         this.txtIndice.setText("");
         this.txtActividad.setText("");
         this.btnAgregar.setVisible(false);
@@ -178,7 +212,13 @@ public class GestionActividadess extends javax.swing.JDialog {
 
     private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
         if(!situacion){
-            this.a.agregarActividad(new Actividad(Double.parseDouble(this.txtIndice.getText()),this.txtActividad.getText()));
+            try{
+                this.a.agregarActividad(new Actividad(Double.parseDouble(this.txtIndice.getText()),this.txtActividad.getText()));
+                Collections.sort(a.getListaDeActividades());
+                llenarActividades();
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(this, "Ingresa un indice valido");
+            }
             
         }else{
             a.eliminarActividad(Double.parseDouble(this.txtIndice.getText()));
@@ -221,6 +261,7 @@ public class GestionActividadess extends javax.swing.JDialog {
         this.txtIndice.setText(a1.getIndice()+"");
         this.txtActividad.setText(a1.getActividad());
         this.btnEliminar.setVisible(true);
+        
             
     }//GEN-LAST:event_listActividadesMouseClicked
 
@@ -231,6 +272,45 @@ public class GestionActividadess extends javax.swing.JDialog {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void txtIndiceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIndiceKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            this.txtActividad.requestFocus();
+            }
+        
+    }//GEN-LAST:event_txtIndiceKeyPressed
+
+    private void txtActividadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtActividadKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            try{
+                btnAceptarKeyPressed(evt);
+            }catch(Exception e){
+                
+            }
+        }
+    }//GEN-LAST:event_txtActividadKeyPressed
+
+    private void btnAceptarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAceptarKeyPressed
+        if(!situacion){
+            try{
+                this.a.agregarActividad(new Actividad(Double.parseDouble(this.txtIndice.getText()),this.txtActividad.getText()));
+                Collections.sort(a.getListaDeActividades());
+                llenarActividades();
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(this, "Ingresa un indice valido");
+            }
+            
+        }else{
+            a.eliminarActividad(Double.parseDouble(this.txtIndice.getText()));
+        }
+        situacion=false;
+        llenarActividades();
+        situacionBase();
+    }//GEN-LAST:event_btnAceptarKeyPressed
 
     /**
      * @param args the command line arguments

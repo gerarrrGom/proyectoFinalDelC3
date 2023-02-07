@@ -4,7 +4,7 @@
  */
 package JFramePrincipal;
 
-import Administradores.FrmAdministradores;
+import Usuarios.FrmUsuarios;
 import javax.swing.JDesktopPane;
 
 /**
@@ -71,7 +71,7 @@ public class FrmPrincipalAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        FrmAdministradores f = new FrmAdministradores();
+        FrmUsuarios f = new FrmUsuarios();
         escritorio.add(f);
         f.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed

@@ -4,8 +4,14 @@
  */
 package cesar.gestionAcademica4;
 
-import java.util.Calendar;
+//import java.util.Calendar;
+//import com.itextpdf.text.DocumentException;
+//import com.mycompany.pryfinalc3.pdf;
+//import java.io.IOException;
 import java.util.LinkedList;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+import utilidades.ObjetosParaEditar;
 
 /**
  *
@@ -24,11 +30,8 @@ public class GestionAcademica extends javax.swing.JDialog {
         this.jTable1.setModel(t);
         this.btnEditar.setVisible(false);
         this.btnEliminar.setVisible(false);
+        this.setLocationRelativeTo(this);
         //this.txtBuscar.requestFocus();
-        
-       
-       //t=new TablaGestion();
-       //this.jTable1.setModel(t);
        bd=new BDActividades();
        LinkedList<Gestion> lista=bd.obtener();
        for(int i=0;i<lista.size();i++){
@@ -69,7 +72,7 @@ public class GestionAcademica extends javax.swing.JDialog {
                 btnAgregarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 80, 30));
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 80, 30));
 
         btnEditar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnEditar.setText("Editar");
@@ -78,7 +81,7 @@ public class GestionAcademica extends javax.swing.JDialog {
                 btnEditarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 80, 30));
+        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 80, 30));
 
         btnEliminar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnEliminar.setText("Eliminar");
@@ -87,7 +90,7 @@ public class GestionAcademica extends javax.swing.JDialog {
                 btnEliminarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 80, 30));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 80, 30));
 
         btnGuardar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnGuardar.setText("Guardar");
@@ -96,10 +99,15 @@ public class GestionAcademica extends javax.swing.JDialog {
                 btnGuardarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 80, 30));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 80, 30));
 
         btnPdf.setText("Crear PDF");
-        jPanel1.add(btnPdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 90, 30));
+        btnPdf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPdfMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnPdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 90, 30));
 
         btnSalir.setText("Salir");
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -107,9 +115,9 @@ public class GestionAcademica extends javax.swing.JDialog {
                 btnSalirMouseClicked(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 80, 30));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, 80, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 610, 220));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 610, 90));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -135,8 +143,9 @@ public class GestionAcademica extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
-        bd.borrar();
         ListaGestion actividades=t.getActividades();
+        //borrar
+        bd.borrar();
         for(int i=0;i<actividades.size();i++){
             bd.registrarActividad(actividades.getActividad(i));
         }
@@ -144,12 +153,29 @@ public class GestionAcademica extends javax.swing.JDialog {
     }//GEN-LAST:event_btnGuardarMouseClicked
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
-        
+        int n=this.jTable1.getSelectedRow();
+        ObjetosParaEditar.g=t.getActividades().getActividad(n);
+        t.eliminarActividad(n);
+        FrmRegistrar act=new FrmRegistrar(null,true);  
+        act.setVisible(true);
+        if(act.getT()!=null){
+            ListaGestion g;
+            g=new ListaGestion();
+            LinkedList h= t.getActividades().getLista();
+            h.add(n, act.getT());
+            g.setLista(h);
+            t.setActividades(g);
+        }
+        this.btnEditar.setVisible(false);
+        this.btnEliminar.setVisible(false);
     }//GEN-LAST:event_btnEditarMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
            int n=this.jTable1.getSelectedRow();
+           //bd.borrar();
            t.eliminarActividad(n);
+        this.btnEditar.setVisible(false);
+        this.btnEliminar.setVisible(false);
            
     }//GEN-LAST:event_btnEliminarMouseClicked
 
@@ -168,10 +194,17 @@ public class GestionAcademica extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalirMouseClicked
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int n=this.jTable1.getSelectedRow();
+        
         this.btnEliminar.setVisible(true);
         this.btnEditar.setVisible(true);
         
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void btnPdfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPdfMouseClicked
+       FrmPdf p=new FrmPdf(null,true);  
+        p.setVisible(true);
+    }//GEN-LAST:event_btnPdfMouseClicked
 
     /**
      * @param args the command line arguments

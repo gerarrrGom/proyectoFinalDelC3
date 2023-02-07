@@ -4,17 +4,35 @@
  */
 package docencia;
 
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import utilidades.ObjetosParaEditar;
+
 /**
  *
  * @author cardo
  */
 public class FrmDocencia extends javax.swing.JInternalFrame {
 
+    private ModeloCursosImpartidos modelo;
+    private BDCursosImpartidos bd;
+    private int count;
+
     /**
      * Creates new form FrmDocencia
      */
     public FrmDocencia() {
         initComponents();
+        this.setTitle("Cursos Impartidos");
+        bd = new BDCursosImpartidos();
+        bd.borrar();
+        count =0;
+        modelo = new ModeloCursosImpartidos();
+        tablaCursos.setModel(modelo);
+        btnEditarCurso.setVisible(false);
+        btnEliminarCurso.setVisible(false);
+        btnGuardarCurso.setVisible(false);
+        btnAgregarActividades.setVisible(false);
     }
 
     /**
@@ -26,117 +44,206 @@ public class FrmDocencia extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton7 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        btnAgregarCurso = new javax.swing.JButton();
+        btnEditarCurso = new javax.swing.JButton();
+        btnGuardarCurso = new javax.swing.JButton();
+        btnEliminarCurso = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        btnAgregarActividades = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        tablaCursos = new javax.swing.JTable();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton7.setBackground(new java.awt.Color(204, 255, 255));
-        jButton7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton7.setText("Eliminar Actividad");
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 630, 160, 30));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton2.setBackground(new java.awt.Color(204, 255, 255));
-        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton2.setText("Editar Actividad");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 630, 140, 30));
+        jPanel4.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton6.setBackground(new java.awt.Color(204, 255, 255));
-        jButton6.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton6.setText("Agregar Actividad");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 630, 160, 30));
+        btnAgregarCurso.setBackground(new java.awt.Color(153, 204, 255));
+        btnAgregarCurso.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
+        btnAgregarCurso.setText("Agregar Curso");
+        btnAgregarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarCursoMouseClicked(evt);
+            }
+        });
+        jPanel4.add(btnAgregarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 120, 30));
 
-        jButton5.setBackground(new java.awt.Color(204, 255, 255));
-        jButton5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton5.setText("Eliminar Curso");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 630, 140, 30));
+        btnEditarCurso.setBackground(new java.awt.Color(153, 204, 255));
+        btnEditarCurso.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
+        btnEditarCurso.setText("Editar Curso");
+        btnEditarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditarCursoMouseClicked(evt);
+            }
+        });
+        jPanel4.add(btnEditarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 120, 30));
 
-        jButton4.setBackground(new java.awt.Color(204, 255, 255));
-        jButton4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton4.setText("Editar Curso");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 630, 120, 30));
+        btnGuardarCurso.setBackground(new java.awt.Color(153, 204, 255));
+        btnGuardarCurso.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
+        btnGuardarCurso.setText("Guardar");
+        btnGuardarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGuardarCursoMouseClicked(evt);
+            }
+        });
+        jPanel4.add(btnGuardarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 90, 30));
 
-        jButton3.setBackground(new java.awt.Color(204, 255, 255));
-        jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton3.setText("Agregar Curso");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 630, 140, 30));
+        btnEliminarCurso.setBackground(new java.awt.Color(153, 204, 255));
+        btnEliminarCurso.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
+        btnEliminarCurso.setText("Eliminar Curso");
+        btnEliminarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarCursoMouseClicked(evt);
+            }
+        });
+        jPanel4.add(btnEliminarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 130, 30));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jButton1.setBackground(new java.awt.Color(255, 102, 0));
+        jButton1.setFont(new java.awt.Font("BodoniFLF", 1, 18)); // NOI18N
+        jButton1.setText("Salir");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, -1, -1));
+
+        btnAgregarActividades.setBackground(new java.awt.Color(153, 204, 255));
+        btnAgregarActividades.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
+        btnAgregarActividades.setText("Agregar Actividades");
+        btnAgregarActividades.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarActividadesMouseClicked(evt);
+            }
+        });
+        jPanel4.add(btnAgregarActividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 160, 30));
+
+        tablaCursos.setBackground(new java.awt.Color(245, 245, 220));
+        tablaCursos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nombre de la Actividad", "Productos", "Descripcion de los productos de las actividades"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tablaCursos);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 1070, 270));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel1.setText("Productos de las actividades de apoyo docente realizadas");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 420, 40));
-
-        jTable1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"", null, null, "", null, null, null},
-                {"", null, null, "", null, null, null},
-                {null, null, null, "", null, null, null},
-                {null, null, null, "", null, null, null},
-                {null, "", null, "", null, null, null},
-                {null, null, null, "", null, null, null},
-                {null, null, null, "", null, null, null},
-                {null, null, null, "", null, null, null},
-                {null, null, null, "", null, null, null}
-            },
-            new String [] {
-                "Carrera", "Nombre del Curso", "Semestre", "Profesor Responsable", "Ciclo Escolar", "Horas/Semana", "Estudiantes Matriculados"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1200, 270));
-
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel2.setText("Cursos impartidos");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 150, 40));
-
-        jComboBox1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Curso 1", "Curso 2", "Curso 3", "Curso 4", "Curso 5", "Curso 6", "Curso 7", "Curso 8", "Curso 9" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 100, 270));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgregarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCursoMouseClicked
+        if(count<3){
+            FrmAgregarCursos agregarCurso = new FrmAgregarCursos(null, true);
+            agregarCurso.setVisible(true);
+            modelo.agregarCurso(agregarCurso.getCurso());
+            btnEditarCurso.setVisible(true);
+            btnEliminarCurso.setVisible(true);
+            btnGuardarCurso.setVisible(true);
+            btnAgregarActividades.setVisible(true);
+            count++;
+        }else{
+            this.btnAgregarCurso.setVisible(false);
+        }
+
+    }//GEN-LAST:event_btnAgregarCursoMouseClicked
+
+    private void btnEditarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarCursoMouseClicked
+        ObjetosParaEditar.c = modelo.listaCursos().obtener(tablaCursos.getSelectedRow());
+        FrmEditarCursos editarCurso = new FrmEditarCursos(null, true);
+        editarCurso.setVisible(true);
+        modelo.editarCurso(modelo.listaCursos().obtener(tablaCursos.getSelectedRow()), editarCurso.getCurso());
+
+    }//GEN-LAST:event_btnEditarCursoMouseClicked
+
+    private void btnGuardarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarCursoMouseClicked
+
+        for (int i = 0; i < modelo.listaCursos().total(); i++) {
+            bd.registrarCurso(modelo.listaCursos().obtener(i));
+        }
+        this.dispose();
+
+    }//GEN-LAST:event_btnGuardarCursoMouseClicked
+
+    private void btnEliminarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarCursoMouseClicked
+        // TODO add your handling code here:
+
+        modelo.eliminarCurso(tablaCursos.getSelectedRow());
+        if(count==3){
+            this.btnAgregarCurso.setVisible(true);
+            count--;
+        }
+        
+    }//GEN-LAST:event_btnEliminarCursoMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void btnAgregarActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarActividadesMouseClicked
+        ObjetosParaEditar.c = modelo.listaCursos().obtener(tablaCursos.getSelectedRow());
+        for (int i = 0; i <modelo.listaCursos().total(); i++) {
+            if(ObjetosParaEditar.c.equals(modelo.listaCursos().obtener(i))&&i==0){
+                FrmActividades frmActividades = new FrmActividades(null, true);
+                frmActividades.setTitle("Agrega actividades en "+ObjetosParaEditar.c.getCarrera().getNombreCarrera());
+                frmActividades.setVisible(true);
+            }else if(ObjetosParaEditar.c.equals(modelo.listaCursos().obtener(i))&&i==1){
+                FrmActividades2 frmActividades2 = new FrmActividades2(null, true);
+                frmActividades2.setTitle("Agrega actividades en "+ObjetosParaEditar.c.getCarrera().getNombreCarrera());
+                frmActividades2.setVisible(true);
+            }else if(ObjetosParaEditar.c.equals(modelo.listaCursos().obtener(i))&&i==2){
+                FrmActividades3 frmActividades3 = new FrmActividades3(null, true);
+                frmActividades3.setTitle("Agrega actividades en "+ObjetosParaEditar.c.getCarrera().getNombreCarrera());
+                frmActividades3.setVisible(true);
+            }
+        }
+       
+    }//GEN-LAST:event_btnAgregarActividadesMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton btnAgregarActividades;
+    private javax.swing.JButton btnAgregarCurso;
+    private javax.swing.JButton btnEditarCurso;
+    private javax.swing.JButton btnEliminarCurso;
+    private javax.swing.JButton btnGuardarCurso;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    public static javax.swing.JTable tablaCursos;
     // End of variables declaration//GEN-END:variables
+
 }

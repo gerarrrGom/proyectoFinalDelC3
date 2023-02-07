@@ -14,16 +14,17 @@ import java.util.StringTokenizer;
 public class BDDesarrollo {
     public LinkedList<Promocion> obtener(){
         LinkedList<Promocion> actividades=null;
-        Amaranny.Archivo archivo=new Amaranny("gestion_actividades.txt");
+        Amaranny.Archivo archivo=new Amaranny.Archivo("producto.txt");
         LinkedList<String> lineas=archivo.obtenerTextoDelArchivo();
         if(lineas!=null){
             actividades=new LinkedList();
             for(int i=0;i<lineas.size();i++){
                 String linea=lineas.get(i);
                 StringTokenizer tokens=new StringTokenizer(linea,";");
-                String nombre=tokens.nextToken();
-                String comision=tokens.nextToken();
-                String periodo=tokens.nextToken();
+                String actividad=tokens.nextToken();
+                String institucion=tokens.nextToken();
+                int hora=Integer.parseInt(tokens.nextToken());
+                String producto=tokens.nextToken();
                 Promocion n=new Promocion(actividad,institucion,hora,producto);
                 actividades.add(n);
                 
@@ -33,14 +34,11 @@ public class BDDesarrollo {
     }
     
     public boolean registrarDesarrollo(Promocion n){
-        cesar.gestionAcademica4.Archivo archivo=new cesar.gestionAcademica4.Archivo("gestion_actividades.txt");
-        return archivo.registrar(n.actividad()+ ";"
-                    + n.getinstitucion()+ ";"
-                    + n.gethora()+ ";"
-                    + n.getproducto());
+        Amaranny.Archivo archivo=new Amaranny.Archivo("producto.txt");
+        return archivo.registrar(n.getActividad()+";"+n.getInstitucion()+";"+n.getHora()+";"+n.getProducto());
     }
     public void borrar(){
-        Amaranny.Archivo archivo = new Amafranny.Archivo("gestion_actividades.txt");
+        Amaranny.Archivo archivo = new Amaranny.Archivo("producto.txt");
         archivo.borrarContenido();
     }
 }

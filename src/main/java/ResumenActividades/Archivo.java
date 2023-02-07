@@ -50,6 +50,7 @@ public class Archivo {
     private File obtenerArchivo() {
         try {
             URL url = getClass().getClassLoader().getResource("archivos/" + nombre);
+            System.out.println(url);
             return new File(url.toURI());
         } catch (URISyntaxException ex) {
             ex.printStackTrace();
@@ -82,9 +83,10 @@ public class Archivo {
 		File archivo=obtenerArchivo();
 		String directorio=archivo.getParent();
                 archivo.delete();
-                new FileWriter(directorio + nombre, true);
+                new FileWriter(directorio + "/" +nombre, true);
                 return true;
 	}catch(IOException ex){
+            System.out.println("hola, no funciono");
             ex.printStackTrace();
         }
         return false;

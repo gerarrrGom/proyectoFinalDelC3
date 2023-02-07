@@ -21,7 +21,7 @@ public class TablaPdfActividad {
     private PdfPTable tabla;
 
     public PdfPTable tabla(Gestion n) {
-        PdfPTable tabla = new PdfPTable(5);
+        PdfPTable tabla = new PdfPTable(3);
         PdfPCell celda1 = new PdfPCell(new Paragraph("DATOS DE LA ACTVIDAD", FontFactory.getFont(
                 "Arial", 14, Font.BOLD, BaseColor.GREEN)));
 
