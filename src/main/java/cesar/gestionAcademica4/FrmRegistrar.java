@@ -15,7 +15,8 @@ import utilidades.ObjetosParaEditar;
 
 /**
  *
- * @author cesar
+ * @author Cesar Juventino Zepeda Barriga
+ * correo:cesar_zb12@hotmail.com
  */
 public class FrmRegistrar extends javax.swing.JDialog {
     private Gestion t;

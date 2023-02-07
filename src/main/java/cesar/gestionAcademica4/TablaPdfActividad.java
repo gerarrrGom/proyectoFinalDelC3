@@ -14,13 +14,14 @@ import java.util.LinkedList;
 
 /**
  *
- * @author cesar
+ * @author Cesar Juventino Zepeda Barriga
+ * correo:cesar_zb12@hotmail.com
  */
 public class TablaPdfActividad {
 
     private PdfPTable tabla;
 
-    /*public PdfPTable tabla(Gestion n) {
+    public PdfPTable tabla(Gestion n) {
         PdfPTable tabla = new PdfPTable(3);
         PdfPCell celda1 = new PdfPCell(new Paragraph("DATOS DE LA ACTVIDAD", FontFactory.getFont(
                 "Arial", 14, Font.BOLD, BaseColor.GREEN)));
@@ -39,8 +40,6 @@ public class TablaPdfActividad {
         celda1 = new PdfPCell(new Paragraph("Periodo"));
         tabla.addCell(celda1);
 
-        
-
         celda1 = new PdfPCell(new Paragraph(n.getNombre()));
         tabla.addCell(celda1);
 
@@ -52,7 +51,7 @@ public class TablaPdfActividad {
 
       
         return tabla;
-    }*/
+    }
 
     public PdfPTable tabla(LinkedList<Gestion> lista) {
         PdfPTable tabla = new PdfPTable(3);

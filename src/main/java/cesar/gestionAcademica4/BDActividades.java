@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+//@author Cesar Juventino Zepeda Barriga
+ //* correo:cesar_zb12@hotmail.com
 package cesar.gestionAcademica4;
 
-//import cesar.gestionAcademica4.Gestion;
+
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 

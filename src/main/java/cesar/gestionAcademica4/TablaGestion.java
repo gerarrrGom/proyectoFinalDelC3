@@ -4,12 +4,13 @@
  */
 package cesar.gestionAcademica4;
 
-import javax.swing.event.EventListenerList;
+//import javax.swing.event.EventListenerList;
 import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author cesar
+ *@author Cesar Juventino Zepeda Barriga
+ * correo:cesar_zb12@hotmail.com
  */
 public class TablaGestion extends AbstractTableModel{
     private ListaGestion actividades;

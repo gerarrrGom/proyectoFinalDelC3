@@ -6,7 +6,8 @@ package cesar.gestionAcademica4;
 
 /**
  *
- * @author cesar
+ * @author Cesar Juventino Zepeda Barriga
+ * correo:cesar_zb12@hotmail.com
  */
 public class Gestion {
     private String nombre;

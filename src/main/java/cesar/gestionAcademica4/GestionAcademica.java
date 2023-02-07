@@ -4,19 +4,15 @@
  */
 package cesar.gestionAcademica4;
 
-//import java.util.Calendar;
-//import com.itextpdf.text.DocumentException;
-//import com.mycompany.pryfinalc3.pdf;
-//import java.io.IOException;
+
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
 import utilidades.ObjetosParaEditar;
 
 /**
  *
- * @author cesar
+ * @author Cesar Juventino Zepeda Barriga
+ * correo:cesar_zb12@hotmail.com
  */
 public class GestionAcademica extends javax.swing.JDialog {
     private TablaGestion t;

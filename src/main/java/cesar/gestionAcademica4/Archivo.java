@@ -17,7 +17,8 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author "el profe Ariel"
+ * @author Cesar Juventino Zepeda Barriga
+ * correo:cesar_zb12@hotmail.com
  */
 public class Archivo {
 

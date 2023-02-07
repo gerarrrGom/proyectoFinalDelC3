@@ -8,7 +8,8 @@ import java.util.LinkedList;
 
 /**
  *
- * @author cesar
+ * @author Cesar Juventino Zepeda Barriga
+ * correo:cesar_zb12@hotmail.com
  */
 public class ListaGestion {
     private LinkedList<Gestion> lista;
