@@ -198,6 +198,8 @@ public class FrmDocencia extends javax.swing.JInternalFrame {
         for (int i = 0; i < modelo.listaCursos().total(); i++) {
             bd.registrarCurso(modelo.listaCursos().obtener(i));
         }
+        FrmPdf frmPdf = new FrmPdf(null,true);
+        frmPdf.setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_btnGuardarCursoMouseClicked
