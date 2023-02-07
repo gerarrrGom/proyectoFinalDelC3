@@ -136,6 +136,11 @@ public class IndicadoresCuantitativos extends javax.swing.JDialog {
 
         jButton2.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButton2.setText("CrearPDF");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
         pack();
@@ -204,6 +209,11 @@ public class IndicadoresCuantitativos extends javax.swing.JDialog {
         int v=this.jTable1.getSelectedRow();
         I.eliminarIndicadores(v);
     }//GEN-LAST:event_jButtonEliminarMouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        frmIndicadores n=new frmIndicadores(null, true);
+        n.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments

@@ -67,6 +67,11 @@ public class frmPDFArticulos extends javax.swing.JDialog {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 30, -1, -1));
 
         jButton2.setText("Salir");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 86, -1, -1));
         jPanel1.add(txtPDF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 120, -1));
 
@@ -89,6 +94,10 @@ public class frmPDFArticulos extends javax.swing.JDialog {
             e.getCause();
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+           this.dispose();
+    }//GEN-LAST:event_jButton2MouseClicked
     public void abrirPdf(String nombre){
         try {
             File f=new File("C:\\Users\\Saul\\Documents\\Nueva carpeta\\");

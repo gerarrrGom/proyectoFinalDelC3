@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package SaulJM27;
-
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Font;
@@ -20,22 +19,21 @@ import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author Saul
  */
-public class frmPDF extends javax.swing.JDialog {
-         private Proyecto p;
-        BDProyectsos bd;
+public class frmIndicadores extends javax.swing.JDialog {
+        private Indicadores c;
+        BDIndicadores bd;
     /**
-     * Creates new form frmPDF
+     * Creates new form frmIndicadores
      */
-    public frmPDF(java.awt.Frame parent, boolean modal) {
+    public frmIndicadores(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-         this.setLocationRelativeTo(this);
-        bd=new BDProyectsos();
+        this.setLocationRelativeTo(this);
+        bd=new BDIndicadores();
     }
 
     /**
@@ -48,10 +46,10 @@ public class frmPDF extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtPDF2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        txtPdf = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -59,14 +57,19 @@ public class frmPDF extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
+        jLabel1.setText("Crear PDF");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 33, -1, -1));
+        jPanel1.add(txtPDF2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 120, -1));
+
         jButton1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
-        jButton1.setText("CrearPDF");
+        jButton1.setText("Crear PDF");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButton2.setText("Salir");
@@ -75,41 +78,27 @@ public class frmPDF extends javax.swing.JDialog {
                 jButton2MouseClicked(evt);
             }
         });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
-        jPanel1.add(txtPdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 46, 130, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
-        jLabel1.setText("Nombre PDF");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 49, 300, 110));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 340, 120));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
           exportar();
         try {
             int eleccion = JOptionPane.showConfirmDialog(this, "¿Desea abrir el pdf creado?");
             if (eleccion == 0) {
-                abrirPdf("Proyectos");
+                abrirPdf("Indicadores");
             }
         } catch (HeadlessException e) {
             e.getCause();
-    }           
+    }     
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-    this.dispose();        // TODO add your handling code here:
+           this.dispose();
     }//GEN-LAST:event_jButton2MouseClicked
 public void abrirPdf(String nombre){
         try {
@@ -125,7 +114,7 @@ public void abrirPdf(String nombre){
     private void exportar() {
         FileOutputStream archivo = null;
         try {
-            archivo = new FileOutputStream("C:\\Users\\Saul\\Documents\\Nueva carpeta\\" +this.txtPdf.getText()+ ".pdf");
+            archivo = new FileOutputStream("C:\\Users\\Saul\\Documents\\Nueva carpeta\\" +this.txtPDF2.getText()+ ".pdf");
             Document documento = new Document();
 
             PdfWriter.getInstance(documento, archivo);
@@ -137,9 +126,9 @@ public void abrirPdf(String nombre){
             bf = BaseFont.createFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, BaseFont.EMBEDDED);
 
             Font f = new Font(bf, 12, 2, BaseColor.BLUE);
-            TablaProyecto act = new TablaProyecto();
+            TablaIndicadores act = new TablaIndicadores();
 
-            LinkedList<Proyecto> lista = bd.obtener();
+            LinkedList<Indicadores> lista = bd.obtener();
             PdfPTable tab = act.tabla(lista);
             documento.add(tab);
             documento.close();
@@ -171,20 +160,20 @@ public void abrirPdf(String nombre){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmPDF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmIndicadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmPDF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmIndicadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmPDF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmIndicadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmPDF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmIndicadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                frmPDF dialog = new frmPDF(new javax.swing.JFrame(), true);
+                frmIndicadores dialog = new frmIndicadores(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -201,6 +190,6 @@ public void abrirPdf(String nombre){
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtPdf;
+    private javax.swing.JTextField txtPDF2;
     // End of variables declaration//GEN-END:variables
 }
