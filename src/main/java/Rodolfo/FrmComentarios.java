@@ -20,8 +20,10 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
         initComponents(); 
         modeloComentarios = new ModeloComentarios();
         tblComentarios.setModel(modeloComentarios);
-        for (int i = 0; i <bd.obtener().size(); i++) {
-            modeloComentarios.agregarComentario(bd.obtener().get(i));
+        if(bd.obtener()!=null){
+            for (int i = 0; i <bd.obtener().size(); i++) {
+                modeloComentarios.agregarComentario(bd.obtener().get(i));
+            }
         }
     }
 
@@ -215,7 +217,7 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
         modeloComentarios.eliminarComentario(numEdi);
         bd.borrar();
         for (int i = 0; i <modeloComentarios.getRowCount(); i++) {
-            bd.registrarComentario(new Comentario((String) modeloComentarios.getValueAt(i, 1)));
+            bd.registrarComentario(new Comentario((String) modeloComentarios.getValueAt(i, 0)));
         }
         String cuerpo=txtAddComentario.getText();
         Comentario a=new Comentario(cuerpo);
@@ -226,7 +228,7 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
         numEdi=tblComentarios.getSelectedRow();
-        txtAddComentario.setText((String) modeloComentarios.getValueAt(numEdi, 1));
+        txtAddComentario.setText((String) modeloComentarios.getValueAt(numEdi, 0));
     }//GEN-LAST:event_btnEditarMouseClicked
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -238,7 +240,7 @@ public class FrmComentarios extends javax.swing.JInternalFrame {
         modeloComentarios.eliminarComentario(tblComentarios.getSelectedRow());
         bd.borrar();
         for (int i = 0; i <modeloComentarios.getRowCount(); i++) {
-            bd.registrarComentario(new Comentario((String) modeloComentarios.getValueAt(i, 1)));
+            bd.registrarComentario(new Comentario((String) modeloComentarios.getValueAt(i, 0)));
         }
 
     }//GEN-LAST:event_btnEliminarMouseClicked

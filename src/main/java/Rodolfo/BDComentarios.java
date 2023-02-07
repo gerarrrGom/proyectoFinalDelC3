@@ -18,20 +18,23 @@ public class BDComentarios {
         Archivo archivo=new Archivo("comentarios.txt");
         LinkedList<String> lineas=archivo.obtenerTextoDelArchivo();
         if(lineas!=null){
-            comentarios=new LinkedList();
-            for(int i=0;i<lineas.size();i++){
-                String linea=lineas.get(i);
-                StringTokenizer tokens=new StringTokenizer(linea,";");
-                String cuerpo=tokens.nextToken();             
-                comentarios.add(new Comentario(cuerpo));
-            }
+            try{
+                comentarios=new LinkedList();
+                for(int i=0;i<lineas.size();i++){
+                    String linea=lineas.get(i);
+                    StringTokenizer tokens=new StringTokenizer(linea,";");
+                    String cuerpo=tokens.nextToken();             
+                    comentarios.add(new Comentario(cuerpo));
+                }
+            }catch(Exception ex){
+                }
         }
         return comentarios;
     }
     
     public boolean registrarComentario(Comentario p){
         Archivo archivo=new Archivo("comentarios.txt");
-        return archivo.registrar(p.getCuerpo());
+        return archivo.registrar(p.getCuerpo()+";");
     }
     public void borrar(){
         Archivo archivo = new Archivo("comentarios.txt");

@@ -215,23 +215,23 @@ public class FrmDifusion extends javax.swing.JInternalFrame {
         modeloDifusiones.eliminarDifusion(tblDifusiones.getSelectedRow());
         bd.borrar();
         for (int i = 0; i <modeloDifusiones.getRowCount(); i++) {
-            bd.registrarDifusion(new Difusion((String) modeloDifusiones.getValueAt(i, 1),(String)modeloDifusiones.getValueAt(i, 2),(String)modeloDifusiones.getValueAt(i, 3)));
+            bd.registrarDifusion(new Difusion((String) modeloDifusiones.getValueAt(i, 0),(String)modeloDifusiones.getValueAt(i, 1),(String)modeloDifusiones.getValueAt(i, 2)));
         }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
         // TODO add your handling code here:
         numEdi=tblDifusiones.getSelectedRow();
-        txtNombre.setText((String)modeloDifusiones.getValueAt(numEdi, 1));
-        fchInicio.setDateFormatString((String)modeloDifusiones.getValueAt(numEdi, 2));
-        fchFinal.setDateFormatString((String)modeloDifusiones.getValueAt(numEdi, 3));
+        txtNombre.setText((String)modeloDifusiones.getValueAt(numEdi, 0));
+        fchInicio.setDateFormatString((String)modeloDifusiones.getValueAt(numEdi, 1));
+        fchFinal.setDateFormatString((String)modeloDifusiones.getValueAt(numEdi, 2));
     }//GEN-LAST:event_btnEditarMouseClicked
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
         modeloDifusiones.eliminarDifusion(tblDifusiones.getSelectedRow());
         bd.borrar();
         for (int i = 0; i <modeloDifusiones.getRowCount(); i++) {
-            bd.registrarDifusion(new Difusion((String) modeloDifusiones.getValueAt(i, 1),(String)modeloDifusiones.getValueAt(i, 2),(String)modeloDifusiones.getValueAt(i, 3)));
+            bd.registrarDifusion(new Difusion((String) modeloDifusiones.getValueAt(i, 0),(String)modeloDifusiones.getValueAt(i, 1),(String)modeloDifusiones.getValueAt(i, 2)));
         }
         String nombre=txtNombre.getText();
         String fechaInicio=formato.format(fchInicio.getDate());

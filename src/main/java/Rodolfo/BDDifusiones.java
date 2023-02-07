@@ -18,14 +18,18 @@ public class BDDifusiones {
         Archivo archivo=new Archivo("difusiones.txt");
         LinkedList<String> lineas=archivo.obtenerTextoDelArchivo();
         if(lineas!=null){
-            difusiones=new LinkedList();
-            for(int i=0;i<lineas.size();i++){
-                String linea=lineas.get(i);
-                StringTokenizer tokens=new StringTokenizer(linea,";");
-                String nombre=tokens.nextToken();
-                String fechaI=tokens.nextToken();
-                String fechaF=tokens.nextToken();            
-                difusiones.add(new Difusion(nombre, fechaI, fechaF));
+            try{
+                difusiones=new LinkedList();
+                for(int i=0;i<lineas.size();i++){
+                    String linea=lineas.get(i);
+                    StringTokenizer tokens=new StringTokenizer(linea,";");
+                    String nombre=tokens.nextToken();
+                    String fechaI=tokens.nextToken();
+                    String fechaF=tokens.nextToken();            
+                    difusiones.add(new Difusion(nombre, fechaI, fechaF));
+                }
+            }catch(Exception ex){
+                
             }
         }
         return difusiones;
