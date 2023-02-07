@@ -4,12 +4,14 @@
  */
 package GestionDeProfesores;
 
+import java.util.Calendar;
+
 /**
  *
  * @author Lenovo-80T6
  */
 public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
-
+    private Ciclo c;
     /**
      * Creates new form FrmCiclosYPeriodosEscolares
      */
@@ -31,18 +33,18 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateInicio = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jDateFin = new com.toedter.calendar.JDateChooser();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        spnPer = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        jdatePerin = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jDateChooser4 = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
+        jdateperfin = new com.toedter.calendar.JDateChooser();
+        btnCargar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -70,8 +72,8 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -81,11 +83,11 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 34, Short.MAX_VALUE))
         );
 
@@ -93,7 +95,7 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
 
         jLabel2.setText("Periodo Escolar");
 
-        jSpinner1.setModel(new javax.swing.SpinnerListModel(new String[] {"A", "B", "Z"}));
+        spnPer.setModel(new javax.swing.SpinnerListModel(new String[] {"A", "B", "Z"}));
 
         jLabel5.setText("Periodo Tipo");
 
@@ -117,9 +119,9 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jdatePerin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdateperfin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(88, 88, 88))
         );
         jPanel3Layout.setVerticalGroup(
@@ -129,24 +131,29 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(spnPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(28, 28, 28)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdatePerin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
-                    .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jdateperfin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Cargar Datos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCargar.setText("Cargar Datos");
+        btnCargar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCargarMouseClicked(evt);
+            }
+        });
+        btnCargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCargarActionPerformed(evt);
             }
         });
 
@@ -167,11 +174,12 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnCargar))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)
-                        .addGap(80, 80, 80)
+                        .addGap(105, 105, 105)
                         .addComponent(jButton3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
@@ -185,13 +193,12 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2))
-                    .addComponent(jButton3))
-                .addContainerGap(47, Short.MAX_VALUE))
+                    .addComponent(btnCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton2))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -214,13 +221,66 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCargarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnCargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarMouseClicked
+            String periodo=this.spnPer.getValue().toString();
+            String dia = Integer.toString(jDateInicio.getCalendar().get(Calendar.DAY_OF_MONTH));
+            String mes = Integer.toString(jDateInicio.getCalendar().get(Calendar.MONTH) + 1);
+            String year = Integer.toString(jDateInicio.getCalendar().get(Calendar.YEAR));
+            String fechaInicio = (dia + "/" + mes + "/" + year);
+            String dia1 = Integer.toString(jDateFin.getCalendar().get(Calendar.DAY_OF_MONTH));
+            String mes1 = Integer.toString(jDateFin.getCalendar().get(Calendar.MONTH) + 1);
+            String year1 = Integer.toString(jDateFin.getCalendar().get(Calendar.YEAR));
+            String fechaTermino = (dia1 + "/" + mes1 + "/" + year1);
+            String ciclo = "Inicio:" + fechaInicio + "     " + "Fin:" + fechaTermino;
+            
+            if(this.spnPer.getValue().toString().compareToIgnoreCase("A")==0){
+            String diaper1 = Integer.toString(jdatePerin.getCalendar().get(Calendar.DAY_OF_MONTH));
+            String mesper1 = Integer.toString(jdatePerin.getCalendar().get(Calendar.MONTH) + 1);
+            String yearper1 = Integer.toString(jdatePerin.getCalendar().get(Calendar.YEAR));
+            String inicioperiodoA = (diaper1 + "/" + mesper1 + "/" + yearper1);
+            String diafinper = Integer.toString(jdateperfin.getCalendar().get(Calendar.DAY_OF_MONTH));
+            String mesfinper = Integer.toString(jdateperfin.getCalendar().get(Calendar.MONTH) + 1);
+            String yearfinper = Integer.toString(jdateperfin.getCalendar().get(Calendar.YEAR));
+            String finperiodoA = (diafinper + "/" + mesfinper + "/" + yearfinper);
+            String periodoA = "Inicio:" + inicioperiodoA + "     " + "Fin:" + finperiodoA;
+             c=(new Ciclo(fechaInicio, fechaTermino, periodoA, periodoB, periodoZ));
+            }
+            else if(this.spnPer.getValue().toString().compareToIgnoreCase("B")==0){
+            String diaper2 = Integer.toString(jdatePerin.getCalendar().get(Calendar.DAY_OF_MONTH));
+            String mesper2 = Integer.toString(jdatePerin.getCalendar().get(Calendar.MONTH) + 1);
+            String yearper2 = Integer.toString(jdatePerin.getCalendar().get(Calendar.YEAR));
+            String inicioperiodoB = (diaper2 + "/" + mesper2 + "/" + yearper2);
+            String diafinper2 = Integer.toString(jdateperfin.getCalendar().get(Calendar.DAY_OF_MONTH));
+            String mesfinper2 = Integer.toString(jdateperfin.getCalendar().get(Calendar.MONTH) + 1);
+            String yearfinper2 = Integer.toString(jdateperfin.getCalendar().get(Calendar.YEAR));
+            String finperiodoB = (diafinper2 + "/" + mesfinper2 + "/" + yearfinper2);
+            
+            String periodoB = "Inicio:" + inicioperiodoB + "     " + "Fin:" + finperiodoB;
+             c=(new Ciclo(fechaInicio, fechaTermino, periodoA, periodoB, periodoZ));
+            }
+            else /*if(this.spnPer.getValue().toString().compareToIgnoreCase("C")==0)*/{
+            String diaper3 = Integer.toString(jdatePerin.getCalendar().get(Calendar.DAY_OF_MONTH));
+            String mesper3 = Integer.toString(jdatePerin.getCalendar().get(Calendar.MONTH) + 1);
+            String yearper3 = Integer.toString(jdatePerin.getCalendar().get(Calendar.YEAR));
+            String inicioperiodoZ = (diaper3 + "/" + mesper3 + "/" + yearper3);
+            String diafinper3 = Integer.toString(jdateperfin.getCalendar().get(Calendar.DAY_OF_MONTH));
+            String mesfinper3 = Integer.toString(jdateperfin.getCalendar().get(Calendar.MONTH) + 1);
+            String yearfinper3 = Integer.toString(jdateperfin.getCalendar().get(Calendar.YEAR));
+            String finperiodoZ = (diafinper3 + "/" + mesfinper3 + "/" + yearfinper3);
+            String periodoZ = "Inicio:" + inicioperiodoZ + "     " + "Fin:" + finperiodoZ;
+            c=(new Ciclo(fechaInicio, fechaTermino, periodoA, periodoB, periodoZ));
+            }
+            
+          c=(new Ciclo(fechaInicio, fechaTermino, periodoA, periodoB, periodoZ));
+    }//GEN-LAST:event_btnCargarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -265,13 +325,11 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCargar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
-    private com.toedter.calendar.JDateChooser jDateChooser4;
+    private com.toedter.calendar.JDateChooser jDateFin;
+    private com.toedter.calendar.JDateChooser jDateInicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -282,6 +340,12 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JSpinner jSpinner1;
+    private com.toedter.calendar.JDateChooser jdatePerin;
+    private com.toedter.calendar.JDateChooser jdateperfin;
+    private javax.swing.JSpinner spnPer;
     // End of variables declaration//GEN-END:variables
+
+public Ciclo regresarCicloYper(){
+ return c; 
+}
 }

@@ -9,7 +9,7 @@ package GestionDeProfesores;
  * @author Lenovo-80T6
  */
 public class FrmCiclos extends javax.swing.JDialog {
-
+    private ModeloCiclosYPeriodos m;
     /**
      * Creates new form FrmCiclos
      */
@@ -65,6 +65,11 @@ public class FrmCiclos extends javax.swing.JDialog {
         jButton1.setText("Editar");
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseClicked(evt);
+            }
+        });
 
         btnPdf.setText("Crear PDF");
 
@@ -73,12 +78,9 @@ public class FrmCiclos extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addGap(34, 34, 34)
                         .addComponent(btnAgregar)
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminar)
@@ -88,24 +90,27 @@ public class FrmCiclos extends javax.swing.JDialog {
                         .addComponent(BtnGuardar)
                         .addGap(18, 18, 18)
                         .addComponent(btnPdf)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSalir)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                        .addGap(27, 27, 27)
+                        .addComponent(btnSalir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnGuardar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnSalir)
-                    .addComponent(jButton1)
                     .addComponent(btnAgregar)
-                    .addComponent(btnPdf))
-                .addContainerGap(178, Short.MAX_VALUE))
+                    .addComponent(btnEliminar)
+                    .addComponent(jButton1)
+                    .addComponent(BtnGuardar)
+                    .addComponent(btnPdf)
+                    .addComponent(btnSalir))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -114,6 +119,15 @@ public class FrmCiclos extends javax.swing.JDialog {
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
        this.dispose();
     }//GEN-LAST:event_btnSalirMouseClicked
+
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+        FrmCiclosYPeriodosEscolares cyp=new FrmCiclosYPeriodosEscolares(null,true);  
+        cyp.setVisible(true);
+        Ciclo c=cyp.regresarCicloYper();
+        if(c!=null){
+            m.agregarCiclosYPeriodos(c);
+        }
+    }//GEN-LAST:event_btnAgregarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -167,4 +181,6 @@ public class FrmCiclos extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+
 }

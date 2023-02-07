@@ -15,11 +15,9 @@ public class Ciclo {
         this.periodoA = periodoA;
         this.periodoB = periodoB;
         this.periodoZ = periodoZ;
+     
     }
-
-    
-    
-
+     
     public String getFechaInicio() {
         return fechaInicio;
     }
