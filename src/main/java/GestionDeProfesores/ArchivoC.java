@@ -6,7 +6,7 @@ package GestionDeProfesores;
 
 /**
  *
- * @author Lenovo-80T6
+ * @author Gerardo
  */
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

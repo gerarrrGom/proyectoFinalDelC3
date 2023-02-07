@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 /**
  *
- * @author Lenovo-80T6
+ * @author Gerardo
  */
 public class ListaProfesores {
     
