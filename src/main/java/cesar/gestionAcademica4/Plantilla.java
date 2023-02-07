@@ -54,7 +54,7 @@ public class Plantilla {
     
     public void crearPlantilla(){
         try {
-            archivo = new FileOutputStream("C:\\Users\\52281\\Downloand" + nombre + ".pdf");
+            archivo = new FileOutputStream("\\\\CESARJZB\\Users\\cesar\\Documents\\PDFSS" + nombre + ".pdf");
             PdfWriter w=PdfWriter.getInstance(documento,archivo);
             Encabezado e=new Encabezado();
             documento.open();
@@ -67,6 +67,7 @@ public class Plantilla {
             /*comentar ESTO
             documento.newPage();
             e.agregarEncabezado(w);*/
+            //documento.newPage();
             BaseFont bf;
             
             bf = BaseFont.createFont(BaseFont.TIMES_ROMAN,BaseFont.CP1250,BaseFont.EMBEDDED);
@@ -82,7 +83,7 @@ public class Plantilla {
  
             /*TablaPdfActividad t=new TablaPdfActividades();
             PdfPTable tab=tab(t);
-            documento.add(tab);*/
+            documento.add(tab);
             
             /*documento.newPage();
             e.agregarEncabezado(w);

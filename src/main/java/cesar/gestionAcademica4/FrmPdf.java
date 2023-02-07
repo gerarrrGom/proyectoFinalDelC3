@@ -106,7 +106,7 @@ public class FrmPdf extends javax.swing.JDialog {
               
                 /*FileOutputStream archivo= null;
                 try {
-                archivo = new FileOutputStream("C:\\Users\\cesar\\OneDrive\\Documents\\PDFS" + this.txtNombre.getText()+ ".pdf");
+                archivo = new FileOutputStream("\\\\CESARJZB\\Users\\cesar\\Documents\\PDFSS" + this.txtNombre.getText()+ ".pdf");
                 Document documento = new Document();
                 
                 PdfWriter.getInstance(documento,archivo);
@@ -142,7 +142,7 @@ public class FrmPdf extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCrearMouseClicked
 public void abrirPdf(String nombre){
         try {
-            File f=new File("C:\\Users\\52281\\Downloand" + nombre + ".pdf");
+            File f=new File("\\\\CESARJZB\\Users\\cesar\\Documents\\PDFSS" + nombre + ".pdf");
             Desktop.getDesktop().open(f);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null,ex,"Atencion",2);

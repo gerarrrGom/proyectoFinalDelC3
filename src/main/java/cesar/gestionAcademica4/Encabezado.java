@@ -64,11 +64,11 @@ public class Encabezado extends PdfPageEventHelper {
             header.getDefaultCell().setBorder(Rectangle.BOTTOM);
             header.getDefaultCell().setBorder(Rectangle.NO_BORDER);
             //add image
-            Image logo = Image.getInstance("C:\\Users\\cesar\\Descargas\\LogoUnpa.jpg\\");
+            Image logo = Image.getInstance("C:\\Users\\cesar\\OneDrive\\Pictures\\LogoUnpa.jpg");
             logo.setWidthPercentage(10);
             header.addCell(logo);
             header.getDefaultCell().setHorizontalAlignment(Element.ALIGN_RIGHT);
-            // add text
+             //add text
             PdfPCell text = new PdfPCell();
             text.setPaddingBottom(15);
             text.setPaddingLeft(50);
@@ -94,9 +94,9 @@ public class Encabezado extends PdfPageEventHelper {
     public void agregarHeader(Document d) throws DocumentException {
         Image imagen;
         try {
-            imagen = Image.getInstance("C:\\Users\\cesar\\Descargas\\LogoUnpa.jpg\\");
+            imagen = Image.getInstance("C:\\Users\\cesar\\OneDrive\\Pictures\\LogoUnpa.jpg");
             
-            System.out.println("hola");
+            //System.out.println("hola");
             imagen.scalePercent(75f);//esto es opcional para definir el tamaño de la imagen.
             imagen.setAlignment(Element.ALIGN_LEFT);
             d.add(imagen);
