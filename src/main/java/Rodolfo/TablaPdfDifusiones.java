@@ -41,13 +41,13 @@ public class TablaPdfDifusiones {
         celda1 = new PdfPCell(new Paragraph("FECHA FINAL"));
         tabla.addCell(celda1);
 
-        celda1 = new PdfPCell(new Paragraph(n.getNombre()));
+        celda1 = new PdfPCell(new Paragraph(n.getNombre()+""));
         tabla.addCell(celda1);
 
-        celda1 = new PdfPCell(new Paragraph(n.getFechaI()));
+        celda1 = new PdfPCell(new Paragraph(n.getFechaI()+""));
         tabla.addCell(celda1);
 
-        celda1 = new PdfPCell(new Paragraph(n.getFechaF()));
+        celda1 = new PdfPCell(new Paragraph(n.getFechaF()+""));
         tabla.addCell(celda1);
 
       
@@ -77,13 +77,13 @@ public class TablaPdfDifusiones {
 
         for (int i = 0; i < lista.size(); i++) {
             Difusion p=lista.get(i);
-            celda1 = new PdfPCell(new Paragraph(p.getNombre()));
+            celda1 = new PdfPCell(new Paragraph(p.getNombre()+""));
             tabla.addCell(celda1);
 
-            celda1 = new PdfPCell(new Paragraph(p.getFechaI()));
+            celda1 = new PdfPCell(new Paragraph(p.getFechaI()+""));
             tabla.addCell(celda1);
 
-            celda1 = new PdfPCell(new Paragraph(p.getFechaF()));
+            celda1 = new PdfPCell(new Paragraph(p.getFechaF()+""));
             tabla.addCell(celda1);
         }
 
