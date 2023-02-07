@@ -239,7 +239,7 @@ public class NewFrmTutorias extends javax.swing.JInternalFrame {
         modeloTutorias.eliminarTutoria(tblTutorias.getSelectedRow());
         bd.borrar();
         for (int i = 0; i <modeloTutorias.getRowCount(); i++) {
-            bd.registrarTutoria(new Tutoria((String) modeloTutorias.getValueAt(i, 1),(String)modeloTutorias.getValueAt(i, 2),(String)modeloTutorias.getValueAt(i, 3),(String)modeloTutorias.getValueAt(i, 3)));
+            bd.registrarTutoria(new Tutoria((String) modeloTutorias.getValueAt(i, 0),(String)modeloTutorias.getValueAt(i, 1),(String)modeloTutorias.getValueAt(i, 2),(String)modeloTutorias.getValueAt(i, 3)));
         }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
@@ -247,7 +247,7 @@ public class NewFrmTutorias extends javax.swing.JInternalFrame {
         modeloTutorias.eliminarTutoria(tblTutorias.getSelectedRow());
         bd.borrar();
         for (int i = 0; i <modeloTutorias.getRowCount(); i++) {
-            bd.registrarTutoria(new Tutoria((String) modeloTutorias.getValueAt(i, 1),(String)modeloTutorias.getValueAt(i, 2),(String)modeloTutorias.getValueAt(i, 3),(String)modeloTutorias.getValueAt(i, 3)));
+            bd.registrarTutoria(new Tutoria((String) modeloTutorias.getValueAt(i, 0),(String)modeloTutorias.getValueAt(i, 1),(String)modeloTutorias.getValueAt(i, 2),(String)modeloTutorias.getValueAt(i, 3)));
         }
         String nombre=txtNombre.getText();
         String carrera=(String)cboCarrera.getSelectedItem();
@@ -262,10 +262,10 @@ public class NewFrmTutorias extends javax.swing.JInternalFrame {
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
         numEdi=tblTutorias.getSelectedRow();
-        txtNombre.setText((String)modeloTutorias.getValueAt(numEdi, 1));
-        cboCarrera.setSelectedItem(modeloTutorias.getValueAt(numEdi, 2));
-        cboSemestre.setSelectedItem(modeloTutorias.getValueAt(numEdi, 3));
-        fchRegistro.setDateFormatString((String)modeloTutorias.getValueAt(numEdi, 4));
+        txtNombre.setText((String)modeloTutorias.getValueAt(numEdi, 0));
+        cboCarrera.setSelectedItem(modeloTutorias.getValueAt(numEdi, 1));
+        cboSemestre.setSelectedItem(modeloTutorias.getValueAt(numEdi, 2));
+        fchRegistro.setDateFormatString((String)modeloTutorias.getValueAt(numEdi, 3));
     }//GEN-LAST:event_btnEditarMouseClicked
 
 

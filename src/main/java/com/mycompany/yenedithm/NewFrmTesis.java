@@ -269,7 +269,7 @@ public class NewFrmTesis extends javax.swing.JInternalFrame {
         modeloTesis.eliminarTesis(tblTesis.getSelectedRow());
         bd.borrar();
         for (int i = 0; i <modeloTesis.getRowCount(); i++) {
-            bd.registrarTesis(new Tesis((String) modeloTesis.getValueAt(i, 1),(String)modeloTesis.getValueAt(i, 2),(String)modeloTesis.getValueAt(i, 3),(String)modeloTesis.getValueAt(i, 4),(String)modeloTesis.getValueAt(i, 4),(String)modeloTesis.getValueAt(i, 4)));
+            bd.registrarTesis(new Tesis((String) modeloTesis.getValueAt(i, 0),(String)modeloTesis.getValueAt(i, 1),(String)modeloTesis.getValueAt(i, 2),(String)modeloTesis.getValueAt(i, 3),(String)modeloTesis.getValueAt(i, 4),(String)modeloTesis.getValueAt(i, 5)));
         }
         String titulo=txtTitulo.getText();
         String nombre=txtNombre.getText();
@@ -308,18 +308,18 @@ public class NewFrmTesis extends javax.swing.JInternalFrame {
         modeloTesis.eliminarTesis(tblTesis.getSelectedRow());
         bd.borrar();
         for (int i = 0; i <modeloTesis.getRowCount(); i++) {
-            bd.registrarTesis(new Tesis((String) modeloTesis.getValueAt(i, 1),(String)modeloTesis.getValueAt(i, 2),(String)modeloTesis.getValueAt(i, 3),(String)modeloTesis.getValueAt(i, 4),(String)modeloTesis.getValueAt(i, 4),(String)modeloTesis.getValueAt(i, 4)));
+           bd.registrarTesis(new Tesis((String) modeloTesis.getValueAt(i, 0),(String)modeloTesis.getValueAt(i, 1),(String)modeloTesis.getValueAt(i, 2),(String)modeloTesis.getValueAt(i, 3),(String)modeloTesis.getValueAt(i, 4),(String)modeloTesis.getValueAt(i, 5)));
         }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
         numEdi=tblTesis.getSelectedRow();
-        txtTitulo.setText((String)modeloTesis.getValueAt(numEdi, 1));
-        txtNombre.setText((String)modeloTesis.getValueAt(numEdi, 2));
-        cboGrado.setSelectedItem((String)modeloTesis.getValueAt(numEdi, 3));
-        txtPorcentaje.setText((String)modeloTesis.getValueAt(numEdi, 4));
-        fchRegistro.setDateFormatString((String)modeloTesis.getValueAt(numEdi, 5));
-        fchTP.setDateFormatString((String)modeloTesis.getValueAt(numEdi, 6));
+        txtTitulo.setText((String)modeloTesis.getValueAt(numEdi, 0));
+        txtNombre.setText((String)modeloTesis.getValueAt(numEdi, 1));
+        cboGrado.setSelectedItem((String)modeloTesis.getValueAt(numEdi, 2));
+        txtPorcentaje.setText((String)modeloTesis.getValueAt(numEdi, 3));
+        fchRegistro.setDateFormatString((String)modeloTesis.getValueAt(numEdi, 4));
+        fchTP.setDateFormatString((String)modeloTesis.getValueAt(numEdi, 5));
     }//GEN-LAST:event_btnEditarMouseClicked
 
 

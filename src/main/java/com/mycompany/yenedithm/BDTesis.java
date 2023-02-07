@@ -14,17 +14,21 @@ public class BDTesis {
         Archivo archivo=new Archivo("tesis.txt");
         LinkedList<String> lineas=archivo.obtenerTextoDelArchivo();
         if(lineas!=null){
-            tesis=new LinkedList();
-            for(int i=0;i<lineas.size();i++){
-                String linea=lineas.get(i);
-                StringTokenizer tokens=new StringTokenizer(linea,";");
-                String titulo=tokens.nextToken();
-                String nombre=tokens.nextToken();
-                String gradoObtener=tokens.nextToken();            
-                String porcentaje=tokens.nextToken();            
-                String fechaR=tokens.nextToken();            
-                String fechaTP=tokens.nextToken();            
-                tesis.add(new Tesis(titulo, nombre, gradoObtener, porcentaje, fechaR, fechaTP));
+            try{
+                tesis=new LinkedList();
+                for(int i=0;i<lineas.size();i++){
+                    String linea=lineas.get(i);
+                    StringTokenizer tokens=new StringTokenizer(linea,";");
+                    String titulo=tokens.nextToken();
+                    String nombre=tokens.nextToken();
+                    String gradoObtener=tokens.nextToken();            
+                    String porcentaje=tokens.nextToken();            
+                    String fechaR=tokens.nextToken();            
+                    String fechaTP=tokens.nextToken();            
+                    tesis.add(new Tesis(titulo, nombre, gradoObtener, porcentaje, fechaR, fechaTP));
+                }
+            }catch(Exception ex){
+                
             }
         }
         return tesis;

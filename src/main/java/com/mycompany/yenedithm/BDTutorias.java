@@ -14,6 +14,7 @@ public class BDTutorias {
         Archivo archivo=new Archivo("tutorias.txt");
         LinkedList<String> lineas=archivo.obtenerTextoDelArchivo();
         if(lineas!=null){
+            try{
             tutorias=new LinkedList();
             for(int i=0;i<lineas.size();i++){
                 String linea=lineas.get(i);
@@ -23,6 +24,9 @@ public class BDTutorias {
                 String semestre=tokens.nextToken();
                 String fechaR=tokens.nextToken();
                 tutorias.add(new Tutoria(nombre, carrera, semestre, fechaR));
+            }
+            }catch(Exception ex){
+                
             }
         }
         return tutorias;
