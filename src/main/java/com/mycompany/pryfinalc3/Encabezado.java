@@ -4,6 +4,7 @@
  */
 package com.mycompany.pryfinalc3;
 
+import GestionDeProfesores.BDCiclosYPeriodos;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -16,7 +17,6 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.BaseFont;
-import com.itextpdf.text.pdf.ColumnText;
 import com.itextpdf.text.pdf.PdfName;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -73,9 +73,16 @@ public class Encabezado extends PdfPageEventHelper {
             
             bf = BaseFont.createFont(BaseFont.HELVETICA_BOLD,BaseFont.CP1250,BaseFont.EMBEDDED);
             Font f=new Font(bf,12,2,BaseColor.BLACK);
-            text.addElement(new Phrase("INFORME ANUAL DE ACTIVIDADES",f));
-
+            CicloEscolarActual c=new CicloEscolarActual();
+            String ciclo=c.getCicloEscolarActual();
+            
+            /*BDCiclosYPeriodos ciclo=new BDCiclosYPeriodos();
+            String inicio=ciclo.obtener().get(0).getFechaInicio();
+            String fin=ciclo.obtener().get(0).getFechaTermino();
+            String actual=inicio+ "a " + fin;*/
+            text.addElement(new Phrase("  INFORME ANUAL DE ACTIVIDADES  " + "\n\n"+ ciclo,f));
             header.addCell(text);
+            
             // write content
             header.writeSelectedRows(0, -1, 34, 803, writer.getDirectContent());
         } catch (DocumentException de) {
