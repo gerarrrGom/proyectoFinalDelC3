@@ -5,20 +5,12 @@
 package asignaturas;
 
 import java.awt.Color;
-
+import utilidades.ObjetosParaEditar;
 /**
  *
  * @author Reyna Ibañez Tome
  */
 public class FrmAsignaturas extends javax.swing.JInternalFrame {
-
-    private ModeloComputacion modeloCompu;
-    private ModeloMatematicas modeloMate;
-    private ModeloAcuicultura modeloAcui;
-    private ModeloAgricola modeloAgri;
-    private ModeloDiseño modeloDise;
-    private ModeloZootecnia modeloZoo;
-    private ModeloMecatronica modeloMeca;
     private BDCursos bd;
 
     /**
@@ -26,34 +18,9 @@ public class FrmAsignaturas extends javax.swing.JInternalFrame {
      */
     public FrmAsignaturas() {
         initComponents();
-        bd = new BDCursos();
-        modeloCompu = new ModeloComputacion();
-        modeloMate = new ModeloMatematicas();
-        modeloAcui = new ModeloAcuicultura();
-        modeloAgri = new ModeloAgricola();
-        modeloDise = new ModeloDiseño();
-        modeloZoo = new ModeloZootecnia();
-        modeloMeca = new ModeloMecatronica();
-
-        this.tblComputacion.setModel(modeloCompu);
-        this.tblAcuicultura.setModel(modeloAcui);
-        this.tblAgricola.setModel(modeloAgri);
-        this.tblDiseño.setModel(modeloDise);
-        this.tblMatematicas.setModel(modeloMate);
-        this.tblMecatronica.setModel(modeloMeca);
-        this.tblZootecnia.setModel(modeloZoo);
-
-        this.tblComputacion.setEnabled(false);
-        this.tblAcuicultura.setEnabled(false);
-        this.tblAgricola.setEnabled(false);
-        this.tblDiseño.setEnabled(false);
-        this.tblMatematicas.setEnabled(false);
-        this.tblMecatronica.setEnabled(false);
-        this.tblZootecnia.setEnabled(false);
-
-
-        //modeloAcui.agregarCurso(new Curso(new Carrera("Ing.Computación"), new Asignatura("hola"), 2));
-
+        
+        
+       
     }
 
     /**
@@ -66,212 +33,96 @@ public class FrmAsignaturas extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnComputacion = new javax.swing.JButton();
-        btnAgricola = new javax.swing.JButton();
-        btnZootecnia = new javax.swing.JButton();
-        btnMecatronica = new javax.swing.JButton();
-        btnMatematicas = new javax.swing.JButton();
-        btnDiseño = new javax.swing.JButton();
-        btnAcuicultura = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblComputacion = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblAcuicultura = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblDiseño = new javax.swing.JTable();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tblMatematicas = new javax.swing.JTable();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tblMecatronica = new javax.swing.JTable();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        tblZootecnia = new javax.swing.JTable();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        tblAgricola = new javax.swing.JTable();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         MnuMateria = new javax.swing.JMenu();
-        MnuRegistrar = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        MnuProblemas = new javax.swing.JMenuItem();
-        MnuOportunidades = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         MnuSalir = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(205, 133, 63));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnComputacion.setText("Computación");
-        btnComputacion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnComputacionMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnComputacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        btnAgricola.setText("Agricola");
-        jPanel1.add(btnAgricola, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 10, -1, -1));
-
-        btnZootecnia.setText("Zootecnia");
-        jPanel1.add(btnZootecnia, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, -1, -1));
-
-        btnMecatronica.setText("Mecatronica");
-        jPanel1.add(btnMecatronica, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, -1));
-
-        btnMatematicas.setText("Matematicas");
-        jPanel1.add(btnMatematicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, -1));
-
-        btnDiseño.setText("Diseño");
-        jPanel1.add(btnDiseño, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
-
-        btnAcuicultura.setText("Acuicultura");
-        btnAcuicultura.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAcuiculturaMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnAcuicultura, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
-
-        tblComputacion.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tblComputacion);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 950, 270));
-
-        tblAcuicultura.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(tblAcuicultura);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 950, 250));
-
-        tblDiseño.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(tblDiseño);
-
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 950, 250));
-
-        tblMatematicas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane4.setViewportView(tblMatematicas);
-
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 950, 250));
-
-        tblMecatronica.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane5.setViewportView(tblMecatronica);
-
-        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 950, 250));
-
-        tblZootecnia.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane6.setViewportView(tblZootecnia);
-
-        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 950, 250));
-
-        tblAgricola.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane7.setViewportView(tblAgricola);
-
-        jPanel1.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 950, 250));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 400));
 
         jMenu3.setText("Asignatura");
 
         MnuMateria.setText("Materia");
 
-        MnuRegistrar.setText("Registar");
-        MnuRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("Ing.Computacion");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnuRegistrarActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        MnuMateria.add(MnuRegistrar);
+        MnuMateria.add(jMenuItem2);
 
-        jMenuItem1.setText("Editar");
+        jMenuItem3.setText("Lic. Matematicas Aplicadas");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        MnuMateria.add(jMenuItem3);
+
+        jMenuItem4.setText("Ing. Diseño");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        MnuMateria.add(jMenuItem4);
+
+        jMenuItem6.setText("Ing. Mecatronica");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        MnuMateria.add(jMenuItem6);
+
+        jMenuItem5.setText("Lic. Zootecnia");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        MnuMateria.add(jMenuItem5);
+
+        jMenuItem7.setText("Ing. Agricola");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        MnuMateria.add(jMenuItem7);
+
+        jMenuItem1.setText("Ing. Acuicultura");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         MnuMateria.add(jMenuItem1);
 
         jMenu3.add(MnuMateria);
 
-        jMenu1.setText("Opiniones");
-
-        MnuProblemas.setText("Problemas");
-        MnuProblemas.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem8.setText("Opiniones");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnuProblemasActionPerformed(evt);
+                jMenuItem8ActionPerformed(evt);
             }
         });
-        jMenu1.add(MnuProblemas);
-
-        MnuOportunidades.setText("Oportunidades");
-        jMenu1.add(MnuOportunidades);
-
-        jMenu3.add(jMenu1);
+        jMenu3.add(jMenuItem8);
 
         MnuSalir.setText("Salir");
         jMenu3.add(MnuSalir);
@@ -284,61 +135,68 @@ public class FrmAsignaturas extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void MnuRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnuRegistrarActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        FrmRegistrar frmRegistrar = new FrmRegistrar(null, true);
-        frmRegistrar.setVisible(true);
-    }//GEN-LAST:event_MnuRegistrarActionPerformed
+        FrmComputacion frmCompu = new FrmComputacion(null,true);
+        frmCompu.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void MnuProblemasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnuProblemasActionPerformed
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MnuProblemasActionPerformed
+        FrmMatematicas frm = new FrmMatematicas(null,true);
+        frm.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void btnComputacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComputacionMouseClicked
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        // modelo.agregarCurso(new Curso(new Carrera("Ing.Computación"),new Asignatura("hola"),2));
-                modeloCompu.agregarCurso(new Curso(new Carrera("Ing.Computación"), new Asignatura("hola"), 2));
-    }//GEN-LAST:event_btnComputacionMouseClicked
+        FrmDiseño frm = new FrmDiseño(null,true);
+        frm.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void btnAcuiculturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAcuiculturaMouseClicked
-        modeloAcui.agregarCurso(new Curso(new Carrera("Ing.Acuicultura"), new Asignatura("hola"), 2));
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        FrmMecatronica frm = new FrmMecatronica(null,true);
+        frm.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        FrmZootecnia frm = new FrmZootecnia(null,true);
+        frm.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    }//GEN-LAST:event_btnAcuiculturaMouseClicked
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        FrmAgricola frm = new FrmAgricola(null,true);
+        frm.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        FrmAcuicultura frm = new FrmAcuicultura(null,true);
+        frm.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        FrmOpiniones frm = new FrmOpiniones(null,true);
+        frm.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MnuMateria;
-    private javax.swing.JMenuItem MnuOportunidades;
-    private javax.swing.JMenuItem MnuProblemas;
-    private javax.swing.JMenuItem MnuRegistrar;
     private javax.swing.JMenuItem MnuSalir;
-    private javax.swing.JButton btnAcuicultura;
-    private javax.swing.JButton btnAgricola;
-    private javax.swing.JButton btnComputacion;
-    private javax.swing.JButton btnDiseño;
-    private javax.swing.JButton btnMatematicas;
-    private javax.swing.JButton btnMecatronica;
-    private javax.swing.JButton btnZootecnia;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTable tblAcuicultura;
-    private javax.swing.JTable tblAgricola;
-    private javax.swing.JTable tblComputacion;
-    private javax.swing.JTable tblDiseño;
-    private javax.swing.JTable tblMatematicas;
-    private javax.swing.JTable tblMecatronica;
-    private javax.swing.JTable tblZootecnia;
     // End of variables declaration//GEN-END:variables
 }

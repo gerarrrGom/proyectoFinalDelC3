@@ -12,6 +12,7 @@ import cesar.gestionAcademica4.Gestion;
 import GestionDeProfesores.Profesor;
 import docencia.CursosImpartidos;
 import docencia.Actividades;
+import asignaturas.Curso;
 /**
  *
  * @author cesar
@@ -25,4 +26,6 @@ public class ObjetosParaEditar {
     public static Profesor pr;
     public static CursosImpartidos curso;
     public static Actividades actividad;
+    public static Curso curs;
+    
 }
