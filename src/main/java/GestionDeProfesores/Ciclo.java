@@ -18,6 +18,7 @@ public class Ciclo {
      
     }
      
+     
     public String getFechaInicio() {
         return fechaInicio;
     }

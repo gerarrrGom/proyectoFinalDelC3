@@ -145,6 +145,7 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnCargar.setFont(new java.awt.Font("Bodoni MT", 0, 12)); // NOI18N
         btnCargar.setText("Cargar Datos");
         btnCargar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -157,6 +158,7 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Bodoni MT", 0, 12)); // NOI18N
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +166,7 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Bodoni MT", 0, 12)); // NOI18N
         jButton3.setText("Salir");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -215,7 +218,7 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -230,7 +233,7 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnCargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarMouseClicked
-            String periodo=this.spnPer.getValue().toString();
+           /* String periodo=this.spnPer.getValue().toString();
             String dia = Integer.toString(jDateInicio.getCalendar().get(Calendar.DAY_OF_MONTH));
             String mes = Integer.toString(jDateInicio.getCalendar().get(Calendar.MONTH) + 1);
             String year = Integer.toString(jDateInicio.getCalendar().get(Calendar.YEAR));
@@ -266,7 +269,7 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
             String periodoB = "Inicio:" + inicioperiodoB + "     " + "Fin:" + finperiodoB;
              c=(new Ciclo(fechaInicio, fechaTermino, periodoA, periodoB, periodoZ));
             }
-            else /*if(this.spnPer.getValue().toString().compareToIgnoreCase("C")==0)*/{
+            else if(this.spnPer.getValue().toString().compareToIgnoreCase("C")==0){
             String diaper3 = Integer.toString(jdatePerin.getCalendar().get(Calendar.DAY_OF_MONTH));
             String mesper3 = Integer.toString(jdatePerin.getCalendar().get(Calendar.MONTH) + 1);
             String yearper3 = Integer.toString(jdatePerin.getCalendar().get(Calendar.YEAR));
@@ -279,7 +282,7 @@ public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
             c=(new Ciclo(fechaInicio, fechaTermino, periodoA, periodoB, periodoZ));
             }
             
-          c=(new Ciclo(fechaInicio, fechaTermino, periodoA, periodoB, periodoZ));
+          c=(new Ciclo(fechaInicio, fechaTermino, periodoA, periodoB, periodoZ));*/
     }//GEN-LAST:event_btnCargarMouseClicked
 
     /**
