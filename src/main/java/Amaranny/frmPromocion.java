@@ -53,6 +53,8 @@ public class frmPromocion extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jTable1.setBackground(new java.awt.Color(102, 153, 255));
+        jTable1.setFont(new java.awt.Font("Bodoni MT", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -73,6 +75,8 @@ public class frmPromocion extends javax.swing.JDialog {
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
+        btnAgregar.setBackground(new java.awt.Color(102, 153, 255));
+        btnAgregar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -80,6 +84,8 @@ public class frmPromocion extends javax.swing.JDialog {
             }
         });
 
+        btnEliminar.setBackground(new java.awt.Color(102, 153, 255));
+        btnEliminar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -87,6 +93,8 @@ public class frmPromocion extends javax.swing.JDialog {
             }
         });
 
+        btnEditar.setBackground(new java.awt.Color(102, 153, 255));
+        btnEditar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -94,6 +102,8 @@ public class frmPromocion extends javax.swing.JDialog {
             }
         });
 
+        btnGuardar.setBackground(new java.awt.Color(102, 153, 255));
+        btnGuardar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -101,13 +111,17 @@ public class frmPromocion extends javax.swing.JDialog {
             }
         });
 
-        btnCrear.setText("crearPdf");
+        btnCrear.setBackground(new java.awt.Color(102, 153, 255));
+        btnCrear.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
+        btnCrear.setText("CrearPdf");
         btnCrear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCrearMouseClicked(evt);
             }
         });
 
+        btnSalir.setBackground(new java.awt.Color(102, 153, 255));
+        btnSalir.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -120,17 +134,17 @@ public class frmPromocion extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(14, 14, 14)
                 .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(btnEliminar)
+                .addGap(11, 11, 11)
+                .addComponent(btnEditar)
+                .addGap(10, 10, 10)
+                .addComponent(btnGuardar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCrear)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -196,11 +210,15 @@ public class frmPromocion extends javax.swing.JDialog {
             a.setLista(m);
             tabla.setDesarollo(a);
         }
+        this.btnEditar.setVisible(false);
+        this.btnEliminar.setVisible(false);
     }//GEN-LAST:event_btnEditarMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         int t=this.jTable1.getSelectedRow();
         tabla.eliminarDesarrollo(t);
+        this.btnEditar.setVisible(false);
+        this.btnEliminar.setVisible(false);
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
@@ -223,7 +241,8 @@ public class frmPromocion extends javax.swing.JDialog {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseClicked
-        
+        frmCPdf pdf=new frmCPdf(null,true);
+        pdf.setVisible(true);
     }//GEN-LAST:event_btnCrearMouseClicked
 
     /**
