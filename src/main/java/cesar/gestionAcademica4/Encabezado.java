@@ -95,6 +95,8 @@ public class Encabezado extends PdfPageEventHelper {
         Image imagen;
         try {
             imagen = Image.getInstance("C:\\Users\\cesar\\Descargas\\LogoUnpa.jpg\\");
+            
+            System.out.println("hola");
             imagen.scalePercent(75f);//esto es opcional para definir el tamaño de la imagen.
             imagen.setAlignment(Element.ALIGN_LEFT);
             d.add(imagen);

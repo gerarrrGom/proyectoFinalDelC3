@@ -142,7 +142,7 @@ public class FrmPdf extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCrearMouseClicked
 public void abrirPdf(String nombre){
         try {
-            File f=new File("C:\\Users\\cesar\\OneDrive\\Documents\\PDFS\\" + nombre + ".pdf");
+            File f=new File("C:\\Users\\52281\\Downloand" + nombre + ".pdf");
             Desktop.getDesktop().open(f);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null,ex,"Atencion",2);
@@ -231,7 +231,7 @@ public void generarPdf(String nombre) throws FileNotFoundException, DocumentExce
             JOptionPane.showMessageDialog(this, "Debe llenar los campos");
             
         }*/
-        Plantilla p=new Plantilla();
+        Plantilla p=new Plantilla(this.txtNombre.getText());
         p.crearPlantilla();
        
         
