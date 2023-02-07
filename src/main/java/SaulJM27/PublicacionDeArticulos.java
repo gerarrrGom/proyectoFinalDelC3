@@ -152,6 +152,11 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
 
         jButton1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButton1.setText("CrearPDF");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
 
         pack();
@@ -230,6 +235,11 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
          this.jButtonEliminar.setVisible(true);
          this.jButtonEditar.setVisible(true);
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        frmPDFArticulos n=new frmPDFArticulos(null, true);
+        n.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

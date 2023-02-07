@@ -42,9 +42,5 @@ public class Indicadores {
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
     }
-
-    Object getIndicadores() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
 }
