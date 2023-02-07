@@ -14,6 +14,15 @@
                 <Property name="text" type="java.lang.String" value="Apoyo al alumnado y su desarrollo"/>
               </Properties>
               <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Oportunidades"/>
+                    <Property name="toolTipText" type="java.lang.String" value="oportunidades y problemas para el cumplimiento de la investigacion"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem11ActionPerformed"/>
+                  </Events>
+                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Promoci&#xf3;n al desarrollo"/>

@@ -4,6 +4,7 @@
  */
 package JFramePrincipal;
 
+import Amaranny.frmDPrbYOportunidades;
 import Amaranny.frmPromocion;
 import GestionDeProfesores.FrmCiclos;
 import GestionDeProfesores.FrmProfesores;
@@ -56,6 +57,7 @@ public class FrmPrincipalAdmin extends javax.swing.JFrame {
         mnuCiclos = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -100,6 +102,15 @@ public class FrmPrincipalAdmin extends javax.swing.JFrame {
         jMenu1.add(jSeparator2);
 
         jMenu4.setText("Apoyo al alumnado y su desarrollo");
+
+        jMenuItem5.setText("Oportunidades");
+        jMenuItem5.setToolTipText("oportunidades y problemas para el cumplimiento de la investigacion");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem5);
 
         jMenuItem2.setText("Promoción al desarrollo");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -268,6 +279,11 @@ public class FrmPrincipalAdmin extends javax.swing.JFrame {
         f.setVisible(true);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        frmDPrbYOportunidades f=new frmDPrbYOportunidades(this, true);
+        f.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -315,6 +331,7 @@ public class FrmPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
