@@ -51,6 +51,7 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
         jButtonEliminar = new javax.swing.JButton();
         jButtonGuardar = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -58,6 +59,7 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTable1.setBackground(new java.awt.Color(108, 160, 220));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -78,6 +80,7 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 440, 171));
 
+        jButtonAgregar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButtonAgregar.setText("Agregar");
         jButtonAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -94,6 +97,7 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
         });
         jPanel1.add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
 
+        jButtonEditar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButtonEditar.setText("Editar");
         jButtonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -107,6 +111,7 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
         });
         jPanel1.add(jButtonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, -1));
 
+        jButtonEliminar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButtonEliminar.setText("Eliminar");
         jButtonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -120,6 +125,7 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
         });
         jPanel1.add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, -1));
 
+        jButtonGuardar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButtonGuardar.setText("Guardar");
         jButtonGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -135,6 +141,7 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 27, 470, 250));
 
+        jButtonSalir.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButtonSalir.setText("Salir");
         jButtonSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -142,6 +149,10 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, -1, -1));
+
+        jButton1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
+        jButton1.setText("CrearPDF");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -263,6 +274,7 @@ public class PublicacionDeArticulos extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEliminar;

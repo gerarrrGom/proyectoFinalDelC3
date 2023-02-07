@@ -25,11 +25,11 @@ public class BDIndicadores {
                 String linea=lineas.get(i);
                 StringTokenizer tokens=new StringTokenizer(linea,";");
               
-                int  NumeroDeProyecto=Integer.parseInt(tokens.nextToken());
-                int NumeroIndicador=Integer.parseInt(tokens.nextToken());
-                String Descripcion=tokens.nextToken();
-                Indicadores n=new Indicadores(NumeroDeProyecto, NumeroIndicador,Descripcion);
-                Cuantitativos.add(n);
+                int  numeroDeProyecto=Integer.parseInt(tokens.nextToken());
+                int numeroIndicador=Integer.parseInt(tokens.nextToken());
+                String descripcion=tokens.nextToken();
+                Indicadores x=new Indicadores(numeroDeProyecto, numeroIndicador,descripcion);
+                Cuantitativos.add(x);
             }
         }
         return Cuantitativos;
