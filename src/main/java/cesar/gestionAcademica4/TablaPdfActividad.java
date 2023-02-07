@@ -24,7 +24,7 @@ public class TablaPdfActividad {
     public PdfPTable tabla(Gestion n) {
         PdfPTable tabla = new PdfPTable(3);
         PdfPCell celda1 = new PdfPCell(new Paragraph("DATOS DE LA ACTVIDAD", FontFactory.getFont(
-                "Arial", 14, Font.BOLD, BaseColor.GREEN)));
+                "Arial", 16, Font.BOLD, BaseColor.GREEN)));
 
         celda1.setPadding(12);
 
@@ -34,7 +34,7 @@ public class TablaPdfActividad {
         celda1 = new PdfPCell(new Paragraph("Nombre de la Actividad"));
         tabla.addCell(celda1);
 
-        celda1 = new PdfPCell(new Paragraph("Comision o puesto"));
+        celda1 = new PdfPCell(new Paragraph("Comisión o puesto"));
         tabla.addCell(celda1);
 
         celda1 = new PdfPCell(new Paragraph("Periodo"));
@@ -55,7 +55,7 @@ public class TablaPdfActividad {
 
     public PdfPTable tabla(LinkedList<Gestion> lista) {
         PdfPTable tabla = new PdfPTable(3);
-        PdfPCell celda1 = new PdfPCell(new Paragraph("DATOS DE LA ACTIVIDAD", FontFactory.getFont(
+        PdfPCell celda1 = new PdfPCell(new Paragraph("DATOS DE LAS ACTIVIDADES", FontFactory.getFont(
                 "Arial", 14, Font.BOLD, BaseColor.GREEN)));
 
         celda1.setPadding(12);
@@ -66,7 +66,7 @@ public class TablaPdfActividad {
         celda1 = new PdfPCell(new Paragraph("Nombre de la actividad"));
         tabla.addCell(celda1);
 
-        celda1 = new PdfPCell(new Paragraph("Comision o puesto"));
+        celda1 = new PdfPCell(new Paragraph("Comisión o puesto"));
         tabla.addCell(celda1);
 
         celda1 = new PdfPCell(new Paragraph("Periodo"));
