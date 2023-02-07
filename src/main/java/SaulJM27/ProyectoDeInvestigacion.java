@@ -49,6 +49,7 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
         jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -144,6 +145,10 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 340, -1, -1));
+
+        jButton1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
+        jButton1.setText("CrearPDF");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,6 +264,7 @@ public class ProyectoDeInvestigacion extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonAgregar;

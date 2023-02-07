@@ -8,7 +8,7 @@ import java.util.Calendar;
 
 /**
  *
- * @author Lenovo-80T6
+ * @author Gerardo
  */
 public class FrmCiclosYPeriodosEscolares extends javax.swing.JDialog {
     private Ciclo c;

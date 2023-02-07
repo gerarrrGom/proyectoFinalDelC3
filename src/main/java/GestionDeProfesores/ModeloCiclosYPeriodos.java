@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author Lenovo-80T6
+ * @author Gerardo
  */
 public class ModeloCiclosYPeriodos extends AbstractTableModel{
     private ListaCiclosYPeriodos ciclosYPeriodos;

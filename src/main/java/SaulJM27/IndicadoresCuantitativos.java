@@ -5,6 +5,8 @@
 package SaulJM27;
 import java.util.LinkedList;
 import utilidades.ObjetosParaEditar;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Saul
@@ -46,6 +48,7 @@ public class IndicadoresCuantitativos extends javax.swing.JDialog {
         jButtonEliminar = new javax.swing.JButton();
         jButtonAgregar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -53,6 +56,7 @@ public class IndicadoresCuantitativos extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTable1.setBackground(new java.awt.Color(108, 160, 220));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -73,6 +77,7 @@ public class IndicadoresCuantitativos extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 440, 160));
 
+        jButtonGuardar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButtonGuardar.setText("Guardar");
         jButtonGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -81,6 +86,7 @@ public class IndicadoresCuantitativos extends javax.swing.JDialog {
         });
         jPanel1.add(jButtonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
+        jButtonEditar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButtonEditar.setText("Editar");
         jButtonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -89,6 +95,7 @@ public class IndicadoresCuantitativos extends javax.swing.JDialog {
         });
         jPanel1.add(jButtonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
 
+        jButtonEliminar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButtonEliminar.setText("Eliminar");
         jButtonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -102,6 +109,7 @@ public class IndicadoresCuantitativos extends javax.swing.JDialog {
         });
         jPanel1.add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, -1, -1));
 
+        jButtonAgregar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButtonAgregar.setText("Agregar");
         jButtonAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -117,6 +125,7 @@ public class IndicadoresCuantitativos extends javax.swing.JDialog {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 480, 230));
 
+        jButton1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jButton1.setText("Salir");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -124,6 +133,10 @@ public class IndicadoresCuantitativos extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, -1, -1));
+
+        jButton2.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
+        jButton2.setText("CrearPDF");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -179,7 +192,12 @@ public class IndicadoresCuantitativos extends javax.swing.JDialog {
             p.add(n, a.regresaIndicadores());
             c.setLista(p);
             I.setIndicadores(c);
-        }
+            ObjetosParaEditar.s=null;
+        }else{
+            JOptionPane.showMessageDialog(this, "null", "Hola", 1);
+        }    
+       this.jButtonEditar.setVisible(false);
+       this.jButtonEliminar.setVisible(false);
     }//GEN-LAST:event_jButtonEditarMouseClicked
 
     private void jButtonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarMouseClicked
@@ -231,6 +249,7 @@ public class IndicadoresCuantitativos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEliminar;

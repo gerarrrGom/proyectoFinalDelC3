@@ -6,7 +6,7 @@ package GestionDeProfesores;
 
 /**
  *
- * @author Lenovo-80T6
+ * @author Gerardo
  */
 public class Mein {
     public static void main(String[] args) {

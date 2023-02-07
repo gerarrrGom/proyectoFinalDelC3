@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author "gerard"
+ * @author "Gerardo"
  */
 public class Archivo {
 

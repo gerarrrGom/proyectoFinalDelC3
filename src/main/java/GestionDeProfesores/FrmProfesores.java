@@ -11,7 +11,7 @@ import utilidades.ObjetosParaEditar;
 
 /**
  *
- * @author Lenovo-80T6
+ * @author Gerardo
  */
 public class FrmProfesores extends javax.swing.JDialog {
 

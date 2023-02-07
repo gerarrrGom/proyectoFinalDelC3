@@ -37,6 +37,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Bodoni MT" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Titulo "/>
       </Properties>
       <Constraints>
@@ -54,6 +57,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Bodoni MT" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Revista"/>
       </Properties>
       <Constraints>
@@ -71,6 +77,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Bodoni MT" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Fase"/>
       </Properties>
       <Constraints>
@@ -81,6 +90,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Bodoni MT" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Fecha "/>
       </Properties>
       <Constraints>
@@ -91,6 +103,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Bodoni MT" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Agregar al proyecto"/>
       </Properties>
       <Events>

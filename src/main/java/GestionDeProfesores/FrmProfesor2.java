@@ -6,7 +6,7 @@ package GestionDeProfesores;
 
 /**
  *
- * @author Lenovo-80T6
+ * @author Gerardo
  */
 public class FrmProfesor2 extends javax.swing.JDialog {
     private Profesor p;

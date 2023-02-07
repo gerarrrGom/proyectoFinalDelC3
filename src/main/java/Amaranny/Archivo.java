@@ -80,7 +80,7 @@ public class Archivo {
         return false;
     }
     
-    public boolean borrarContenido(){
+    /*public boolean borrarContenido(){
 	try{
 		File archivo=obtenerArchivo();
 		String directorio=archivo.getParent();
@@ -91,6 +91,18 @@ public class Archivo {
             ex.printStackTrace();
         }
         return false;
-    }
-
+    }*/
+    public boolean borrarContenido(){
+         try{
+                 File archivo=obtenerArchivo();
+                 String directorio=archivo.getParent();
+                 archivo.delete();
+                 new FileWriter(directorio + "/" +nombre, true);
+                 return true;
+         }catch(IOException ex){
+             System.out.println("No funciono");
+             ex.printStackTrace();
+         }
+         return false;
+     }
 }

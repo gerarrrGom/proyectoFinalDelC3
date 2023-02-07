@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author Lenovo-80T6
+ * @author Gerardo
  */
 public class ModeloProfesores extends AbstractTableModel{
     private ListaProfesores profesores;
