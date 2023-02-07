@@ -10,25 +10,27 @@ import java.util.LinkedList;
  *
  * @author Reyna Ibañez Tome
  */
-public class ListaCarrera {
-    private  LinkedList<Carrera> lista;
-    
-    public ListaCarrera(){
+public class ListaAsignaturas {
+
+    private LinkedList<Asignatura> lista;
+
+    public ListaAsignaturas() {
         lista = new LinkedList();
-        
     }
-    public void insertar(Carrera a){
-        lista.add(a);
-    }
-    public void eliminar (int indice){
-        lista.remove(indice);
-    }
-    public int total(){
-        return lista.size();
-    }
-    public Carrera getCarrera(int indice){
+
+    public Asignatura getAsignatura(int indice) {
         return lista.get(indice);
     }
-}
-    
 
+    public void eliminarAsignatura(int indice) {
+        lista.remove(indice);
+    }
+
+    public int size() {
+        return lista.size();
+    }
+
+    public void agregarAsignatura(Asignatura a) {
+        lista.add(a);
+    }
+}

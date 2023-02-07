@@ -1,36 +1,59 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package asignaturas;
 
 import java.awt.Color;
-import javax.swing.JOptionPane;
-import javax.swing.JButton;
-
-
 
 /**
  *
  * @author Reyna Ibañez Tome
  */
-public class FrmAsignaturas extends javax.swing.JDialog {
-     private ListaAsignatura lista;
-    private JButton botones[];
+public class FrmAsignaturas extends javax.swing.JInternalFrame {
+
+    private ModeloComputacion modeloCompu;
+    private ModeloMatematicas modeloMate;
+    private ModeloAcuicultura modeloAcui;
+    private ModeloAgricola modeloAgri;
+    private ModeloDiseño modeloDise;
+    private ModeloZootecnia modeloZoo;
+    private ModeloMecatronica modeloMeca;
+    private BDCursos bd;
+
     /**
-    * Creates new form FrmCRUDAlumno
+     * Creates new form FrmAsignaturas
      */
     public FrmAsignaturas() {
         initComponents();
-        this.setTitle("Gestión de Profesores");
-        lista=new ListaAsignatura();
-        this.txtAsignaturas.setText(lista.imprimirAsignaturas());
-        //this.btnEliminar.setVisible(false);
-        this.btnEditar.setVisible(false);
-        botones=new JButton[3];
-        botones[0]=this.btnAgregar;
-        botones[1]=this.btnEditar;
-        //botones[2]=this.btnEliminar;
+        bd = new BDCursos();
+        modeloCompu = new ModeloComputacion();
+        modeloMate = new ModeloMatematicas();
+        modeloAcui = new ModeloAcuicultura();
+        modeloAgri = new ModeloAgricola();
+        modeloDise = new ModeloDiseño();
+        modeloZoo = new ModeloZootecnia();
+        modeloMeca = new ModeloMecatronica();
+
+        this.tblComputacion.setModel(modeloCompu);
+        this.tblAcuicultura.setModel(modeloAcui);
+        this.tblAgricola.setModel(modeloAgri);
+        this.tblDiseño.setModel(modeloDise);
+        this.tblMatematicas.setModel(modeloMate);
+        this.tblMecatronica.setModel(modeloMeca);
+        this.tblZootecnia.setModel(modeloZoo);
+
+        this.tblComputacion.setEnabled(false);
+        this.tblAcuicultura.setEnabled(false);
+        this.tblAgricola.setEnabled(false);
+        this.tblDiseño.setEnabled(false);
+        this.tblMatematicas.setEnabled(false);
+        this.tblMecatronica.setEnabled(false);
+        this.tblZootecnia.setEnabled(false);
+
+
+        //modeloAcui.agregarCurso(new Curso(new Carrera("Ing.Computación"), new Asignatura("hola"), 2));
+
     }
 
     /**
@@ -43,239 +66,279 @@ public class FrmAsignaturas extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        cboCarrera = new javax.swing.JComboBox<>();
-        spnSemestre = new javax.swing.JSpinner();
-        txtNombre = new javax.swing.JTextField();
-        btnAgregar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        spnNumero = new javax.swing.JSpinner();
-        jLabel5 = new javax.swing.JLabel();
+        btnComputacion = new javax.swing.JButton();
+        btnAgricola = new javax.swing.JButton();
+        btnZootecnia = new javax.swing.JButton();
+        btnMecatronica = new javax.swing.JButton();
+        btnMatematicas = new javax.swing.JButton();
+        btnDiseño = new javax.swing.JButton();
+        btnAcuicultura = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtAsignaturas = new javax.swing.JTextArea();
+        tblComputacion = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblAcuicultura = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblDiseño = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblMatematicas = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblMecatronica = new javax.swing.JTable();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblZootecnia = new javax.swing.JTable();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tblAgricola = new javax.swing.JTable();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        MnuMateria = new javax.swing.JMenu();
+        MnuRegistrar = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        MnuProblemas = new javax.swing.JMenuItem();
+        MnuOportunidades = new javax.swing.JMenuItem();
+        MnuSalir = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel1.setText("Número");
-
-        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel2.setText("Carrera");
-
-        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel3.setText("Asignatura");
-
-        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel4.setText("semestre");
-
-        cboCarrera.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cboCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ing.En Computación", "Ing.Mecatronica", "Ing.Diseño", "Lic.Matematicas Aplicadas", "Lic.Zooctecnia", "Ing.Acuicultura", "Ing.Agricola Tropical" }));
-
-        spnSemestre.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
-
-        btnAgregar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnAgregar.setText("+");
-        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnComputacion.setText("Computación");
+        btnComputacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseClicked(evt);
+                btnComputacionMouseClicked(evt);
             }
         });
+        jPanel1.add(btnComputacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        btnEditar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnEditar.setText("Editar");
-        btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnEditarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnEditarMouseExited(evt);
+        btnAgricola.setText("Agricola");
+        jPanel1.add(btnAgricola, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 10, -1, -1));
+
+        btnZootecnia.setText("Zootecnia");
+        jPanel1.add(btnZootecnia, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, -1, -1));
+
+        btnMecatronica.setText("Mecatronica");
+        jPanel1.add(btnMecatronica, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, -1));
+
+        btnMatematicas.setText("Matematicas");
+        jPanel1.add(btnMatematicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, -1));
+
+        btnDiseño.setText("Diseño");
+        jPanel1.add(btnDiseño, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
+
+        btnAcuicultura.setText("Acuicultura");
+        btnAcuicultura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAcuiculturaMouseClicked(evt);
             }
         });
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.add(btnAcuicultura, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+
+        tblComputacion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblComputacion);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 950, 270));
+
+        tblAcuicultura.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblAcuicultura);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 950, 250));
+
+        tblDiseño.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(tblDiseño);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 950, 250));
+
+        tblMatematicas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(tblMatematicas);
+
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 950, 250));
+
+        tblMecatronica.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(tblMecatronica);
+
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 950, 250));
+
+        tblZootecnia.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane6.setViewportView(tblZootecnia);
+
+        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 950, 250));
+
+        tblAgricola.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane7.setViewportView(tblAgricola);
+
+        jPanel1.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 950, 250));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 400));
+
+        jMenu3.setText("Asignatura");
+
+        MnuMateria.setText("Materia");
+
+        MnuRegistrar.setText("Registar");
+        MnuRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
+                MnuRegistrarActionPerformed(evt);
             }
         });
+        MnuMateria.add(MnuRegistrar);
 
-        spnNumero.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        jMenuItem1.setText("Editar");
+        MnuMateria.add(jMenuItem1);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cboCarrera, 0, 211, Short.MAX_VALUE)
-                                .addComponent(txtNombre)
-                                .addComponent(spnSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(spnNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(btnEditar)))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(spnNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cboCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel4))
-                            .addComponent(spnSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 114, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAgregar)
-                            .addComponent(btnEditar))
-                        .addGap(53, 53, 53))))
-        );
+        jMenu3.add(MnuMateria);
 
-        jLabel5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel5.setText("Asignaturas con mayor afinidad");
+        jMenu1.setText("Opiniones");
 
-        txtAsignaturas.setColumns(20);
-        txtAsignaturas.setRows(5);
-        jScrollPane1.setViewportView(txtAsignaturas);
+        MnuProblemas.setText("Problemas");
+        MnuProblemas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnuProblemasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MnuProblemas);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(83, 83, 83))
-        );
+        MnuOportunidades.setText("Oportunidades");
+        jMenu1.add(MnuOportunidades);
+
+        jMenu3.add(jMenu1);
+
+        MnuSalir.setText("Salir");
+        jMenu3.add(MnuSalir);
+
+        jMenuBar2.add(jMenu3);
+        jMenuBar2.add(jMenu4);
+
+        setJMenuBar(jMenuBar2);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+    private void MnuRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnuRegistrarActionPerformed
         // TODO add your handling code here:
-        String nombre=this.txtNombre.getText();
-        int numero=(int) this.spnNumero.getValue();
-        String carrera=(String) this.cboCarrera.getSelectedItem();
-        int semestre=(int) this.spnSemestre.getValue();   
-        Asignaturas nuevo=new Asignaturas(numero,nombre,semestre,carrera);
-        lista.insertar(nuevo);
-        JOptionPane.showMessageDialog(this, "Asignatura Registrada");  
-        this.txtAsignaturas.setText(lista.imprimirAsignaturas());
-    }//GEN-LAST:event_btnAgregarMouseClicked
+        FrmRegistrar frmRegistrar = new FrmRegistrar(null, true);
+        frmRegistrar.setVisible(true);
+    }//GEN-LAST:event_MnuRegistrarActionPerformed
 
-    private void btnEditarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseEntered
+    private void MnuProblemasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnuProblemasActionPerformed
         // TODO add your handling code here:
-        Color c=new Color(255,0,0   );
-        this.btnEditar.setBackground(c);    
-    }//GEN-LAST:event_btnEditarMouseEntered
+    }//GEN-LAST:event_MnuProblemasActionPerformed
 
-    private void btnEditarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseExited
+    private void btnComputacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComputacionMouseClicked
         // TODO add your handling code here:
-        Color c=new Color(0,255,0   );
-        this.btnEditar.setBackground(c);
-    }//GEN-LAST:event_btnEditarMouseExited
+        // modelo.agregarCurso(new Curso(new Carrera("Ing.Computación"),new Asignatura("hola"),2));
+                modeloCompu.agregarCurso(new Curso(new Carrera("Ing.Computación"), new Asignatura("hola"), 2));
+    }//GEN-LAST:event_btnComputacionMouseClicked
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarActionPerformed
+    private void btnAcuiculturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAcuiculturaMouseClicked
+        modeloAcui.agregarCurso(new Curso(new Carrera("Ing.Acuicultura"), new Asignatura("hola"), 2));
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmAsignaturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmAsignaturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmAsignaturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmAsignaturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmAsignaturas().setVisible(true);
-            }
-        });
-    }
+    }//GEN-LAST:event_btnAcuiculturaMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JComboBox<String> cboCarrera;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenu MnuMateria;
+    private javax.swing.JMenuItem MnuOportunidades;
+    private javax.swing.JMenuItem MnuProblemas;
+    private javax.swing.JMenuItem MnuRegistrar;
+    private javax.swing.JMenuItem MnuSalir;
+    private javax.swing.JButton btnAcuicultura;
+    private javax.swing.JButton btnAgricola;
+    private javax.swing.JButton btnComputacion;
+    private javax.swing.JButton btnDiseño;
+    private javax.swing.JButton btnMatematicas;
+    private javax.swing.JButton btnMecatronica;
+    private javax.swing.JButton btnZootecnia;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner spnNumero;
-    private javax.swing.JSpinner spnSemestre;
-    private javax.swing.JTextArea txtAsignaturas;
-    private javax.swing.JTextField txtNombre;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTable tblAcuicultura;
+    private javax.swing.JTable tblAgricola;
+    private javax.swing.JTable tblComputacion;
+    private javax.swing.JTable tblDiseño;
+    private javax.swing.JTable tblMatematicas;
+    private javax.swing.JTable tblMecatronica;
+    private javax.swing.JTable tblZootecnia;
     // End of variables declaration//GEN-END:variables
 }

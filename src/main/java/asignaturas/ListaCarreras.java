@@ -3,30 +3,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package asignaturas;
+
 import java.util.LinkedList;
 
 /**
  *
  * @author Reyna Ibañez Tome
  */
-public class ListaAsignatura {
-    private  LinkedList<Asignaturas> lista;
-    
-    public ListaAsignatura(){
+public class ListaCarreras {
+     private LinkedList<Carrera> lista;
+    public ListaCarreras(){
         lista = new LinkedList();
-        
     }
-    public void insertar(Asignaturas a){
-        lista.add(a);
-    }
-    public void eliminar (int indice){
-        lista.remove(indice);
-    }
-    public int total(){
-        return lista.size();
-    }
-    public Asignaturas getAsignatura(int indice){
+    public Carrera getCarrera(int indice){
         return lista.get(indice);
     }
+    public void eliminarCarrera(int indice){
+        lista.remove(indice);
+    }
+    public int size(){
+        return lista.size();
+    }
+    public void agregarCarrera(Carrera c){
+        lista.add(c);
+    }
 }
-    
