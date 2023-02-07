@@ -47,7 +47,7 @@ public class Plantilla {
     private Encabezado encabezado;
     
 
-    public Plantilla(String nombre) throws BadElementException, IOException {
+    public Plantilla() throws BadElementException, IOException {
         this.nombre = nombre;
         this.comision=comision;
         this.periodo=periodo;
@@ -57,7 +57,7 @@ public class Plantilla {
     
     public void crearPlantilla() throws IOException{
         try {
-            archivo = new FileOutputStream("C:\\Users\\cesar\\OneDrive\\Escritorio\\" + nombre + ".pdf");
+            archivo = new FileOutputStream("C:\\Users\\cesar\\OneDrive\\Documents\\PDFS\\" + nombre + ".pdf");
             PdfWriter w=PdfWriter.getInstance(documento,archivo);
             Encabezado e=new Encabezado();
             documento.open();
@@ -78,18 +78,18 @@ public class Plantilla {
             texto.setAlignment(1);
             documento.add(texto);
             
-            documento.add(new Paragraph("Nombre: "+ nombre,f));
+           /* documento.add(new Paragraph("Nombre: "+ nombre,f));
             documento.add(new Paragraph("Comision: "+ comision,f));
-            documento.add(new Paragraph("Comision: "+ periodo,f));
+            documento.add(new Paragraph("Comision: "+ periodo,f));*/
  
             /*TablaPdfActividad t=new TablaPdfActividades();
             PdfPTable tab=tab(t);
             documento.add(tab);*/
             
-            documento.newPage();
+            /*documento.newPage();
             e.agregarEncabezado(w);
             documento.newPage();
-            e.agregarEncabezado(w);
+            e.agregarEncabezado(w);*/
             documento.close();
             JOptionPane.showMessageDialog(null, "El pdf ha sido creado correctamente");
             

@@ -9,6 +9,7 @@ package cesar.gestionAcademica4;
 //import com.mycompany.pryfinalc3.pdf;
 //import java.io.IOException;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 import utilidades.ObjetosParaEditar;
@@ -65,7 +66,8 @@ public class GestionAcademica extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAgregar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnAgregar.setBackground(new java.awt.Color(108, 160, 220));
+        btnAgregar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -74,7 +76,8 @@ public class GestionAcademica extends javax.swing.JDialog {
         });
         jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 80, 30));
 
-        btnEditar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnEditar.setBackground(new java.awt.Color(108, 160, 220));
+        btnEditar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -83,32 +86,38 @@ public class GestionAcademica extends javax.swing.JDialog {
         });
         jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 80, 30));
 
-        btnEliminar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnEliminar.setBackground(new java.awt.Color(108, 160, 220));
+        btnEliminar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 80, 30));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 90, 30));
 
-        btnGuardar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnGuardar.setBackground(new java.awt.Color(108, 160, 220));
+        btnGuardar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnGuardarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 80, 30));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 90, 30));
 
+        btnPdf.setBackground(new java.awt.Color(108, 160, 220));
+        btnPdf.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnPdf.setText("Crear PDF");
         btnPdf.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPdfMouseClicked(evt);
             }
         });
-        jPanel1.add(btnPdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 90, 30));
+        jPanel1.add(btnPdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 100, 30));
 
+        btnSalir.setBackground(new java.awt.Color(108, 160, 220));
+        btnSalir.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -119,6 +128,7 @@ public class GestionAcademica extends javax.swing.JDialog {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 610, 90));
 
+        jTable1.setBackground(new java.awt.Color(108, 160, 220));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -176,6 +186,7 @@ public class GestionAcademica extends javax.swing.JDialog {
            t.eliminarActividad(n);
         this.btnEditar.setVisible(false);
         this.btnEliminar.setVisible(false);
+        JOptionPane.showMessageDialog(this,"Actividad Eliminada Correctamente");
            
     }//GEN-LAST:event_btnEliminarMouseClicked
 
@@ -202,7 +213,8 @@ public class GestionAcademica extends javax.swing.JDialog {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnPdfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPdfMouseClicked
-       FrmPdf p=new FrmPdf(null,true);  
+       FrmPdf p; 
+        p = new FrmPdf(null,true);
         p.setVisible(true);
     }//GEN-LAST:event_btnPdfMouseClicked
 

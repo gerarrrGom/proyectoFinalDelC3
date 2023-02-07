@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import utilidades.ObjetosParaEditar;
 
 /**
@@ -92,57 +93,69 @@ public class FrmRegistrar extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setToolTipText("");
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(txtComision, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 190, -1));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        txtComision.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
+        jPanel1.add(txtComision, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 190, -1));
+
+        jLabel1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel1.setText("Actividad:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel2.setText("Comisión o puesto:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel4.setText("Periodo");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel5.setText("Inicio:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel6.setText("Fin:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
 
-        jcomboActividad.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jcomboActividad.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jcomboActividad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Radio", "Conferencia", "Foro", "Viaje", "otro" }));
         jcomboActividad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcomboActividadActionPerformed(evt);
             }
         });
-        jPanel1.add(jcomboActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 190, -1));
-        jPanel1.add(jdateInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 130, -1));
-        jPanel1.add(jdateFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 130, -1));
-        jPanel1.add(txtOtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 190, -1));
+        jPanel1.add(jcomboActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 190, -1));
 
+        jdateInicio.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
+        jPanel1.add(jdateInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 130, -1));
+
+        jdateFin.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
+        jPanel1.add(jdateFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 130, -1));
+
+        txtOtro.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
+        jPanel1.add(txtOtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 190, -1));
+
+        btnRegistrar.setBackground(new java.awt.Color(108, 160, 220));
+        btnRegistrar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnRegistrar.setText("Registrar");
         btnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRegistrarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
+        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, -1));
 
+        btnCancelar.setBackground(new java.awt.Color(108, 160, 220));
+        btnCancelar.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCancelarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 460, 260));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 420, 260));
         jPanel1.getAccessibleContext().setAccessibleName("");
 
         pack();
@@ -200,7 +213,7 @@ public class FrmRegistrar extends javax.swing.JDialog {
        this.jdateInicio.setCalendar(null);
        this.jdateFin.setCalendar(null);
        this.dispose();
-      
+      JOptionPane.showMessageDialog(this,"Actividad Registrada Correctamente");
         
         
     

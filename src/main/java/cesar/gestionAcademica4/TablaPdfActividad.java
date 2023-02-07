@@ -14,20 +14,20 @@ import java.util.LinkedList;
 
 /**
  *
- * @author mar correo: maritzamedel2@gmail.com
+ * @author cesar
  */
 public class TablaPdfActividad {
 
     private PdfPTable tabla;
 
-    public PdfPTable tabla(Gestion n) {
+    /*public PdfPTable tabla(Gestion n) {
         PdfPTable tabla = new PdfPTable(3);
         PdfPCell celda1 = new PdfPCell(new Paragraph("DATOS DE LA ACTVIDAD", FontFactory.getFont(
                 "Arial", 14, Font.BOLD, BaseColor.GREEN)));
 
         celda1.setPadding(12);
 
-        celda1.setColspan(5);
+        celda1.setColspan(3);
         tabla.addCell(celda1);
 
         celda1 = new PdfPCell(new Paragraph("Nombre de la Actividad"));
@@ -52,7 +52,7 @@ public class TablaPdfActividad {
 
       
         return tabla;
-    }
+    }*/
 
     public PdfPTable tabla(LinkedList<Gestion> lista) {
         PdfPTable tabla = new PdfPTable(3);
