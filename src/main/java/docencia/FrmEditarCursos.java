@@ -24,7 +24,7 @@ public class FrmEditarCursos extends javax.swing.JDialog {
     public FrmEditarCursos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        c = ObjetosParaEditar.c;
+        c = ObjetosParaEditar.curso;
         this.setTitle("Editar curso");
         setCursoEditar();
     }

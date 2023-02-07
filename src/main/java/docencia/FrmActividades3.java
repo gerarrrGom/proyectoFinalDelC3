@@ -24,7 +24,7 @@ public class FrmActividades3 extends javax.swing.JDialog {
         initComponents();
          bd = new BDActividades();
         modelo = new ModeloActividades();
-        c = ObjetosParaEditar.c;
+        c = ObjetosParaEditar.curso;
         this.setTitle("Agrega actividades en "+ c.getCarrera().getNombreCarrera());
         this.tblActividad.setModel(modelo);
     }

@@ -180,7 +180,7 @@ public class FrmDocencia extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAgregarCursoMouseClicked
 
     private void btnEditarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarCursoMouseClicked
-        ObjetosParaEditar.c = modelo.listaCursos().obtener(tablaCursos.getSelectedRow());
+        ObjetosParaEditar.curso = modelo.listaCursos().obtener(tablaCursos.getSelectedRow());
         FrmEditarCursos editarCurso = new FrmEditarCursos(null, true);
         editarCurso.setVisible(true);
         modelo.editarCurso(modelo.listaCursos().obtener(tablaCursos.getSelectedRow()), editarCurso.getCurso());
@@ -213,19 +213,19 @@ public class FrmDocencia extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void btnAgregarActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarActividadesMouseClicked
-        ObjetosParaEditar.c = modelo.listaCursos().obtener(tablaCursos.getSelectedRow());
+        ObjetosParaEditar.curso = modelo.listaCursos().obtener(tablaCursos.getSelectedRow());
         for (int i = 0; i <modelo.listaCursos().total(); i++) {
             if(ObjetosParaEditar.c.equals(modelo.listaCursos().obtener(i))&&i==0){
                 FrmActividades frmActividades = new FrmActividades(null, true);
-                frmActividades.setTitle("Agrega actividades en "+ObjetosParaEditar.c.getCarrera().getNombreCarrera());
+                frmActividades.setTitle("Agrega actividades en "+ObjetosParaEditar.curso.getCarrera().getNombreCarrera());
                 frmActividades.setVisible(true);
             }else if(ObjetosParaEditar.c.equals(modelo.listaCursos().obtener(i))&&i==1){
                 FrmActividades2 frmActividades2 = new FrmActividades2(null, true);
-                frmActividades2.setTitle("Agrega actividades en "+ObjetosParaEditar.c.getCarrera().getNombreCarrera());
+                frmActividades2.setTitle("Agrega actividades en "+ObjetosParaEditar.curso.getCarrera().getNombreCarrera());
                 frmActividades2.setVisible(true);
             }else if(ObjetosParaEditar.c.equals(modelo.listaCursos().obtener(i))&&i==2){
                 FrmActividades3 frmActividades3 = new FrmActividades3(null, true);
-                frmActividades3.setTitle("Agrega actividades en "+ObjetosParaEditar.c.getCarrera().getNombreCarrera());
+                frmActividades3.setTitle("Agrega actividades en "+ObjetosParaEditar.curso.getCarrera().getNombreCarrera());
                 frmActividades3.setVisible(true);
             }
         }

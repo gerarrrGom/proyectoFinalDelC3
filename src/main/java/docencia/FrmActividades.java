@@ -23,7 +23,7 @@ public class FrmActividades extends javax.swing.JDialog {
     public FrmActividades(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        c = ObjetosParaEditar.c;
+        c = ObjetosParaEditar.curso;
         bd = new BDActividades();
         modelo = new ModeloActividades();
         this.tblActividad.setModel(modelo);
