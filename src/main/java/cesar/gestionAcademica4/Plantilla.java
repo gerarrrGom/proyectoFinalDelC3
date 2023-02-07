@@ -12,26 +12,23 @@ import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 //import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
 //import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 //import com.itextpdf.text.Header;
 //import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.BaseFont;
-import com.itextpdf.text.pdf.PdfPTable;
 //import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.mycompany.pryfinalc3.Encabezado;
 import com.mycompany.pryfinalc3.pdf;
-import java.awt.HeadlessException;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 //import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import java.io.FileNotFoundException;
 
 /**
  *
@@ -47,7 +44,7 @@ public class Plantilla {
     private Encabezado encabezado;
     
 
-    public Plantilla() throws BadElementException, IOException {
+    public Plantilla(String nombre) throws BadElementException, IOException {
         this.nombre = nombre;
         this.comision=comision;
         this.periodo=periodo;
@@ -55,9 +52,9 @@ public class Plantilla {
         encabezado=new Encabezado();   
     }
     
-    public void crearPlantilla() throws IOException{
+    public void crearPlantilla(){
         try {
-            archivo = new FileOutputStream("C:\\Users\\cesar\\OneDrive\\Documents\\PDFS\\" + nombre + ".pdf");
+            archivo = new FileOutputStream("C:\\Users\\52281\\Downloand" + nombre + ".pdf");
             PdfWriter w=PdfWriter.getInstance(documento,archivo);
             Encabezado e=new Encabezado();
             documento.open();
@@ -67,8 +64,9 @@ public class Plantilla {
             
             documento.setMargins(3, 3, 527, 2);
             documento.add(new Paragraph("\n\n\n\n\nActividad:"+ nombre + " " ));
+            /*comentar ESTO
             documento.newPage();
-            e.agregarEncabezado(w);
+            e.agregarEncabezado(w);*/
             BaseFont bf;
             
             bf = BaseFont.createFont(BaseFont.TIMES_ROMAN,BaseFont.CP1250,BaseFont.EMBEDDED);
@@ -93,10 +91,8 @@ public class Plantilla {
             documento.close();
             JOptionPane.showMessageDialog(null, "El pdf ha sido creado correctamente");
             
-        } catch (DocumentException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Plantilla.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 archivo.close();

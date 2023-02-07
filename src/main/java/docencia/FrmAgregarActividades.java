@@ -4,18 +4,23 @@
  */
 package docencia;
 
+import utilidades.ObjetosParaEditar;
+
 /**
  *
  * @author cardo
  */
 public class FrmAgregarActividades extends javax.swing.JDialog {
-
+    private CursosImpartidos c;
+    private Actividades a;
     /**
      * Creates new form frmAgregarActividades
      */
     public FrmAgregarActividades(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        c = ObjetosParaEditar.curso;
+        this.setTitle("Agregar actividades en "+ c.getCarrera().getNombreCarrera());
     }
 
     /**
@@ -28,16 +33,67 @@ public class FrmAgregarActividades extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        txtMateriales = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDescripcion = new javax.swing.JTextArea();
+        btnAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(245, 245, 220));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 340));
+
+        jLabel1.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
+        jLabel1.setText("Actividad:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
+        jLabel2.setText("Materiales: ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
+        jLabel3.setText("Descripción: ");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+
+        txtNombre.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 230, -1));
+
+        txtMateriales.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
+        jPanel1.add(txtMateriales, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 230, -1));
+
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
+        txtDescripcion.setRows(5);
+        jScrollPane1.setViewportView(txtDescripcion);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
+
+        btnAgregar.setBackground(new java.awt.Color(141, 182, 205));
+        btnAgregar.setFont(new java.awt.Font("BodoniFLF", 1, 16)); // NOI18N
+        btnAgregar.setText("Agregar");
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 100, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 10, 390, 280));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+        agregar();
+        this.dispose();
+    }//GEN-LAST:event_btnAgregarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -83,6 +139,23 @@ public class FrmAgregarActividades extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtDescripcion;
+    private javax.swing.JTextField txtMateriales;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+    public void agregar(){
+        String nombre = txtNombre.getText();
+        String materiales = txtMateriales.getText();
+        String descripcion = txtDescripcion.getText();
+        a = new Actividades(nombre,materiales,descripcion);
+    }
+    public Actividades getActiviad(){
+        return a;
+    }
 }

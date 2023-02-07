@@ -57,15 +57,16 @@ public class FrmDocencia extends javax.swing.JInternalFrame {
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel1.setBackground(new java.awt.Color(205, 133, 63));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jPanel4.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel4.setBackground(new java.awt.Color(245, 245, 220));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAgregarCurso.setBackground(new java.awt.Color(153, 204, 255));
+        btnAgregarCurso.setBackground(new java.awt.Color(108, 160, 220));
         btnAgregarCurso.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
         btnAgregarCurso.setText("Agregar Curso");
+        btnAgregarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAgregarCursoMouseClicked(evt);
@@ -73,9 +74,10 @@ public class FrmDocencia extends javax.swing.JInternalFrame {
         });
         jPanel4.add(btnAgregarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 120, 30));
 
-        btnEditarCurso.setBackground(new java.awt.Color(153, 204, 255));
+        btnEditarCurso.setBackground(new java.awt.Color(108, 160, 220));
         btnEditarCurso.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
         btnEditarCurso.setText("Editar Curso");
+        btnEditarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEditarCursoMouseClicked(evt);
@@ -83,9 +85,10 @@ public class FrmDocencia extends javax.swing.JInternalFrame {
         });
         jPanel4.add(btnEditarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 120, 30));
 
-        btnGuardarCurso.setBackground(new java.awt.Color(153, 204, 255));
+        btnGuardarCurso.setBackground(new java.awt.Color(108, 160, 220));
         btnGuardarCurso.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
         btnGuardarCurso.setText("Guardar");
+        btnGuardarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
         btnGuardarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnGuardarCursoMouseClicked(evt);
@@ -93,9 +96,10 @@ public class FrmDocencia extends javax.swing.JInternalFrame {
         });
         jPanel4.add(btnGuardarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 90, 30));
 
-        btnEliminarCurso.setBackground(new java.awt.Color(153, 204, 255));
+        btnEliminarCurso.setBackground(new java.awt.Color(108, 160, 220));
         btnEliminarCurso.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
         btnEliminarCurso.setText("Eliminar Curso");
+        btnEliminarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEliminarCursoMouseClicked(evt);
@@ -113,9 +117,10 @@ public class FrmDocencia extends javax.swing.JInternalFrame {
         });
         jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, -1, -1));
 
-        btnAgregarActividades.setBackground(new java.awt.Color(153, 204, 255));
+        btnAgregarActividades.setBackground(new java.awt.Color(108, 160, 220));
         btnAgregarActividades.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
         btnAgregarActividades.setText("Agregar Actividades");
+        btnAgregarActividades.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregarActividades.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAgregarActividadesMouseClicked(evt);
@@ -124,6 +129,7 @@ public class FrmDocencia extends javax.swing.JInternalFrame {
         jPanel4.add(btnAgregarActividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 160, 30));
 
         tablaCursos.setBackground(new java.awt.Color(245, 245, 220));
+        tablaCursos.setFont(new java.awt.Font("BodoniFLF", 1, 14)); // NOI18N
         tablaCursos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -215,15 +221,15 @@ public class FrmDocencia extends javax.swing.JInternalFrame {
     private void btnAgregarActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarActividadesMouseClicked
         ObjetosParaEditar.curso = modelo.listaCursos().obtener(tablaCursos.getSelectedRow());
         for (int i = 0; i <modelo.listaCursos().total(); i++) {
-            if(ObjetosParaEditar.c.equals(modelo.listaCursos().obtener(i))&&i==0){
+            if(ObjetosParaEditar.curso.equals(modelo.listaCursos().obtener(i))&&i==0){
                 FrmActividades frmActividades = new FrmActividades(null, true);
                 frmActividades.setTitle("Agrega actividades en "+ObjetosParaEditar.curso.getCarrera().getNombreCarrera());
                 frmActividades.setVisible(true);
-            }else if(ObjetosParaEditar.c.equals(modelo.listaCursos().obtener(i))&&i==1){
+            }else if(ObjetosParaEditar.curso.equals(modelo.listaCursos().obtener(i))&&i==1){
                 FrmActividades2 frmActividades2 = new FrmActividades2(null, true);
                 frmActividades2.setTitle("Agrega actividades en "+ObjetosParaEditar.curso.getCarrera().getNombreCarrera());
                 frmActividades2.setVisible(true);
-            }else if(ObjetosParaEditar.c.equals(modelo.listaCursos().obtener(i))&&i==2){
+            }else if(ObjetosParaEditar.curso.equals(modelo.listaCursos().obtener(i))&&i==2){
                 FrmActividades3 frmActividades3 = new FrmActividades3(null, true);
                 frmActividades3.setTitle("Agrega actividades en "+ObjetosParaEditar.curso.getCarrera().getNombreCarrera());
                 frmActividades3.setVisible(true);

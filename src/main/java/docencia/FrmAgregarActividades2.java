@@ -3,24 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package docencia;
+
 import utilidades.ObjetosParaEditar;
+
 /**
  *
  * @author cardo
  */
-public class FrmEditarActividades extends javax.swing.JDialog {
+public class FrmAgregarActividades2 extends javax.swing.JDialog {
     private CursosImpartidos c;
     private Actividades a;
-    private Actividades actividad;
     /**
-     * Creates new form FrmEditarActividades
+     * Creates new form FrmAgregarActividades2
      */
-    public FrmEditarActividades(java.awt.Frame parent, boolean modal) {
+    public FrmAgregarActividades2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         c = ObjetosParaEditar.curso;
-        this.setTitle("Editar actividades en "+ c.getCarrera().getNombreCarrera());
-        setEditar();
+        this.setTitle("Agregar actividades en "+ c.getCarrera().getNombreCarrera());
     }
 
     /**
@@ -83,15 +83,15 @@ public class FrmEditarActividades extends javax.swing.JDialog {
                 btnAgregarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, -1, -1));
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 100, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 10, 390, 280));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 260));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-        editar();
+        agregar();
         this.dispose();
     }//GEN-LAST:event_btnAgregarMouseClicked
 
@@ -112,20 +112,20 @@ public class FrmEditarActividades extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmEditarActividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAgregarActividades2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmEditarActividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAgregarActividades2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmEditarActividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAgregarActividades2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmEditarActividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAgregarActividades2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrmEditarActividades dialog = new FrmEditarActividades(new javax.swing.JFrame(), true);
+                FrmAgregarActividades2 dialog = new FrmAgregarActividades2(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -148,7 +148,7 @@ public class FrmEditarActividades extends javax.swing.JDialog {
     private javax.swing.JTextField txtMateriales;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
-    public void editar(){
+    public void agregar(){
         String nombre = txtNombre.getText();
         String materiales = txtMateriales.getText();
         String descripcion = txtDescripcion.getText();
@@ -157,10 +157,8 @@ public class FrmEditarActividades extends javax.swing.JDialog {
     public Actividades getActiviad(){
         return a;
     }
-    public void setEditar(){
-        txtNombre.setText(actividad.getNombre());
-        txtMateriales.setText(actividad.getMateriales());
-        txtDescripcion.setText(actividad.getDescripcion());
-    }
 
 }
+
+
+

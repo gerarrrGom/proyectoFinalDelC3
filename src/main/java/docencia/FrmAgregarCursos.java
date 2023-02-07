@@ -92,7 +92,8 @@ public class FrmAgregarCursos extends javax.swing.JDialog {
         spnAlumnos.setFont(new java.awt.Font("BodoniFLF", 3, 14)); // NOI18N
         spnAlumnos.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
-        jButton1.setFont(new java.awt.Font("BodoniFLF", 1, 18)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(141, 182, 205));
+        jButton1.setFont(new java.awt.Font("BodoniFLF", 1, 16)); // NOI18N
         jButton1.setText("Agregar");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -160,7 +161,7 @@ public class FrmAgregarCursos extends javax.swing.JDialog {
                     .addComponent(spnAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 310));
