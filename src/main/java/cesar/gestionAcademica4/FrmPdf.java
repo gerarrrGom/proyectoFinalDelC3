@@ -4,12 +4,21 @@
  */
 package cesar.gestionAcademica4;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.mycompany.pryfinalc3.pdf;
 //import com.mycompany.pryfinalc3.pdf;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -19,12 +28,12 @@ import javax.swing.JOptionPane;
  * @author cesar
  */
 public class FrmPdf extends javax.swing.JDialog {
-
+        private Gestion g;
     /**
      * Creates new form FrmPdf
      */
     public FrmPdf(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+       super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(this);
         //String nombre=this.txtNombre.getText();
@@ -49,13 +58,18 @@ public class FrmPdf extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "PDF"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "PDF", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bodoni MT", 0, 14))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtNombre.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 170, -1));
 
+        jLabel1.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel1.setText("Introduce el nombre de tu PDF:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
+        btnCrear.setBackground(new java.awt.Color(108, 160, 220));
+        btnCrear.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnCrear.setText("Crear PDF");
         btnCrear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -64,13 +78,15 @@ public class FrmPdf extends javax.swing.JDialog {
         });
         jPanel1.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, -1));
 
+        btnAbrir.setBackground(new java.awt.Color(108, 160, 220));
+        btnAbrir.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         btnAbrir.setText("Abrir PDF");
         btnAbrir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAbrirMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAbrir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
+        jPanel1.add(btnAbrir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 360, 130));
 
@@ -78,20 +94,55 @@ public class FrmPdf extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseClicked
-        try {
+         try {
             try {
                 generarPdf(this.txtNombre.getText());
-                
             } catch (IOException ex) {
-                Logger.getLogger(FrmPdf.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (DocumentException ex) {
-            Logger.getLogger(FrmPdf.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
         }
+              
+                /*FileOutputStream archivo= null;
+                try {
+                archivo = new FileOutputStream("C:\\Users\\cesar\\OneDrive\\Documents\\PDFS" + this.txtNombre.getText()+ ".pdf");
+                Document documento = new Document();
+                
+                PdfWriter.getInstance(documento,archivo);
+                
+                documento.open();
+                
+                BaseFont bf;
+                
+                bf = BaseFont.createFont(BaseFont.TIMES_ROMAN,BaseFont.CP1250,BaseFont.EMBEDDED);
+                
+                //Font f=new Font(bf,12,2,BaseColor.BLUE);
+                TablaPdfActividad t=new TablaPdfActividad();
+                
+                LinkedList<Gestion> lista=new LinkedList();
+                lista.add(g=new Gestion(g.getNombre(),g.getComision(),g.getPeriodo()));
+                
+                
+                PdfPTable tab=t.tabla(lista);
+                
+                documento.add(tab);
+                
+                documento.close();
+                JOptionPane.showMessageDialog(this, "El pdf ha sido creado correctamente");
+                } catch (Exception ex) {
+                Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
+                } finally {
+                try {
+                archivo.close();
+                } catch (IOException ex) {
+                Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                }  */  
     }//GEN-LAST:event_btnCrearMouseClicked
 public void abrirPdf(String nombre){
         try {
-            File f=new File("C:\\Users\\cesar\\OneDrive\\Escritorio\\" + nombre + ".pdf");
+            File f=new File("C:\\Users\\cesar\\OneDrive\\Documents\\PDFS\\" + nombre + ".pdf");
             Desktop.getDesktop().open(f);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null,ex,"Atencion",2);
@@ -100,8 +151,47 @@ public void abrirPdf(String nombre){
         
     }
     private void btnAbrirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbrirMouseClicked
-       abrirPdf(this.txtNombre.getText());
-       this.dispose();
+      /* FrmRegistrar act=new FrmRegistrar(null,true);
+       //act.setVisible(true);
+            FileOutputStream archivo= null;
+        try {
+            archivo = new FileOutputStream("C:\\Users\\cesar\\OneDrive\\Escritorio\\");
+            Document documento = new Document();
+            
+            PdfWriter.getInstance(documento,archivo);
+            
+            documento.open();
+            
+            BaseFont bf;
+            
+            bf = BaseFont.createFont(BaseFont.TIMES_ROMAN,BaseFont.CP1250,BaseFont.EMBEDDED);
+            
+            Font f=new Font(bf,12,2,BaseColor.BLUE);
+            TablaPdfActividad t=new TablaPdfActividad();
+            
+            LinkedList<Gestion> lista=new LinkedList();
+            g=new Gestion(g.getNombre(),g.getComision(),g.getPeriodo());
+            
+            
+            
+            
+            
+            PdfPTable tab=t.tabla(lista);
+            
+                documento.add(tab);
+            
+            documento.close();
+            JOptionPane.showMessageDialog(this, "El pdf ha sido creado correctamente");
+        } catch (Exception ex) {
+            Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                archivo.close();
+            } catch (IOException ex) {
+                Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }*/
+      abrirPdf(this.txtNombre.getText());
     }//GEN-LAST:event_btnAbrirMouseClicked
 public void generarPdf(String nombre) throws FileNotFoundException, DocumentException, IOException{
         /*if(!(this.txtNombre.getText().isEmpty()|| this.txtApellido.getText().isEmpty())){
@@ -141,7 +231,7 @@ public void generarPdf(String nombre) throws FileNotFoundException, DocumentExce
             JOptionPane.showMessageDialog(this, "Debe llenar los campos");
             
         }*/
-        Plantilla p=new Plantilla(this.txtNombre.getText());
+        Plantilla p=new Plantilla();
         p.crearPlantilla();
        
         
