@@ -6,7 +6,7 @@ package asignaturas;
 import utilidades.ObjetosParaEditar;
 /**
  *
- * @author cardo
+ * @author Reyna Ibañez Tome
  */
 public class FrmComputacion extends javax.swing.JDialog {
     private ModeloComputacion modeloCompu;

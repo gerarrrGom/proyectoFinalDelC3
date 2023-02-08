@@ -6,7 +6,7 @@ package asignaturas;
 
 /**
  *
- * @author cardo
+ * @author Reyna Ibañez Tome
  */
 public class FrmZootecnia extends javax.swing.JDialog {
     private ModeloZootecnia modelo;

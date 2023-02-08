@@ -6,7 +6,7 @@ package asignaturas;
 
 /**
  *
- * @author cardo
+ * @author Reyna Ibañez Tome
  */
 public class FrmDiseño extends javax.swing.JDialog {
     private ModeloMatematicas modelo;

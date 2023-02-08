@@ -6,7 +6,7 @@ package asignaturas;
 
 /**
  *
- * @author cardo
+ * @author Reyna Ibañez Tome
  */
 public class FrmAcuicultura extends javax.swing.JDialog {
     private ModeloAcuicultura modelo;

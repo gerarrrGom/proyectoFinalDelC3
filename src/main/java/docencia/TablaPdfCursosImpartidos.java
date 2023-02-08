@@ -29,7 +29,7 @@ public class TablaPdfCursosImpartidos {
 
         celda1.setPadding(12);
 
-        celda1.setColspan(7);
+        celda1.setColspan(15);
         tabla.addCell(celda1);
 
         celda1 = new PdfPCell(new Paragraph("CARRERA"));
@@ -81,7 +81,7 @@ public class TablaPdfCursosImpartidos {
 
         celda1.setPadding(12);
 
-        celda1.setColspan(7);
+        celda1.setColspan(15);
         tabla.addCell(celda1);
 
         celda1 = new PdfPCell(new Paragraph("CARRERA"));

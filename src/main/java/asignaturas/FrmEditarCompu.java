@@ -8,7 +8,7 @@ import utilidades.ObjetosParaEditar;
 
 /**
  *
- * @author cardo
+ * @author Reyna Ibañez Tome
  */
 public class FrmEditarCompu extends javax.swing.JDialog {
 

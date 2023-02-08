@@ -6,7 +6,7 @@ package asignaturas;
 
 /**
  *
- * @author cardo
+ * @author Reyna Ibañez Tome
  */
 public class FrmRegistrarDise extends javax.swing.JDialog {
     private Curso dise;

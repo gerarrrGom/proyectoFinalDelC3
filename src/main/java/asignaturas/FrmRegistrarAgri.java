@@ -6,7 +6,7 @@ package asignaturas;
 
 /**
  *
- * @author cardo
+ * @author Reyna Ibañez Tome
  */
 public class FrmRegistrarAgri extends javax.swing.JDialog {
     private Curso agri;

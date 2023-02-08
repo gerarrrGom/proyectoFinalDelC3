@@ -6,7 +6,7 @@ package asignaturas;
 
 /**
  *
- * @Reyna Ibañez Tome
+ * @author Reyna Ibañez Tome
  */
 public class FrmRegistrarMeca extends javax.swing.JDialog {
     private Curso meca;
